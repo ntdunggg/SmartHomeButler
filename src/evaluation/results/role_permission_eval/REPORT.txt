@@ -1,0 +1,80 @@
+============================================================================================
+PHÂN BỐ OUTCOME THEO ROLE  (100 request / role, LLM thật gpt-4o-mini)
+============================================================================================
+outcome                bo         me    con_lon    con_nho
+--------------------------------------------------------------------------------------------
+executed               59         58         32         39
+approval                ·          ·         23          ·
+blocked                 ·          ·          6         24
+noop                   11         13          9          6
+clarification          17         16         18         18
+answered                9          9          9          9
+cancelled               ·          ·          ·          ·
+no_goal                 4          4          3          4
+abstain                 ·          ·          ·          ·
+error                   ·          ·          ·          ·
+--------------------------------------------------------------------------------------------
+bo (owner/adult): median 3855ms  p95 16268ms  max 20303ms
+me (owner/adult): median 3637ms  p95 15312ms  max 20496ms
+con_lon (member/teen): median 3118ms  p95 16780ms  max 45554ms
+con_nho (member/child): median 3033ms  p95 13021ms  max 17305ms
+
+============================================================================================
+KHÁC BIỆT QUYỀN THEO ROLE — cùng request, khác kết quả
+============================================================================================
+
+### AN NINH (khoá cửa / camera)
+  khoá cửa chính lại                         | bo:noop  me:noop  lon:bloc  nho:bloc
+  mở khoá cửa chính giúp mình                | bo:exec  me:exec  lon:bloc  nho:bloc
+  khoá cửa phòng bố mẹ                       | bo:exec  me:exec  lon:bloc  nho:bloc
+  bật camera cửa chính lên                   | bo:noop  me:noop  lon:bloc  nho:bloc
+  tắt camera cửa trước đi                    | bo:exec  me:exec  lon:bloc  nho:bloc
+  kiểm tra khoá cửa giúp tôi                 | bo:noop  me:noop  lon:bloc  nho:bloc
+  chốt hết cửa nẻo trước khi ngủ             | bo:no_g  me:clar  lon:clar  nho:no_g
+  mở khoá cửa phòng ngủ bố mẹ                | bo:clar  me:clar  lon:clar  nho:clar
+
+### CÔNG SUẤT LỚN (điều hoà/sưởi/bình nóng)
+  bật điều hoà phòng khách 25 độ             | bo:exec  me:exec  lon:appr  nho:bloc
+  mở điều hoà phòng con lên giúp mình        | bo:exec  me:exec  lon:appr  nho:bloc
+  tắt điều hoà phòng bố mẹ                   | bo:noop  me:noop  lon:noop  nho:bloc
+  bật máy sưởi phòng ngủ                     | bo:exec  me:exec  lon:appr  nho:bloc
+  chỉnh điều hoà phòng khách xuống 22 độ     | bo:exec  me:exec  lon:appr  nho:bloc
+  bật bình nóng lạnh để tí tắm               | bo:exec  me:exec  lon:appr  nho:bloc
+
+### GIA DỤNG (gồm high-power)
+  bật máy lọc không khí phòng khách          | bo:exec  me:exec  lon:exec  nho:exec
+  cho robot hút bụi chạy đi                  | bo:exec  me:exec  lon:exec  nho:exec
+  bật máy rửa bát                            | bo:exec  me:exec  lon:appr  nho:bloc
+  tắt máy lọc phòng con                      | bo:noop  me:noop  lon:noop  nho:noop
+  khởi động máy hút bụi dọn phòng khách      | bo:exec  me:exec  lon:exec  nho:exec
+  bật bình nóng lạnh phòng khách             | bo:exec  me:exec  lon:appr  nho:bloc
+  cho máy rửa bát chạy chế độ nhanh          | bo:exec  me:exec  lon:appr  nho:bloc
+  bật máy lọc phòng bố mẹ                    | bo:exec  me:exec  lon:exec  nho:exec
+  tắt máy sưởi đi nóng rồi                   | bo:noop  me:noop  lon:noop  nho:bloc
+  dừng robot hút bụi lại                     | bo:noop  me:noop  lon:exec  nho:noop
+
+============================================================================================
+NLU TỔNG QUÁT (role bo/OWNER) — outcome theo category
+============================================================================================
+  ambiguous     clarification:3, executed:3
+  appliance     executed:7, noop:3
+  cancel        no_goal:2
+  climate       executed:5, noop:1
+  comfort       executed:13, clarification:1
+  correction    executed:1, clarification:1
+  cover         executed:4, noop:2
+  light         executed:6, noop:1, clarification:1
+  media         executed:4, noop:1, clarification:1
+  multi         executed:3, no_goal:1
+  negation      answered:2
+  out_of_scope  clarification:4, answered:2
+  query         answered:5, clarification:2, executed:1
+  routine       executed:9, clarification:3
+  security      noop:3, executed:3, no_goal:1, clarification:1
+
+============================================================================================
+LỖI / ABSTAIN
+============================================================================================
+  (không có lỗi/abstain nào)
+
+reused_routine = True: 0 (kỳ vọng 0 — phiên eval sạch, chưa học routine)

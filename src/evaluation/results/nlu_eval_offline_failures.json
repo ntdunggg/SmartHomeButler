@@ -1,0 +1,1216 @@
+[
+  {
+    "id": "cl-024",
+    "utterance": "chào bạn",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "SOCIAL_UTTERANCE"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "chào bạn",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "cl-025",
+    "utterance": "cảm ơn nhé",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "SOCIAL_UTTERANCE"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": null,
+      "targets": [],
+      "area": null,
+      "outcome": "answer"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": null,
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-001",
+    "utterance": "đi ngủ thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "đi ngủ thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-002",
+    "utterance": "di ngu thoi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "đi ngủ thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-003",
+    "utterance": "chuẩn bị đi ngủ nào",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "chuẩn bị đi ngủ nào",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-004",
+    "utterance": "chuan bi di ngu nao",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "chuẩn bị đi ngủ nào",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-005",
+    "utterance": "tới giờ ngủ rồi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tới giờ ngủ rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-006",
+    "utterance": "toi gio ngu roi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi gio ngu roi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-007",
+    "utterance": "tôi sắp về nhà",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "arrive_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tôi sắp về nhà",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-008",
+    "utterance": "toi sap ve nha",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "arrive_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi sap ve nha",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-009",
+    "utterance": "tôi về tới nơi rồi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "arrive_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tôi về tới nơi rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-010",
+    "utterance": "toi ve toi noi roi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "arrive_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi ve toi noi roi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-013",
+    "utterance": "tôi đi làm đây",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "leave_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tôi đi làm đây",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-014",
+    "utterance": "toi di lam day",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "leave_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi di lam day",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-015",
+    "utterance": "ra khỏi nhà thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "leave_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "ra khỏi nhà thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-016",
+    "utterance": "ra khoi nha thoi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "leave_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "ra khoi nha thoi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-017",
+    "utterance": "mình xem phim nào",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "mình xem phim nào",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-018",
+    "utterance": "minh xem phim nao",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "mình xem phim nào",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-019",
+    "utterance": "coi phim thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "coi phim thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-020",
+    "utterance": "coi phim thoi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "coi phim thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-021",
+    "utterance": "tôi vào việc đây",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tôi vào việc đây",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-022",
+    "utterance": "toi vao viec day",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi vao viec day",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-023",
+    "utterance": "ngồi học bài nào",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "ngồi học bài nào",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-024",
+    "utterance": "ngoi hoc bai nao",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "ngoi hoc bai nao",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-025",
+    "utterance": "tập trung làm việc thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tập trung làm việc thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-026",
+    "utterance": "tap trung lam viec thoi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tap trung lam viec thoi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-027",
+    "utterance": "thức dậy rồi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "wake_up"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "thức dậy rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-028",
+    "utterance": "thuc day roi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "wake_up"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "thuc day roi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-029",
+    "utterance": "dọn cơm ăn thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "eat_meal"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "dọn cơm ăn thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-030",
+    "utterance": "don com an thoi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "eat_meal"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "don com an thoi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-031",
+    "utterance": "nhà có khách tới",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "receive_guest"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "nhà có khách tới",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-032",
+    "utterance": "nha co khach toi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "receive_guest"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "nha co khach toi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-033",
+    "utterance": "good night nhé",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "good night nhé",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-034",
+    "utterance": "good night nhe",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "good night nhe",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-035",
+    "utterance": "tôi về tới rồi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "arrive_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tôi về tới rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-036",
+    "utterance": "toi ve toi roi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "arrive_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi ve toi roi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-037",
+    "utterance": "đi vắng vài hôm",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "leave_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "đi vắng vài hôm",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-038",
+    "utterance": "di vang vai hom",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "leave_home"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "di vang vai hom",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-039",
+    "utterance": "xem tivi thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "xem tivi thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-040",
+    "utterance": "xem tivi thoi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "xem tivi thoi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-041",
+    "utterance": "bữa tối tới rồi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "eat_meal"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "bữa tối tới rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-042",
+    "utterance": "bua toi toi roi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "eat_meal"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "bữa tối tới rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-043",
+    "utterance": "đón khách nào",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "receive_guest"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "đón khách nào",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-044",
+    "utterance": "don khach nao",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "receive_guest"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "don khach nao",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-045",
+    "utterance": "báo thức kêu rồi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "wake_up"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "báo thức kêu rồi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-046",
+    "utterance": "bao thuc keu roi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "wake_up"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "bao thuc keu roi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-003",
+    "utterance": "chỉnh tivi phòng khách 26 độ",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "tv_phong_khach"
+      ],
+      "area": "Phòng khách",
+      "outcome": "no_action"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "chỉnh tivi phòng khách 26 độ",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-004",
+    "utterance": "đi ngủ thôi",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "proceed"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "đi ngủ thôi",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-005",
+    "utterance": "tôi sắp về nhà",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "proceed"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "toi sap ve nha",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-006",
+    "utterance": "mở khoá cửa chính",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "khoa_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "mở khoá cửa chính",
+    "plan_actions": [
+      [
+        "khoa_cua_chinh",
+        "lock",
+        "unlock"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-007",
+    "utterance": "khoá cửa chính lại",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "khoa_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "khoá cửa chính lại",
+    "plan_actions": [
+      [
+        "khoa_cua_chinh",
+        "lock",
+        "lock"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-008",
+    "utterance": "tắt camera cửa chính",
+    "route": "deterministic",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "camera_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": null,
+    "goal_schema_decision": null,
+    "goal_description": "tắt camera cửa chính",
+    "plan_actions": [
+      [
+        "camera_cua_chinh",
+        "on_off",
+        "turn_off"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  }
+]

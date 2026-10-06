@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PropertyView</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0B1530;
+    --glass: rgba(255,255,255,0.06);
+    --glass-hover: rgba(255,255,255,0.10);
+    --glass-border: rgba(255,255,255,0.11);
+    --glass-border-strong: rgba(255,255,255,0.18);
+    --accent: #4F7EFF;
+    --accent-dim: rgba(79,126,255,0.18);
+    --accent-glow: rgba(79,126,255,0.35);
+    --amber: #F5A94E;
+    --amber-dim: rgba(245,169,78,0.15);
+    --text: #E8EEFF;
+    --text-muted: rgba(232,238,255,0.45);
+    --text-dim: rgba(232,238,255,0.28);
+    --radius-sm: 8px;
+    --radius: 14px;
+    --blur: blur(18px);
+  }
+
+  html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.5; overflow: hidden; }
+
+  .app { display: grid; grid-template-columns: 1fr 360px; height: 100vh; }
+
+  /* LEFT */
+  .left { position: relative; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(ellipse 80% 60% at 55% 55%, #1a2d5a 0%, #0B1530 70%); }
+
+  .left-header { position: relative; z-index: 10; display: flex; align-items: center; gap: 12px; padding: 18px 20px 14px; }
+  .btn-back { width: 34px; height: 34px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); backdrop-filter: var(--blur); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); transition: all .2s; flex-shrink: 0; }
+  .btn-back:hover { background: var(--glass-hover); color: var(--text); }
+  .btn-back svg { width: 16px; height: 16px; }
+  .header-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; color: var(--text); letter-spacing: .02em; }
+
+  .util-tabs { position: relative; z-index: 10; display: flex; gap: 6px; padding: 0 20px 16px; }
+  .tab-pill { padding: 5px 14px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: .03em; cursor: pointer; background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: var(--blur); color: var(--text-muted); transition: all .2s; user-select: none; }
+  .tab-pill:hover { background: var(--glass-hover); color: var(--text); }
+  .tab-pill.active { background: var(--amber-dim); border-color: rgba(245,169,78,0.4); color: var(--amber); }
+
+  .info-strip { position: relative; z-index: 10; padding: 0 20px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .info-label { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .08em; color: var(--text-dim); text-transform: uppercase; }
+  .info-value { font-size: 13px; color: var(--text); }
+  .info-pair + .info-pair { margin-top: 8px; }
+
+  .viewer-area { position: relative; flex: 1; overflow: hidden; }
+  #threeCanvas { width: 100%; height: 100%; display: block; }
+
+  .viewer-controls { position: absolute; top: 12px; right: 12px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }
+  .vc-btn { width: 32px; height: 32px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 8px; backdrop-filter: var(--blur); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); transition: all .2s; font-size: 14px; }
+  .vc-btn:hover { background: var(--glass-hover); color: var(--text); }
+
+  .viewer-hint { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 10; background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: var(--blur); border-radius: 20px; padding: 5px 14px; font-family: 'Outfit', sans-serif; font-size: 11px; color: var(--text-dim); white-space: nowrap; pointer-events: none; }
+
+  .loading-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; z-index: 20; background: rgba(11,21,48,0.75); backdrop-filter: blur(4px); }
+  .loading-spinner { width: 36px; height: 36px; border: 2px solid rgba(79,126,255,0.2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text { font-family: 'Outfit', sans-serif; font-size: 12px; color: var(--text-muted); }
+
+  .room-icons { position: absolute; bottom: 60px; left: 20px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }
+  .room-chip { display: flex; align-items: center; gap: 8px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); backdrop-filter: var(--blur); padding: 5px 10px; }
+  .room-chip svg { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; }
+  .room-chip span { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 600; color: var(--text); }
+
+  .floor-nav { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 4px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; backdrop-filter: var(--blur); padding: 4px; }
+  .nav-btn { display: flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 10px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all .2s; user-select: none; }
+  .nav-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .nav-btn:hover { color: var(--text); background: var(--glass-hover); }
+  .nav-btn.active { background: var(--glass-border-strong); color: var(--text); }
+
+  /* RIGHT */
+  .right { display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; background: linear-gradient(180deg, rgba(11,21,48,0.98) 0%, rgba(9,17,40,0.98) 100%); border-left: 1px solid var(--glass-border); padding: 20px 18px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent; }
+  .right::-webkit-scrollbar { width: 4px; }
+  .right::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+  .prop-price { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .prop-address { font-size: 13px; color: var(--text-muted); margin-top: 5px; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0; }
+  .stat-cell { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 10px 8px; }
+  .stat-val { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat-lbl { font-family: 'Outfit', sans-serif; font-size: 10px; color: var(--text-muted); letter-spacing: .03em; }
+
+  .prop-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .chip { display: flex; align-items: center; gap: 6px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 8px; padding: 6px 10px; font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 500; color: var(--text-muted); }
+  .chip svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--accent); }
+
+  .divider { height: 1px; background: var(--glass-border); margin: 14px 0; }
+
+  .bracket-label { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .12em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .bracket-label::before { content: '[ '; }
+  .bracket-label::after { content: ' ]'; }
+
+  .calc-section { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 14px; backdrop-filter: var(--blur); margin-bottom: 14px; }
+  .calc-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+  .calc-field-lbl { font-family: 'Outfit', sans-serif; font-size: 10px; color: var(--text-dim); letter-spacing: .04em; margin-bottom: 3px; text-transform: uppercase; }
+  .calc-field-val { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); }
+
+  .slider-lbl { font-family: 'Outfit', sans-serif; font-size: 10px; color: var(--text-dim); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px; }
+  input[type=range] { width: 100%; appearance: none; height: 4px; border-radius: 4px; outline: none; cursor: pointer; margin: 6px 0 14px; background: linear-gradient(90deg, var(--accent) 0% 40%, rgba(255,255,255,0.1) 40%); }
+  input[type=range]::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; border-radius: 50%; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 0 0 3px var(--accent-glow); cursor: pointer; }
+
+  .calc-result { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .result-lbl { font-family: 'Outfit', sans-serif; font-size: 10px; color: var(--text-dim); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 3px; }
+  .result-val { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+
+  .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .btn-primary { padding: 10px 16px; background: var(--accent); border: none; border-radius: var(--radius-sm); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; color: white; cursor: pointer; transition: all .2s; box-shadow: 0 4px 16px var(--accent-glow); }
+  .btn-primary:hover { background: #6B9FFF; transform: translateY(-1px); }
+  .btn-ghost { padding: 10px 16px; background: var(--glass); border: 1px solid var(--glass-border-strong); border-radius: var(--radius-sm); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; color: var(--text); cursor: pointer; transition: all .2s; backdrop-filter: var(--blur); }
+  .btn-ghost:hover { background: var(--glass-hover); }
+
+  .tour-note { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-muted); }
+  .tour-note svg { width: 13px; height: 13px; color: var(--accent); flex-shrink: 0; }
+
+  .similar-card { display: flex; gap: 10px; padding: 10px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); margin-bottom: 8px; cursor: pointer; transition: background .2s; }
+  .similar-card:hover { background: var(--glass-hover); }
+  .similar-img { width: 68px; height: 60px; border-radius: 6px; flex-shrink: 0; overflow: hidden; position: relative; }
+  .virtual-badge { position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,0.7); border-radius: 3px; padding: 1px 5px; font-family: 'Outfit', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: .05em; color: white; text-transform: uppercase; }
+  .similar-price { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+  .similar-name { font-size: 12px; color: var(--text-muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .similar-detail { font-size: 10.5px; color: var(--text-dim); margin-top: 2px; }
+  .similar-addr { font-size: 10px; color: var(--text-dim); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- LEFT: 3D Viewer -->
+  <div class="left">
+    <div class="left-header">
+      <button class="btn-back" aria-label="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <span class="header-title">Floor Plan 3D</span>
+    </div>
+
+    <div class="util-tabs">
+      <div class="tab-pill">Water</div>
+      <div class="tab-pill">Daylight</div>
+      <div class="tab-pill">Electricity</div>
+      <div class="tab-pill active">Gas</div>
+      <div class="tab-pill">AC</div>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-pair">
+        <div class="info-label">Annual gas utility costs</div>
+        <div class="info-value">$1,200 / 2000 m³</div>
+      </div>
+      <div class="info-pair">
+        <div class="info-label">Safety Features</div>
+        <div class="info-value">Built-in gas detectors</div>
+      </div>
+    </div>
+
+    <div class="viewer-area">
+      <canvas id="threeCanvas"></canvas>
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" id="loadingText">Loading 3D model…</div>
+      </div>
+      <div class="viewer-controls">
+        <div class="vc-btn" id="btnTop" title="Top view">⊙</div>
+        <div class="vc-btn" id="btnPersp" title="Perspective view">◈</div>
+        <div class="vc-btn" id="btnReset" title="Reset">↺</div>
+      </div>
+      <div class="viewer-hint">Drag · Scroll to zoom · Right-drag to pan</div>
+    </div>
+
+    <div class="room-icons">
+      <div class="room-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3M2 9h20M2 9v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9M6 14h3M15 14h3"/></svg>
+        <span>2</span>
+      </div>
+      <div class="room-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M9 6h6"/></svg>
+        <span>2</span>
+      </div>
+      <div class="room-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 9l2-5h14l2 5M8 9v12M16 9v12"/></svg>
+        <span>1</span>
+      </div>
+    </div>
+
+    <div class="floor-nav">
+      <div class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Gallery 10
+      </div>
+      <div class="nav-btn active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        3D View
+      </div>
+      <div class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Map
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Property details -->
+  <div class="right">
+    <div style="margin-bottom:6px">
+      <div class="prop-price">$412,000</div>
+      <div class="prop-address">17-11 Linden St, Ridgewood, NY 11385</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-cell"><div class="stat-val">2</div><div class="stat-lbl">Beds</div></div>
+      <div class="stat-cell"><div class="stat-val">2</div><div class="stat-lbl">Baths</div></div>
+      <div class="stat-cell"><div class="stat-val">1,421</div><div class="stat-lbl">sqft</div></div>
+      <div class="stat-cell" style="background:var(--accent-dim);border-color:rgba(79,126,255,0.3)"><div class="stat-val" style="color:var(--accent)">B</div><div class="stat-lbl">Class</div></div>
+    </div>
+
+    <div class="prop-chips">
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Apartment Building</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>$276/sqft</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>$550/mo HOA</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Built in 2009</div>
+    </div>
+
+    <div class="divider"></div>
+    <span class="bracket-label">Valuation Calculator</span>
+    <div class="calc-section">
+      <div class="calc-fields">
+        <div><div class="calc-field-lbl">Term</div><div class="calc-field-val">15 years</div></div>
+        <div><div class="calc-field-lbl">Mortgage Type</div><div class="calc-field-val">Fixed</div></div>
+        <div><div class="calc-field-lbl">Interest rate</div><div class="calc-field-val">3%</div></div>
+      </div>
+      <div class="slider-lbl">Down Payment</div>
+      <input type="range" id="downSlider" min="0" max="412000" value="164189">
+      <div class="calc-result">
+        <div><div class="result-lbl">Down Payment</div><div class="result-val" id="downVal">$164,189</div></div>
+        <div><div class="result-lbl">Est. pr. month</div><div class="result-val" id="monthVal">$1,629.39</div></div>
+      </div>
+      <div class="cta-row">
+        <button class="btn-primary">Request a tour</button>
+        <button class="btn-ghost">Contact agent</button>
+      </div>
+      <div class="tour-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        as early as today at 11:00 am
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <span class="bracket-label">Similar Properties</span>
+
+    <div class="similar-card">
+      <div class="similar-img" id="simg1"></div>
+      <div><div class="similar-price">$390,000</div><div class="similar-name">1033 Bay St NE, St. Petersbur…</div><div class="similar-detail">Multifamily · 6 Units · $116,667/unit</div><div class="similar-addr">730 Monroe Ave Apopka, FL 32703</div></div>
+    </div>
+    <div class="similar-card">
+      <div class="similar-img" id="simg2"><div class="virtual-badge">Virtual Tour</div></div>
+      <div><div class="similar-price">$425,000</div><div class="similar-name">Cherry Hill Apartments</div><div class="similar-detail">Multifamily · 6 Units · $116,667/unit</div><div class="similar-addr">730 Monroe Ave Apopka, FL 32703</div></div>
+    </div>
+    <div class="similar-card">
+      <div class="similar-img" id="simg3"></div>
+      <div><div class="similar-price">$360,000</div><div class="similar-name">1033 Bay St NE, St. Petersbur…</div><div class="similar-detail">Multifamily · 6 Units · $116,667/unit</div><div class="similar-addr">730 Monroe Ave Apopka, FL 32703</div></div>
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "/js/three.module.js",
+    "three/addons/": "/js/addons/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const canvas = document.getElementById('threeCanvas');
+const container = canvas.parentElement;
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+
+// Scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0d1a38);
+scene.fog = new THREE.FogExp2(0x0a1428, 0.012);
+
+// Camera
+const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 500);
+camera.position.set(10, 8, 10);
+
+// Lights
+scene.add(new THREE.AmbientLight(0xd0d8ff, 0.7));
+const sun = new THREE.DirectionalLight(0xfff5e0, 1.4);
+sun.position.set(8, 16, 8);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.near = 0.1;
+sun.shadow.camera.far = 80;
+sun.shadow.camera.left = sun.shadow.camera.bottom = -12;
+sun.shadow.camera.right = sun.shadow.camera.top = 12;
+scene.add(sun);
+const fill = new THREE.DirectionalLight(0x8899ff, 0.35);
+fill.position.set(-6, 6, -6);
+scene.add(fill);
+const warmPt = new THREE.PointLight(0xf5a94e, 1.0, 30);
+warmPt.position.set(0, 4, 0);
+scene.add(warmPt);
+
+// Controls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.07;
+controls.minDistance = 0.5;
+controls.maxDistance = 50;
+controls.maxPolarAngle = Math.PI / 2;
+
+// Resize — wait one frame so flex layout is computed
+function resize() {
+  const w = container.clientWidth  || window.innerWidth  * 0.65;
+  const h = container.clientHeight || window.innerHeight * 0.65;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+requestAnimationFrame(resize);
+new ResizeObserver(resize).observe(container);
+
+// Animate
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  warmPt.intensity = 1.0 + Math.sin(Date.now() * 0.0008) * 0.2;
+  renderer.render(scene, camera);
+}
+animate();
+
+// DRACOLoader — point to local decoder file
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('/js/');
+dracoLoader.setDecoderConfig({ type: 'js' });
+
+const loader = new GLTFLoader();
+loader.setDRACOLoader(dracoLoader);
+
+loader.load(
+  'HA.glb',
+  (gltf) => {
+    const model = gltf.scene;
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    model.position.sub(center);
+    model.position.y -= size.y * 0.5;
+    const scale = 12 / Math.max(size.x, size.y, size.z);
+    model.scale.setScalar(scale);
+    model.traverse(child => {
+      if (child.isMesh) { child.castShadow = true; child.receiveShadow = true; }
+    });
+    scene.add(model);
+    const scaledMax = Math.max(size.x, size.z) * scale;
+    camera.position.set(scaledMax, scaledMax * 0.7, scaledMax);
+    controls.target.set(0, 0, 0);
+    controls.update();
+    document.getElementById('loadingOverlay').style.display = 'none';
+  },
+  (xhr) => {
+    if (xhr.total > 0)
+      document.getElementById('loadingText').textContent =
+        `Loading… ${Math.round(xhr.loaded / xhr.total * 100)}%`;
+  },
+  (err) => {
+    console.error(err);
+    document.getElementById('loadingText').textContent = 'Error: ' + (err.message || err);
+  }
+);
+
+// Camera presets
+document.getElementById('btnTop').addEventListener('click', () => {
+  camera.position.set(0, 20, 0.001); controls.target.set(0,0,0); controls.update();
+});
+document.getElementById('btnPersp').addEventListener('click', () => {
+  camera.position.set(10, 7, 10); controls.target.set(0,0,0); controls.update();
+});
+document.getElementById('btnReset').addEventListener('click', () => controls.reset());
+</script>
+
+<script>
+// Mortgage calculator
+const slider = document.getElementById('downSlider');
+function calcMortgage(down) {
+  const p = 412000 - down, r = 0.03 / 12, n = 180;
+  return p * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+}
+function updateCalc() {
+  const v = +slider.value, pct = v / 412000 * 100;
+  document.getElementById('downVal').textContent = '$' + v.toLocaleString('en-US');
+  document.getElementById('monthVal').textContent = '$' + calcMortgage(v).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  slider.style.background = `linear-gradient(90deg, var(--accent) 0% ${pct}%, rgba(255,255,255,0.1) ${pct}%)`;
+}
+slider.addEventListener('input', updateCalc);
+updateCalc();
+
+// Building thumbnails
+function drawBldg(el, hue) {
+  const c = document.createElement('canvas');
+  c.width = 68; c.height = 60;
+  c.style.cssText = 'width:100%;height:100%;display:block;border-radius:6px;';
+  const ctx = c.getContext('2d');
+  const g = ctx.createLinearGradient(0, 0, 0, 60);
+  g.addColorStop(0, `hsl(${hue},30%,22%)`); g.addColorStop(1, `hsl(${hue},25%,12%)`);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 68, 60);
+  ctx.fillStyle = `hsla(${hue},20%,32%,0.9)`; ctx.fillRect(8, 14, 52, 46);
+  for (let r = 0; r < 3; r++) for (let col = 0; col < 3; col++) {
+    ctx.fillStyle = Math.random() > .4 ? 'rgba(255,210,90,0.75)' : 'rgba(100,140,200,0.25)';
+    ctx.fillRect(13 + col * 16, 19 + r * 11, 10, 7);
+  }
+  el.appendChild(c);
+}
+['simg1', 'simg2', 'simg3'].forEach((id, i) => drawBldg(document.getElementById(id), [210, 228, 200][i]));
+</script>
+</body>
+</html>

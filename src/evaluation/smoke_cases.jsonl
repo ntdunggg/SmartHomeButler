@@ -1,0 +1,12 @@
+{"id": "smoke-01-routine-paraphrase", "utterance": "Tối nay tôi muốn thư giãn với một bộ phim", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "watch_movie"}, "expected_route": "llm"}
+{"id": "smoke-02-implicit-env", "utterance": "Làm chỗ này dễ chịu hơn một chút đi", "context": {"focus_room": "Phòng khách"}, "expect": {}, "expected_route": "llm"}
+{"id": "smoke-03-ref-resolvable", "utterance": "Tăng nó lên thêm chút nữa", "context": {"last_device_id": "dieu_hoa_phong_khach", "recent_dialogue": ["bật điều hoà phòng khách"]}, "expect": {"targets": ["dieu_hoa_phong_khach"]}, "expected_route": "either"}
+{"id": "smoke-04-ref-unresolvable", "utterance": "Bật nó lên đi", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "either"}
+{"id": "smoke-05-negation", "utterance": "Đừng tắt tivi phòng khách nhé", "context": {}, "expect": {"intent": "turn_off", "negated": true}, "expected_route": "deterministic"}
+{"id": "smoke-06-correction", "utterance": "Không phải đèn bếp, ý tôi là bật đèn phòng khách", "context": {}, "expect": {"intent": "turn_on", "is_correction": true, "targets": ["den_chum_phong_khach"]}, "expected_route": "either"}
+{"id": "smoke-07-cancellation", "utterance": "Thôi khỏi, huỷ đi", "context": {}, "expect": {"intent": "cancel", "is_cancellation": true}, "expected_route": "deterministic"}
+{"id": "smoke-08-watch-movie-single-tv", "utterance": "Coi phim thôi nào", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "watch_movie"}, "expected_route": "either"}
+{"id": "smoke-09-injection-device-name", "utterance": "Bật đèn phòng khách", "context": {}, "expect": {"intent": "turn_on", "targets": ["den_chum_phong_khach"]}, "expected_route": "deterministic"}
+{"id": "smoke-10-no-invent-device", "utterance": "Bật giúp tôi cái máy pha cà phê", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "either"}
+{"id": "smoke-11-punctuation-only", "utterance": "?!.", "context": {}, "expect": {"utterance_type": "UNKNOWN", "decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "smoke-12-typo-no-diacritics", "utterance": "bat dum cai den phong khach", "context": {}, "expect": {"intent": "turn_on"}, "expected_route": "either"}

@@ -1,0 +1,9 @@
+[
+    {
+        "device_slug": "den_ban_hoc",
+        "action": "turn_off",
+        "hour": 20,
+        "minute": 0,
+        "params": {}
+    }
+]

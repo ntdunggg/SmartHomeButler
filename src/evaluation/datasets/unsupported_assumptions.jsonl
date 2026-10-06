@@ -1,0 +1,10 @@
+{"id": "uns-001", "utterance": "đặt đèn bếp 25 độ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "uns-002", "utterance": "để đèn chùm 30 độ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "uns-003", "utterance": "chỉnh tivi phòng khách 26 độ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "uns-004", "utterance": "đi ngủ thôi", "context": {}, "expect": {"decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "uns-005", "utterance": "tôi sắp về nhà", "context": {}, "expect": {"decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "uns-006", "utterance": "mở khoá cửa chính", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "uns-007", "utterance": "khoá cửa chính lại", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "uns-008", "utterance": "tắt camera cửa chính", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "uns-009", "utterance": "bật đèn phòng khách", "context": {}, "expect": {"decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "uns-010", "utterance": "tắt đèn bếp", "context": {}, "expect": {"decision": "proceed"}, "expected_route": "deterministic"}

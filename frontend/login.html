@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VinButler - Đăng nhập</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    background: #080c18;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .login-page { display: flex; width: 100%; min-height: 100vh; }
+
+  .login-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 32px;
+    position: relative;
+    background: linear-gradient(180deg, #080c18 0%, #0d1325 100%);
+  }
+
+  .login-card { width: 100%; max-width: 420px; }
+
+  .login-brand {
+    font-size: 13px;
+    letter-spacing: 6px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 40px;
+  }
+
+  .login-title {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: #e2e8f0;
+    margin-bottom: 32px;
+  }
+
+  .login-title span { color: #38bdf8; }
+
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .form-group input:focus {
+    border-color: #38bdf8;
+    background: rgba(56,189,248,0.06);
+  }
+
+  .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+
+  .show-pwd-btn {
+    position: absolute;
+    right: 14px;
+    top: 33px;
+    background: none;
+    border: none;
+    color: #38bdf8;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 4px;
+  }
+
+  .forgot-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .forgot-link:hover { text-decoration: underline; }
+
+  .login-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+    border: none;
+    border-radius: 24px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-bottom: 20px;
+  }
+
+  .login-btn:hover { opacity: 0.9; }
+  .login-btn:active { transform: scale(0.98); }
+  .login-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .divider span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 500;
+  }
+
+  .quick-login-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .quick-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+
+  .quick-card:hover {
+    background: rgba(56,189,248,0.08);
+    border-color: rgba(56,189,248,0.35);
+  }
+
+  .quick-card .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .quick-card .info .name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e2e8f0;
+    line-height: 1.3;
+  }
+
+  .quick-card .info .role {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.3;
+  }
+
+  .error-msg {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #f87171;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  .login-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(14,165,233,0.06), rgba(56,189,248,0.04));
+    border-left: 1px solid rgba(255,255,255,0.06);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .illustration-container {
+    max-width: 460px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .illustration-container svg {
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 32px;
+  }
+
+  .illustration-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .illustration-container p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  .login-right::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,165,233,0.1), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 900px) {
+    .login-right { display: none; }
+    .login-left { padding: 32px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .login-title { font-size: 26px; }
+    .quick-login-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="login-page">
+  <div class="login-left">
+    <div class="login-card">
+      <div class="login-brand">V I N B U T L E R</div>
+
+      <h1 class="login-title">
+        Chào mừng đến<br><span>ngôi nhà thông minh</span>
+      </h1>
+
+      <div id="errorMsg" class="error-msg"></div>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" name="username" placeholder="Nhập username" autocomplete="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" autocomplete="current-password" required>
+          <button type="button" class="show-pwd-btn" id="showPwdBtn">Hiện</button>
+        </div>
+
+        <a href="#" class="forgot-link">Quên mật khẩu?</a>
+
+        <button type="submit" class="login-btn" id="loginBtn">Đăng nhập</button>
+      </form>
+
+      <div class="divider"><span>hoặc chọn tài khoản demo</span></div>
+
+      <div class="quick-login-grid">
+        <div class="quick-card" data-user="bo">
+          <div class="avatar" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8);">👨</div>
+          <div class="info">
+            <div class="name">Trần Văn Bố</div>
+            <div class="role">Chủ hộ</div>
+          </div>
+        </div>
+        <div class="quick-card" data-user="me">
+          <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#f472b6);">👩</div>
+          <div class="info">
+            <div class="name">Nguyễn Thị Mẹ</div>
+            <div class="role">Chủ hộ</div>
+          </div>
+        </div>
+        <div class="quick-card" data-user="con_lon">
+          <div class="avatar" style="background:linear-gradient(135deg,#10b981,#34d399);">🧑</div>
+          <div class="info">
+            <div class="name">Trần Minh Anh</div>
+            <div class="role">Thành viên</div>
+          </div>
+        </div>
+        <div class="quick-card" data-user="con_nho">
+          <div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">👶</div>
+          <div class="info">
+            <div class="name">Trần Bảo Bảo</div>
+            <div class="role">Thành viên</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-footer">
+      Smart Home AI · VinButler Demo · 2026
+    </div>
+  </div>
+
+  <div class="login-right">
+    <div class="illustration-container">
+      <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 40L50 130V250H290V130L170 40Z" stroke="rgba(14,165,233,0.3)" stroke-width="2" fill="rgba(14,165,233,0.04)"/>
+        <path d="M170 40L40 138H300L170 40Z" stroke="rgba(56,189,248,0.4)" stroke-width="2" fill="rgba(56,189,248,0.06)"/>
+        <rect x="148" y="180" width="44" height="70" rx="4" stroke="rgba(14,165,233,0.4)" stroke-width="2" fill="rgba(14,165,233,0.08)"/>
+        <circle cx="183" cy="218" r="3" fill="rgba(14,165,233,0.5)"/>
+        <rect x="80" y="155" width="45" height="40" rx="4" stroke="rgba(56,189,248,0.35)" stroke-width="2" fill="rgba(251,191,36,0.12)"/>
+        <path d="M80 175H125M102.5 155V195" stroke="rgba(56,189,248,0.2)" stroke-width="1"/>
+        <rect x="215" y="155" width="45" height="40" rx="4" stroke="rgba(56,189,248,0.35)" stroke-width="2" fill="rgba(251,191,36,0.12)"/>
+        <path d="M215 175H260M237.5 155V195" stroke="rgba(56,189,248,0.2)" stroke-width="1"/>
+        <path d="M170 75C160 75 151 79 145 85" stroke="rgba(14,165,233,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M170 75C180 75 189 79 195 85" stroke="rgba(14,165,233,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M170 85C164 85 158 87 154 91" stroke="rgba(14,165,233,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M170 85C176 85 182 87 186 91" stroke="rgba(14,165,233,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="170" cy="97" r="3.5" fill="#0ea5e9"/>
+        <circle cx="60" cy="100" r="16" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.25)" stroke-width="1.5"/>
+        <text x="60" y="105" text-anchor="middle" font-size="14">💡</text>
+        <circle cx="280" cy="100" r="16" fill="rgba(236,72,153,0.1)" stroke="rgba(236,72,153,0.25)" stroke-width="1.5"/>
+        <text x="280" y="105" text-anchor="middle" font-size="14">🌡</text>
+        <circle cx="50" cy="210" r="16" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.25)" stroke-width="1.5"/>
+        <text x="50" y="215" text-anchor="middle" font-size="14">🔒</text>
+        <circle cx="290" cy="210" r="16" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.25)" stroke-width="1.5"/>
+        <text x="290" y="215" text-anchor="middle" font-size="14">📹</text>
+      </svg>
+      <h2>Điều khiển mọi thứ<br>từ một nơi duy nhất</h2>
+      <p>Quản lý thiết bị, phân quyền thành viên, và để AI học thói quen sinh hoạt của gia đình bạn.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE = '/api/v1';
+
+(function() {
+  const token = localStorage.getItem('sh_token');
+  if (token) {
+    fetch(API_BASE + '/auth/me', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    }).then(r => {
+      if (r.ok) window.location.href = '/home_assistant.html';
+    }).catch(() => {});
+  }
+})();
+
+const pwdInput = document.getElementById('password');
+const showBtn = document.getElementById('showPwdBtn');
+showBtn.addEventListener('click', () => {
+  const isPassword = pwdInput.type === 'password';
+  pwdInput.type = isPassword ? 'text' : 'password';
+  showBtn.textContent = isPassword ? 'Ẩn' : 'Hiện';
+});
+
+async function doLogin(username, password) {
+  const errEl = document.getElementById('errorMsg');
+  const loginBtn = document.getElementById('loginBtn');
+  errEl.style.display = 'none';
+  loginBtn.disabled = true;
+  loginBtn.textContent = 'Đang đăng nhập...';
+
+  try {
+    const res = await fetch(API_BASE + '/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      errEl.textContent = data.detail || 'Sai tên đăng nhập hoặc mật khẩu.';
+      errEl.style.display = 'block';
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Đăng nhập';
+      return;
+    }
+
+    const data = await res.json();
+    localStorage.setItem('sh_token', data.access_token);
+    localStorage.setItem('sh_refresh', data.refresh_token);
+    window.location.href = '/home_assistant.html';
+  } catch (err) {
+    errEl.textContent = 'Không thể kết nối tới server.';
+    errEl.style.display = 'block';
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'Đăng nhập';
+  }
+}
+
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const u = document.getElementById('username').value.trim();
+  const p = document.getElementById('password').value;
+  if (u && p) doLogin(u, p);
+});
+
+document.querySelectorAll('.quick-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const username = card.dataset.user;
+    document.getElementById('username').value = username;
+    document.getElementById('password').value = 'demo1234';
+    doLogin(username, 'demo1234');
+  });
+});
+</script>
+
+</body>
+</html>

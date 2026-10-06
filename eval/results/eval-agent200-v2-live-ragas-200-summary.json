@@ -1,0 +1,785 @@
+{
+  "meta": {
+    "dataset": "/Users/phaihoang/Downloads/smart_home_ragas_200_cases.jsonl",
+    "dataset_sha256": "bd30d665f3e8a1d1ad4bef6cf79453592964065e0987aecc0f6b3fb66222219e",
+    "evaluator_sha256": "0840400c6feebdb64405efea1e2492897d95898f5340d2b1b57a27a82561b72e",
+    "n_cases": 200,
+    "git_head": "b40e5cf",
+    "git_dirty": true,
+    "agent_mode": "real",
+    "offline": false,
+    "agent_temperature": 0.0,
+    "repeat": 1,
+    "score_aggregation": "single_run",
+    "judge_model": "gpt-4o-mini",
+    "judged": true,
+    "generated_at": "2026-09-01T00:42:35.488770+00:00"
+  },
+  "primary_metrics": {
+    "tool_execution": {
+      "tool_call_accuracy": {
+        "mean": 0.9654,
+        "n_scored": 135,
+        "n_pass": 130
+      },
+      "tool_call_f1": {
+        "mean": 0.9728,
+        "n_scored": 135,
+        "n_pass": 130
+      }
+    },
+    "reasoning": {
+      "goal_plan_alignment": {
+        "mean": 0.9667,
+        "n_scored": 30,
+        "n_pass": 29
+      },
+      "clarification_accuracy": {
+        "mean": 1.0,
+        "n_scored": 10,
+        "n_pass": 10
+      },
+      "clarification_target_accuracy": {
+        "mean": 1.0,
+        "n_scored": 10,
+        "n_pass": 10
+      },
+      "state_answer_accuracy": {
+        "mean": 0.95,
+        "n_scored": 20,
+        "n_pass": 19
+      }
+    },
+    "boundary": {
+      "unsupported_handling_accuracy": {
+        "mean": 1.0,
+        "n_scored": 10,
+        "n_pass": 10
+      },
+      "hallucinated_device_rate": {
+        "mean": 0.0,
+        "n_scored": 10,
+        "n_pass": 10
+      },
+      "out_of_domain_refusal_accuracy": {
+        "mean": 1.0,
+        "n_scored": 15,
+        "n_pass": 15
+      },
+      "unexpected_tool_call_rate": {
+        "mean": 0.0,
+        "n_scored": 15,
+        "n_pass": 15
+      },
+      "mixed_domain_boundary_accuracy": {
+        "mean": 1.0,
+        "n_scored": 15,
+        "n_pass": 15
+      }
+    },
+    "end_to_end": {
+      "end_state_goal_accuracy": null,
+      "status": "unavailable_due_to_harness"
+    }
+  },
+  "category_metrics": {
+    "clarification": {
+      "n_cases": 10,
+      "metrics": {
+        "clarification_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 10,
+          "role": "primary"
+        },
+        "clarification_target_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 10,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 0,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "goal_oriented": {
+      "n_cases": 30,
+      "metrics": {
+        "goal_plan_alignment": {
+          "mean": 0.9667,
+          "n_applicable": 30,
+          "n_scored": 30,
+          "n_pass": 29,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.0333,
+          "n_applicable": 30,
+          "n_scored": 30,
+          "n_pass": 1,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.1569,
+          "n_applicable": 30,
+          "n_scored": 30,
+          "n_pass": 0,
+          "role": "diagnostic"
+        },
+        "plan_semantic_accuracy": {
+          "mean": 0.6333,
+          "n_applicable": 30,
+          "n_scored": 30,
+          "n_pass": 19,
+          "role": "diagnostic"
+        },
+        "end_state_goal_accuracy": {
+          "mean": null,
+          "n_applicable": 30,
+          "n_scored": 0,
+          "n_pass": 0,
+          "role": "diagnostic",
+          "status": "unavailable_due_to_harness"
+        }
+      }
+    },
+    "multi_device_unordered": {
+      "n_cases": 20,
+      "metrics": {
+        "tool_call_f1": {
+          "mean": 1.0,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 20,
+          "role": "primary"
+        },
+        "tool_call_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 20,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.4,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 8,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.025,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "multi_step_ordered": {
+      "n_cases": 20,
+      "metrics": {
+        "tool_call_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 20,
+          "role": "primary"
+        },
+        "tool_call_f1": {
+          "mean": 1.0,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 20,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.5,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 10,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.0,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "single_control": {
+      "n_cases": 60,
+      "metrics": {
+        "tool_call_accuracy": {
+          "mean": 0.9722,
+          "n_applicable": 60,
+          "n_scored": 60,
+          "n_pass": 58,
+          "role": "primary"
+        },
+        "tool_call_f1": {
+          "mean": 0.9667,
+          "n_applicable": 60,
+          "n_scored": 60,
+          "n_pass": 58,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.45,
+          "n_applicable": 60,
+          "n_scored": 60,
+          "n_pass": 27,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.0722,
+          "n_applicable": 60,
+          "n_scored": 60,
+          "n_pass": 1,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "state_query": {
+      "n_cases": 20,
+      "metrics": {
+        "tool_call_accuracy": {
+          "mean": 0.85,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 17,
+          "role": "primary"
+        },
+        "tool_call_f1": {
+          "mean": 0.9167,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 17,
+          "role": "primary"
+        },
+        "state_answer_accuracy": {
+          "mean": 0.95,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 19,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.3,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 6,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.1333,
+          "n_applicable": 20,
+          "n_scored": 20,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "topic_mixed": {
+      "n_cases": 15,
+      "metrics": {
+        "tool_call_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 15,
+          "role": "primary"
+        },
+        "tool_call_f1": {
+          "mean": 1.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 15,
+          "role": "primary"
+        },
+        "mixed_domain_boundary_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 15,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 0,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "topic_off_domain": {
+      "n_cases": 15,
+      "metrics": {
+        "out_of_domain_refusal_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 15,
+          "role": "primary"
+        },
+        "unexpected_tool_call_rate": {
+          "mean": 0.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 15,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.1333,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 2,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.0,
+          "n_applicable": 15,
+          "n_scored": 15,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    },
+    "unsupported_in_domain": {
+      "n_cases": 10,
+      "metrics": {
+        "unsupported_handling_accuracy": {
+          "mean": 1.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 10,
+          "role": "primary"
+        },
+        "hallucinated_device_rate": {
+          "mean": 0.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 10,
+          "role": "primary"
+        },
+        "agent_goal_accuracy": {
+          "mean": 0.2,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 2,
+          "role": "diagnostic"
+        },
+        "topic_adherence": {
+          "mean": 0.0,
+          "n_applicable": 10,
+          "n_scored": 10,
+          "n_pass": 0,
+          "role": "diagnostic"
+        }
+      }
+    }
+  },
+  "diagnostic_metrics": {
+    "agent_goal_accuracy": {
+      "mean": 0.28,
+      "n_scored": 200,
+      "n_pass": 56,
+      "role": "diagnostic",
+      "gating": false
+    },
+    "topic_adherence": {
+      "mean": 0.061,
+      "n_scored": 200,
+      "n_pass": 1,
+      "role": "diagnostic",
+      "gating": false
+    },
+    "plan_semantic_accuracy": {
+      "mean": 0.6333,
+      "n_scored": 30,
+      "n_pass": 19,
+      "role": "diagnostic",
+      "gating": false
+    },
+    "end_state_goal_accuracy": {
+      "mean": null,
+      "n_scored": 0,
+      "n_pass": 0,
+      "role": "diagnostic",
+      "gating": false,
+      "status": "unavailable_due_to_harness"
+    },
+    "note": "Các metric ở đây KHÔNG phải release gate."
+  },
+  "infrastructure_errors": {},
+  "known_agent_failures": [
+    {
+      "case_id": "SH-018",
+      "category": "single_control",
+      "user_input": "Cho robot bắt đầu dọn nhà.",
+      "metric": "tool_call_accuracy",
+      "failure_mode": "missing_tool_call",
+      "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'robot_hut_bui', 'capability': 'vacuum_control', 'value': 'start'}}]; actual=[]"
+    },
+    {
+      "case_id": "SH-018",
+      "category": "single_control",
+      "user_input": "Cho robot bắt đầu dọn nhà.",
+      "metric": "tool_call_f1",
+      "failure_mode": "missing_tool_call",
+      "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'robot_hut_bui', 'capability': 'vacuum_control', 'value': 'start'}}]; actual=[]"
+    },
+    {
+      "case_id": "SH-028",
+      "category": "single_control",
+      "user_input": "Cho máy rửa bát chạy chương trình eco.",
+      "metric": "tool_call_accuracy",
+      "failure_mode": "wrong_tool_arguments",
+      "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'program', 'value': 'eco'}}]; actual=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'on_off', 'value': 'on'}}]"
+    },
+    {
+      "case_id": "SH-028",
+      "category": "single_control",
+      "user_input": "Cho máy rửa bát chạy chương trình eco.",
+      "metric": "tool_call_f1",
+      "failure_mode": "wrong_tool_arguments",
+      "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'program', 'value': 'eco'}}]; actual=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'on_off', 'value': 'on'}}]"
+    },
+    {
+      "case_id": "SH-069",
+      "category": "state_query",
+      "user_input": "PM2.5 ngoài trời hiện là bao nhiêu?",
+      "metric": "tool_call_accuracy",
+      "failure_mode": "tool_call_count_mismatch",
+      "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+    },
+    {
+      "case_id": "SH-069",
+      "category": "state_query",
+      "user_input": "PM2.5 ngoài trời hiện là bao nhiêu?",
+      "metric": "tool_call_f1",
+      "failure_mode": "tool_call_count_mismatch",
+      "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+    },
+    {
+      "case_id": "SH-070",
+      "category": "state_query",
+      "user_input": "AQI hiện tại là bao nhiêu?",
+      "metric": "tool_call_accuracy",
+      "failure_mode": "tool_call_count_mismatch",
+      "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+    },
+    {
+      "case_id": "SH-070",
+      "category": "state_query",
+      "user_input": "AQI hiện tại là bao nhiêu?",
+      "metric": "tool_call_f1",
+      "failure_mode": "tool_call_count_mismatch",
+      "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+    },
+    {
+      "case_id": "SH-071",
+      "category": "state_query",
+      "user_input": "Ngoài trời đang bao nhiêu độ?",
+      "metric": "state_answer_accuracy",
+      "failure_mode": "wrong_state_target",
+      "detail": "đọc sai đích: cần cam_bien_nhiet_do, đã đọc ∅"
+    },
+    {
+      "case_id": "SH-071",
+      "category": "state_query",
+      "user_input": "Ngoài trời đang bao nhiêu độ?",
+      "metric": "tool_call_accuracy",
+      "failure_mode": "missing_tool_call",
+      "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_nhiet_do'}}]; actual=[]"
+    },
+    {
+      "case_id": "SH-071",
+      "category": "state_query",
+      "user_input": "Ngoài trời đang bao nhiêu độ?",
+      "metric": "tool_call_f1",
+      "failure_mode": "missing_tool_call",
+      "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_nhiet_do'}}]; actual=[]"
+    },
+    {
+      "case_id": "SH-144",
+      "category": "goal_oriented",
+      "user_input": "Trời nắng chiếu vào phòng khách quá.",
+      "metric": "goal_plan_alignment",
+      "failure_mode": "plan_collapsed_to_no_action",
+      "detail": "goal không sinh kế hoạch (outcome=answer)"
+    }
+  ],
+  "failure_analysis": {
+    "affected_case_count": 6,
+    "failure_event_count": 12,
+    "by_category": {
+      "goal_oriented": {
+        "affected_case_count": 1,
+        "failure_event_count": 1
+      },
+      "single_control": {
+        "affected_case_count": 2,
+        "failure_event_count": 4
+      },
+      "state_query": {
+        "affected_case_count": 3,
+        "failure_event_count": 7
+      }
+    },
+    "by_metric": {
+      "goal_plan_alignment": 1,
+      "state_answer_accuracy": 1,
+      "tool_call_accuracy": 5,
+      "tool_call_f1": 5
+    },
+    "by_failure_mode": {
+      "missing_tool_call": 4,
+      "plan_collapsed_to_no_action": 1,
+      "tool_call_count_mismatch": 4,
+      "wrong_state_target": 1,
+      "wrong_tool_arguments": 2
+    },
+    "by_case_id": {
+      "SH-018": {
+        "category": "single_control",
+        "user_input": "Cho robot bắt đầu dọn nhà.",
+        "failures": [
+          {
+            "metric": "tool_call_accuracy",
+            "failure_mode": "missing_tool_call",
+            "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'robot_hut_bui', 'capability': 'vacuum_control', 'value': 'start'}}]; actual=[]"
+          },
+          {
+            "metric": "tool_call_f1",
+            "failure_mode": "missing_tool_call",
+            "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'robot_hut_bui', 'capability': 'vacuum_control', 'value': 'start'}}]; actual=[]"
+          }
+        ]
+      },
+      "SH-028": {
+        "category": "single_control",
+        "user_input": "Cho máy rửa bát chạy chương trình eco.",
+        "failures": [
+          {
+            "metric": "tool_call_accuracy",
+            "failure_mode": "wrong_tool_arguments",
+            "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'program', 'value': 'eco'}}]; actual=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'on_off', 'value': 'on'}}]"
+          },
+          {
+            "metric": "tool_call_f1",
+            "failure_mode": "wrong_tool_arguments",
+            "detail": "expected=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'program', 'value': 'eco'}}]; actual=[{'name': 'control_device', 'args': {'device_slug': 'may_rua_bat', 'capability': 'on_off', 'value': 'on'}}]"
+          }
+        ]
+      },
+      "SH-069": {
+        "category": "state_query",
+        "user_input": "PM2.5 ngoài trời hiện là bao nhiêu?",
+        "failures": [
+          {
+            "metric": "tool_call_accuracy",
+            "failure_mode": "tool_call_count_mismatch",
+            "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+          },
+          {
+            "metric": "tool_call_f1",
+            "failure_mode": "tool_call_count_mismatch",
+            "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+          }
+        ]
+      },
+      "SH-070": {
+        "category": "state_query",
+        "user_input": "AQI hiện tại là bao nhiêu?",
+        "failures": [
+          {
+            "metric": "tool_call_accuracy",
+            "failure_mode": "tool_call_count_mismatch",
+            "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+          },
+          {
+            "metric": "tool_call_f1",
+            "failure_mode": "tool_call_count_mismatch",
+            "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]; actual=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_bui'}}, {'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_aqi'}}]"
+          }
+        ]
+      },
+      "SH-071": {
+        "category": "state_query",
+        "user_input": "Ngoài trời đang bao nhiêu độ?",
+        "failures": [
+          {
+            "metric": "state_answer_accuracy",
+            "failure_mode": "wrong_state_target",
+            "detail": "đọc sai đích: cần cam_bien_nhiet_do, đã đọc ∅"
+          },
+          {
+            "metric": "tool_call_accuracy",
+            "failure_mode": "missing_tool_call",
+            "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_nhiet_do'}}]; actual=[]"
+          },
+          {
+            "metric": "tool_call_f1",
+            "failure_mode": "missing_tool_call",
+            "detail": "expected=[{'name': 'query_sensor', 'args': {'sensor_slug': 'cam_bien_nhiet_do'}}]; actual=[]"
+          }
+        ]
+      },
+      "SH-144": {
+        "category": "goal_oriented",
+        "user_input": "Trời nắng chiếu vào phòng khách quá.",
+        "failures": [
+          {
+            "metric": "goal_plan_alignment",
+            "failure_mode": "plan_collapsed_to_no_action",
+            "detail": "goal không sinh kế hoạch (outcome=answer)"
+          }
+        ]
+      }
+    }
+  },
+  "metric_applicability": {
+    "single_control": {
+      "primary": [
+        "tool_call_accuracy",
+        "tool_call_f1"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": true,
+      "strict_order": true
+    },
+    "multi_step_ordered": {
+      "primary": [
+        "tool_call_accuracy",
+        "tool_call_f1"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": true,
+      "strict_order": true
+    },
+    "multi_device_unordered": {
+      "primary": [
+        "tool_call_f1",
+        "tool_call_accuracy"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": true,
+      "strict_order": false
+    },
+    "state_query": {
+      "primary": [
+        "tool_call_accuracy",
+        "tool_call_f1",
+        "state_answer_accuracy"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": true,
+      "strict_order": true
+    },
+    "goal_oriented": {
+      "primary": [
+        "goal_plan_alignment"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence",
+        "plan_semantic_accuracy",
+        "end_state_goal_accuracy"
+      ],
+      "tool_metrics_applicable": false,
+      "strict_order": false
+    },
+    "clarification": {
+      "primary": [
+        "clarification_accuracy",
+        "clarification_target_accuracy"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": false,
+      "strict_order": false
+    },
+    "unsupported_in_domain": {
+      "primary": [
+        "unsupported_handling_accuracy",
+        "hallucinated_device_rate"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": false,
+      "strict_order": false
+    },
+    "topic_off_domain": {
+      "primary": [
+        "out_of_domain_refusal_accuracy",
+        "unexpected_tool_call_rate"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": false,
+      "strict_order": false
+    },
+    "topic_mixed": {
+      "primary": [
+        "tool_call_accuracy",
+        "tool_call_f1",
+        "mixed_domain_boundary_accuracy"
+      ],
+      "diagnostic": [
+        "agent_goal_accuracy",
+        "topic_adherence"
+      ],
+      "tool_metrics_applicable": true,
+      "strict_order": true
+    },
+    "_notes": {
+      "agent_goal_accuracy": "GỠ KHỎI GATING. Trace là planner-only (reason() dừng ở CandidatePlan; không ToolMessage/ExecutionResult/end state). AgentGoalAccuracyWithReference suy end-state từ workflow nên phạt oan ~79/132 case tool-đúng. Thay bằng goal_plan_alignment (tất định) + plan_semantic_accuracy (chẩn đoán).",
+      "topic_adherence": "GỠ KHỎI GATING. Cả 200 case cùng reference_topics=[control,status,safety]; metric generic phạt mọi câu trả lời tiếng Việt không lặp token đó (~119/132 case tool-đúng ra 0) và không thi hành yêu cầu 'từ chối rõ phần ngoài phạm vi'. Thay bằng out_of_domain_refusal_accuracy + mixed_domain_boundary_accuracy + unexpected_tool_call_rate.",
+      "end_state_goal_accuracy": "unavailable_due_to_harness. Cần execution thật (DB Session + simulator bus + HITL Approval mỗi case) — nằm ở agent_runner, ngoài runner planner-only này. Gate goal_oriented bằng goal_plan_alignment cho tới khi có execution harness.",
+      "goal_plan_alignment": "Tất định: kiểm grounding phòng (vs context.current_room / target_area / whole-home cue), grounding thiết bị (registry), capability (spec.capabilities), tránh excluded/no_change. KHÔNG chấm hướng ngữ nghĩa tinh vi (bật vs tắt đèn tác vụ) — việc đó để plan_semantic_accuracy."
+    }
+  }
+}

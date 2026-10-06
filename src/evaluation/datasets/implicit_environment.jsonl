@@ -1,0 +1,39 @@
+{"id": "env-001", "utterance": "nóng quá đi", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_cooler"}, "expected_route": "deterministic"}
+{"id": "env-002", "utterance": "nong qua di", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_cooler"}, "expected_route": "deterministic"}
+{"id": "env-003", "utterance": "oi bức thật", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_cooler"}, "expected_route": "deterministic"}
+{"id": "env-004", "utterance": "oi buc that", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_cooler"}, "expected_route": "deterministic"}
+{"id": "env-005", "utterance": "lạnh quá", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_warmer"}, "expected_route": "deterministic"}
+{"id": "env-006", "utterance": "lanh qua", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_warmer"}, "expected_route": "deterministic"}
+{"id": "env-007", "utterance": "rét run rồi", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_warmer"}, "expected_route": "deterministic"}
+{"id": "env-008", "utterance": "ret run roi", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_warmer"}, "expected_route": "deterministic"}
+{"id": "env-009", "utterance": "tối quá chẳng thấy gì", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_brighter"}, "expected_route": "deterministic"}
+{"id": "env-010", "utterance": "toi qua chang thay gi", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_brighter"}, "expected_route": "deterministic"}
+{"id": "env-011", "utterance": "thiếu sáng quá", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_brighter"}, "expected_route": "deterministic"}
+{"id": "env-012", "utterance": "thieu sang qua", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_brighter"}, "expected_route": "deterministic"}
+{"id": "env-013", "utterance": "tối om luôn", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_brighter"}, "expected_route": "deterministic"}
+{"id": "env-014", "utterance": "toi om luon", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_brighter"}, "expected_route": "deterministic"}
+{"id": "env-015", "utterance": "chói mắt quá", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_darker"}, "expected_route": "deterministic"}
+{"id": "env-016", "utterance": "choi mat qua", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_darker"}, "expected_route": "deterministic"}
+{"id": "env-017", "utterance": "sáng quá đi", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_darker"}, "expected_route": "deterministic"}
+{"id": "env-018", "utterance": "sang qua di", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_darker"}, "expected_route": "deterministic"}
+{"id": "env-019", "utterance": "ồn quá đi mất", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "reduce_noise"}, "expected_route": "deterministic"}
+{"id": "env-020", "utterance": "on qua di mat", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "reduce_noise"}, "expected_route": "deterministic"}
+{"id": "env-021", "utterance": "ầm ĩ quá", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "reduce_noise"}, "expected_route": "deterministic"}
+{"id": "env-022", "utterance": "am i qua", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "reduce_noise"}, "expected_route": "deterministic"}
+{"id": "env-023", "utterance": "ngột ngạt khó thở quá", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "improve_air_quality"}, "expected_route": "deterministic"}
+{"id": "env-024", "utterance": "ngot ngat kho tho qua", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "improve_air_quality"}, "expected_route": "deterministic"}
+{"id": "env-025", "utterance": "không khí hôi quá", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "improve_air_quality"}, "expected_route": "deterministic"}
+{"id": "env-026", "utterance": "khong khi hoi qua", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "improve_air_quality"}, "expected_route": "deterministic"}
+{"id": "env-027", "utterance": "bí quá, thiếu gió", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "increase_airflow"}, "expected_route": "deterministic"}
+{"id": "env-028", "utterance": "bi qua, thieu gio", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "increase_airflow"}, "expected_route": "deterministic"}
+{"id": "env-029", "utterance": "nực nội quá đi", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_cooler"}, "expected_route": "deterministic"}
+{"id": "env-030", "utterance": "nuc noi qua di", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_cooler"}, "expected_route": "deterministic"}
+{"id": "env-031", "utterance": "buốt tay rồi", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_warmer"}, "expected_route": "deterministic"}
+{"id": "env-032", "utterance": "buot tay roi", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_warmer"}, "expected_route": "deterministic"}
+{"id": "env-033", "utterance": "lóa hết cả mắt", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_darker"}, "expected_route": "deterministic"}
+{"id": "env-034", "utterance": "loa het ca mat", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_darker"}, "expected_route": "deterministic"}
+{"id": "env-035", "utterance": "hầm quá không có gió", "context": {"focus_room": "Phòng khách"}, "expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "increase_airflow"}, "expected_route": "deterministic"}
+{"id": "env-036", "utterance": "ham qua khong co gio", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "increase_airflow"}, "expected_route": "deterministic"}
+{"id": "env-037", "utterance": "Làm chỗ này dễ chịu hơn một chút", "context": {"focus_room": "Phòng khách"}, "expect": {}, "expected_route": "llm"}
+{"id": "env-038", "utterance": "Ở đây khó tập trung quá", "context": {"focus_room": "Phòng khách"}, "expect": {}, "expected_route": "llm"}
+{"id": "env-039", "utterance": "Tôi không muốn nó sáng như lúc nãy", "context": {"focus_room": "Phòng khách"}, "expect": {}, "expected_route": "llm"}

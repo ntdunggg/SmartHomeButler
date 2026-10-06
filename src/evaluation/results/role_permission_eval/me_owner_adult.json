@@ -1,0 +1,1097 @@
+{
+ "username": "me",
+ "role": "owner",
+ "age_tier": "adult",
+ "results": [
+  {
+   "category": "light",
+   "request": "bật đèn phòng khách",
+   "latency_ms": 3481,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "tắt đèn bếp giúp mình",
+   "latency_ms": 3516,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "bật đèn bàn học cho con",
+   "latency_ms": 2660,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "mở đèn ngủ phòng bố mẹ",
+   "latency_ms": 2630,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "tắt hết đèn trong nhà đi",
+   "latency_ms": 19,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "chỉnh đèn phòng khách sáng 50%",
+   "latency_ms": 3977,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "làm mờ đèn bàn ăn xuống chút",
+   "latency_ms": 4584,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "light",
+   "request": "đèn phòng con để dịu lại",
+   "latency_ms": 11804,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "climate",
+   "request": "bật điều hoà phòng khách 25 độ",
+   "latency_ms": 2974,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "climate",
+   "request": "mở điều hoà phòng con lên giúp mình",
+   "latency_ms": 2762,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "climate",
+   "request": "tắt điều hoà phòng bố mẹ",
+   "latency_ms": 2962,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "climate",
+   "request": "bật máy sưởi phòng ngủ",
+   "latency_ms": 3328,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "climate",
+   "request": "chỉnh điều hoà phòng khách xuống 22 độ",
+   "latency_ms": 3566,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "climate",
+   "request": "bật bình nóng lạnh để tí tắm",
+   "latency_ms": 2936,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "nóng quá đi",
+   "latency_ms": 20496,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "trong phòng oi bức khó chịu ghê",
+   "latency_ms": 13633,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "lạnh cóng cả người rồi",
+   "latency_ms": 11218,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "hơi lạnh một chút",
+   "latency_ms": 12914,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "phòng tối quá chẳng nhìn thấy gì",
+   "latency_ms": 11561,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "chói mắt quá",
+   "latency_ms": 11274,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "không khí ngột ngạt khó thở",
+   "latency_ms": 11587,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "ồn ào quá mình không tập trung được",
+   "latency_ms": 10742,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "muốn phòng khách sáng sủa hơn",
+   "latency_ms": 10690,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "bí quá mở gì cho thoáng đi",
+   "latency_ms": 18,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "phòng con bụi bặm quá",
+   "latency_ms": 15890,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "muốn không gian dễ chịu để đọc sách",
+   "latency_ms": 12033,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "trời nồm ẩm quá khó chịu",
+   "latency_ms": 9901,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "comfort",
+   "request": "phòng ngủ hơi bí, dễ thở hơn tí đi",
+   "latency_ms": 11050,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "tôi đi ngủ đây",
+   "latency_ms": 14211,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "cả nhà chuẩn bị đi ngủ nhé",
+   "latency_ms": 12253,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "mình ra ngoài một lát",
+   "latency_ms": 5037,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "cả nhà đi vắng cả ngày nay",
+   "latency_ms": 14486,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 4,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "tôi sắp về đến nhà rồi",
+   "latency_ms": 13901,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "chuẩn bị xem phim tối nay",
+   "latency_ms": 11509,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "tối nay nhà có khách",
+   "latency_ms": 12114,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "vào bếp nấu cơm đây",
+   "latency_ms": 15312,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "con ngồi vào bàn học bài",
+   "latency_ms": 11159,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "sáng rồi, dậy thôi",
+   "latency_ms": 10929,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "chuẩn bị đi làm đây",
+   "latency_ms": 12930,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "routine",
+   "request": "nghỉ trưa một chút",
+   "latency_ms": 15991,
+   "reused_routine": false,
+   "outcome": "no_goal",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "khoá cửa chính lại",
+   "latency_ms": 2567,
+   "reused_routine": false,
+   "risks": [
+    "security"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "mở khoá cửa chính giúp mình",
+   "latency_ms": 3146,
+   "reused_routine": false,
+   "risks": [
+    "security"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "khoá cửa phòng bố mẹ",
+   "latency_ms": 10171,
+   "reused_routine": false,
+   "risks": [
+    "security"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "bật camera cửa chính lên",
+   "latency_ms": 3857,
+   "reused_routine": false,
+   "risks": [
+    "security"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "tắt camera cửa trước đi",
+   "latency_ms": 8433,
+   "reused_routine": false,
+   "risks": [
+    "security"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "kiểm tra khoá cửa giúp tôi",
+   "latency_ms": 13379,
+   "reused_routine": false,
+   "risks": [
+    "security"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "chốt hết cửa nẻo trước khi ngủ",
+   "latency_ms": 16592,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "security",
+   "request": "mở khoá cửa phòng ngủ bố mẹ",
+   "latency_ms": 22,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "cover",
+   "request": "kéo rèm phòng khách lại",
+   "latency_ms": 9904,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "cover",
+   "request": "mở rèm phòng con ra cho sáng",
+   "latency_ms": 2663,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "cover",
+   "request": "đóng cửa sổ phòng bố mẹ",
+   "latency_ms": 2672,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "cover",
+   "request": "mở cửa sổ phòng khách cho thoáng",
+   "latency_ms": 2900,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "cover",
+   "request": "khép rèm phòng bố mẹ lại",
+   "latency_ms": 10042,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "cover",
+   "request": "mở hé cửa sổ phòng con",
+   "latency_ms": 3156,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "media",
+   "request": "bật tivi phòng khách",
+   "latency_ms": 13135,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "media",
+   "request": "tắt tivi phòng bố mẹ đi",
+   "latency_ms": 2814,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "media",
+   "request": "mở loa phòng khách nghe nhạc",
+   "latency_ms": 3392,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "media",
+   "request": "vặn nhỏ loa xuống chút",
+   "latency_ms": 11246,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "media",
+   "request": "tăng âm lượng tivi lên",
+   "latency_ms": 22,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "media",
+   "request": "chuyển tivi sang kênh khác giúp mình",
+   "latency_ms": 13288,
+   "reused_routine": false,
+   "risks": [],
+   "n_actions": 0,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "bật máy lọc không khí phòng khách",
+   "latency_ms": 2676,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "cho robot hút bụi chạy đi",
+   "latency_ms": 3059,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "bật máy rửa bát",
+   "latency_ms": 3072,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "tắt máy lọc phòng con",
+   "latency_ms": 2968,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "khởi động máy hút bụi dọn phòng khách",
+   "latency_ms": 2867,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "bật bình nóng lạnh phòng khách",
+   "latency_ms": 2769,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "cho máy rửa bát chạy chế độ nhanh",
+   "latency_ms": 4838,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "bật máy lọc phòng bố mẹ",
+   "latency_ms": 2630,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "tắt máy sưởi đi nóng rồi",
+   "latency_ms": 3279,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "appliance",
+   "request": "dừng robot hút bụi lại",
+   "latency_ms": 10035,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "noop",
+   "reply": ""
+  },
+  {
+   "category": "query",
+   "request": "điều hoà phòng khách đang bật không",
+   "latency_ms": 2664,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Điều hoà đang tắt."
+  },
+  {
+   "category": "query",
+   "request": "đèn bếp còn sáng không nhỉ",
+   "latency_ms": 2673,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Đèn bếp đang tắt."
+  },
+  {
+   "category": "query",
+   "request": "cửa chính khoá chưa",
+   "latency_ms": 2206,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Cửa ra vào chính đang khoá."
+  },
+  {
+   "category": "query",
+   "request": "nhiệt độ trong phòng bao nhiêu",
+   "latency_ms": 2184,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Nhiệt độ: 28°C."
+  },
+  {
+   "category": "query",
+   "request": "phòng con có ai không",
+   "latency_ms": 2587,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Phòng ngủ con: không có ai."
+  },
+  {
+   "category": "query",
+   "request": "tivi phòng khách đang mở à",
+   "latency_ms": 2720,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "query",
+   "request": "trong nhà còn thiết bị nào đang bật",
+   "latency_ms": 21,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "query",
+   "request": "máy lọc không khí đang chạy chứ",
+   "latency_ms": 15,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "negation",
+   "request": "đừng tắt đèn phòng khách",
+   "latency_ms": 3356,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Được ạ, mình sẽ không tắt Đèn chùm."
+  },
+  {
+   "category": "negation",
+   "request": "khoan đã, đừng bật điều hoà",
+   "latency_ms": 15,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Được ạ, mình sẽ không bật thiết bị đó."
+  },
+  {
+   "category": "cancel",
+   "request": "thôi khỏi cần nữa",
+   "latency_ms": 1626,
+   "reused_routine": false,
+   "outcome": "no_goal",
+   "reply": ""
+  },
+  {
+   "category": "cancel",
+   "request": "huỷ hết đi",
+   "latency_ms": 1738,
+   "reused_routine": false,
+   "outcome": "no_goal",
+   "reply": ""
+  },
+  {
+   "category": "correction",
+   "request": "không phải phòng khách, ý tôi là phòng bếp",
+   "latency_ms": 9246,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "correction",
+   "request": "nhầm rồi, tắt cái kia cơ",
+   "latency_ms": 31,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "ambiguous",
+   "request": "bật cái đó lên",
+   "latency_ms": 16,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "ambiguous",
+   "request": "tắt nó đi",
+   "latency_ms": 12,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "ambiguous",
+   "request": "mở lên giúp mình",
+   "latency_ms": 14,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "ambiguous",
+   "request": "chỉnh cho ấm hơn tí",
+   "latency_ms": 16994,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "ambiguous",
+   "request": "làm gì đó cho phòng dễ chịu đi",
+   "latency_ms": 11945,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "ambiguous",
+   "request": "cho sáng hơn",
+   "latency_ms": 11256,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 2,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "out_of_scope",
+   "request": "hôm nay thời tiết thế nào",
+   "latency_ms": 2813,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Hệ thống hỗ trợ điều khiển nhà thông minh. Bạn có thể ra lệnh 'đi ngủ'"
+  },
+  {
+   "category": "out_of_scope",
+   "request": "kể cho mình một câu chuyện cười",
+   "latency_ms": 4093,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "out_of_scope",
+   "request": "mấy giờ rồi nhỉ",
+   "latency_ms": 6697,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "out_of_scope",
+   "request": "cảm ơn nhé",
+   "latency_ms": 3981,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "out_of_scope",
+   "request": "nhà mình có những thiết bị gì",
+   "latency_ms": 2424,
+   "reused_routine": false,
+   "outcome": "answered",
+   "reply": "Hệ thống hỗ trợ điều khiển nhà thông minh. Bạn có thể ra lệnh 'đi ngủ'"
+  },
+  {
+   "category": "out_of_scope",
+   "request": "bạn giúp được gì cho tôi",
+   "latency_ms": 3483,
+   "reused_routine": false,
+   "outcome": "clarification",
+   "reply": ""
+  },
+  {
+   "category": "multi",
+   "request": "bật đèn và điều hoà phòng khách luôn",
+   "latency_ms": 3709,
+   "reused_routine": false,
+   "risks": [
+    "high_power"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "multi",
+   "request": "tắt hết đèn và tivi rồi khoá cửa giúp mình",
+   "latency_ms": 4985,
+   "reused_routine": false,
+   "outcome": "no_goal",
+   "reply": ""
+  },
+  {
+   "category": "multi",
+   "request": "mở rèm và tắt đèn phòng con",
+   "latency_ms": 3463,
+   "reused_routine": false,
+   "risks": [
+    "normal"
+   ],
+   "n_actions": 1,
+   "outcome": "executed",
+   "reply": ""
+  },
+  {
+   "category": "multi",
+   "request": "chuẩn bị phòng khách để tiếp khách: sáng đèn, mát mẻ, nhạc nhẹ",
+   "latency_ms": 11915,
+   "reused_routine": false,
+   "risks": [
+    "high_power",
+    "normal"
+   ],
+   "n_actions": 3,
+   "outcome": "executed",
+   "reply": ""
+  }
+ ]
+}

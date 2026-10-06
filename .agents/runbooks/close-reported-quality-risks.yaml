@@ -1,0 +1,60 @@
+name: close-reported-quality-risks
+initial: contract_baseline
+
+nodes:
+  contract_baseline:
+    prompt: Lock the reported-risk contract and preserve the current failing evidence.
+  unit_repairs:
+    prompt: Repair the five repository-wide pytest failures without regressing the delivered grounding behavior.
+    before_transfer:
+      - type: command
+        run: rtk env APP_ENV=test LLM_DISABLED=true pytest tests/ -q --tb=short
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 300
+  type_repairs:
+    prompt: Eliminate the repository-wide mypy errors using local type-safe changes only.
+    before_transfer:
+      - type: command
+        run: rtk mypy src/
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 300
+  eval_repairs:
+    prompt: Repair deterministic evaluation failures and long-conversation target correctness.
+    before_transfer:
+      - type: command
+        run: rtk python -m src.evaluation.run_nlu_eval --mode offline --datasets clarification_cases correction_cases reference_resolution device_grounding
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 300
+  verification:
+    prompt: Run lint, unit, type, grounding, stale-context, correction, negation, and safety gates.
+    before_transfer:
+      - type: command
+        run: rtk ruff check src/ tests/
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 180
+      - type: command
+        run: rtk env APP_ENV=test LLM_DISABLED=true pytest tests/ -q --tb=short
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 300
+      - type: command
+        run: rtk mypy src/
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 300
+  acceptance:
+    prompt: Check every reported risk against observable post-change evidence.
+  done:
+    prompt: Synthesize the final Tech Lead decision with no unresolved reported risk.
+
+edges:
+  - from: contract_baseline
+    to: unit_repairs
+  - from: unit_repairs
+    to: type_repairs
+  - from: type_repairs
+    to: eval_repairs
+  - from: eval_repairs
+    to: verification
+  - from: verification
+    to: acceptance
+  - from: acceptance
+    to: done

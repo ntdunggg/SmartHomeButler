@@ -1,0 +1,8 @@
+{"id": "con-001", "utterance": "bật nó lên", "context": {"last_device_id": "den_bep"}, "expect": {"targets": ["den_bep"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "con-002", "utterance": "bật nó lên", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "con-003", "utterance": "nóng quá", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "make_cooler", "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "con-004", "utterance": "nóng quá", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "con-005", "utterance": "xem phim ở phòng khách", "context": {"focus_room": "Phòng khách"}, "expect": {"intent": "watch_movie", "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "con-006", "utterance": "xem phim ở phòng bố mẹ", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": {"intent": "watch_movie", "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "con-007", "utterance": "tắt đèn bếp", "context": {}, "expect": {"targets": ["den_bep"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "con-008", "utterance": "tắt đèn ngủ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}

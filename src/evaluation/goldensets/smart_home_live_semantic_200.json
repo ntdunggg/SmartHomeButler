@@ -1,0 +1,6663 @@
+{
+  "metadata": {
+    "name": "Smart Home Live Semantic Evaluation — 200 Cases",
+    "version": "1.0",
+    "language": "vi",
+    "purpose": "Live-LLM semantic robustness evaluation for ambiguity, context, clarification, long conversation, negation/cancellation, stale-context isolation, and event-based memory.",
+    "recommended_mode": "live_llm",
+    "case_count": 200,
+    "category_counts": {
+      "ambiguity_detection": 25,
+      "context_resolution": 30,
+      "targeted_clarification": 20,
+      "environmental_adjustment": 30,
+      "long_conversation": 30,
+      "negation_cancel_correction": 25,
+      "topic_switch_stale_context": 15,
+      "memory_feedback": 25
+    },
+    "decision_labels": [
+      "PROCEED",
+      "CLARIFY",
+      "CANCEL",
+      "NO_ACTION",
+      "STATE_QUERY"
+    ],
+    "scoring_guidance": {
+      "overall_pass": "A case passes only if the decision is correct and the semantic goal preserves all required targets, constraints, negations, and context references.",
+      "hard_fail_conditions": [
+        "hallucinated device or room",
+        "unsafe action caused by guessing unresolved information",
+        "lost negation or explicit constraint",
+        "cancel treated as execute/proceed",
+        "rejected value consolidated as a positive long-term preference",
+        "stale context incorrectly applied to a new topic"
+      ],
+      "recommended_metrics": [
+        "overall_accuracy",
+        "decision_accuracy",
+        "semantic_goal_accuracy",
+        "context_resolution_accuracy",
+        "clarification_precision",
+        "constraint_preservation",
+        "negation_preservation",
+        "cancel_accuracy",
+        "stale_context_error_rate",
+        "hallucinated_device_rate",
+        "memory_event_accuracy",
+        "memory_pollution_rate"
+      ]
+    },
+    "catalog_note": "Map room/device names to the project's real registry before treating grounding failures as semantic failures. Cases using 'current_room' assume a runtime focus/location exists."
+  },
+  "cases": [
+    {
+      "id": "LS-001",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật lên đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "User requests an action but target is unknown."
+    },
+    {
+      "id": "LS-002",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt cái đó giúp tôi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Deictic reference has no usable antecedent."
+    },
+    {
+      "id": "LS-003",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Giảm xuống một chút."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Direction is known but target/property is not grounded."
+    },
+    {
+      "id": "LS-004",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho nó nhẹ hơn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Pronoun and dimension are both unclear."
+    },
+    {
+      "id": "LS-005",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Làm dịu đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Desired direction is vague without environmental target."
+    },
+    {
+      "id": "LS-006",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Chỉnh lại giúp tôi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_goal"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Action request lacks target and desired outcome."
+    },
+    {
+      "id": "LS-007",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đổi sang cái khác."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_alternative"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No referenced item or candidate set."
+    },
+    {
+      "id": "LS-008",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở cái bên kia."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Spatial reference is unsupported without context."
+    },
+    {
+      "id": "LS-009",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tăng thêm đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Adjustment direction exists but no referent."
+    },
+    {
+      "id": "LS-010",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho dễ chịu hơn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "environment_dimension"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Open-ended comfort goal lacks enough evidence to choose dimension."
+    },
+    {
+      "id": "LS-011",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cái này hơi quá."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_dimension"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No target/dimension can be safely inferred."
+    },
+    {
+      "id": "LS-012",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Làm như bình thường đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "routine_or_preference"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No stable routine/preference evidence in current context."
+    },
+    {
+      "id": "LS-013",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Chuyển về như cũ."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "previous_state_reference"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No previous state is available."
+    },
+    {
+      "id": "LS-014",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Làm giống lúc nãy."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "previous_action_reference"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No earlier action is present in this conversation."
+    },
+    {
+      "id": "LS-015",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Xử lý giúp tôi cái này."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "goal"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No actionable semantic goal."
+    },
+    {
+      "id": "LS-016",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bớt bớt đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No grounded object or property."
+    },
+    {
+      "id": "LS-017",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cái phòng này khó chịu quá."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "environment_dimension"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Room may be current but cause is unknown."
+    },
+    {
+      "id": "LS-018",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ở đây không ổn lắm."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "environment_dimension"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Insufficient semantic evidence to choose lighting/temperature/etc."
+    },
+    {
+      "id": "LS-019",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho nó vừa vừa thôi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Target and scale are unresolved."
+    },
+    {
+      "id": "LS-020",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở lên một chút."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Verb is known but device is not."
+    },
+    {
+      "id": "LS-021",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt bớt đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Could apply to multiple devices."
+    },
+    {
+      "id": "LS-022",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Để thấp hơn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "No target/property context."
+    },
+    {
+      "id": "LS-023",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho mạnh hơn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target_or_property"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Could refer to fan, AC, speaker, light, etc."
+    },
+    {
+      "id": "LS-024",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đừng để thế này nữa."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "desired_state"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Negative preference with no explicit target."
+    },
+    {
+      "id": "LS-025",
+      "category": "ambiguity_detection",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Làm cho ổn hơn đi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Resolve an underspecified smart-home request",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "goal"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "underspecified",
+        "avoid_guessing"
+      ],
+      "notes": "Generic improvement request is not semantically sufficient."
+    },
+    {
+      "id": "LS-026",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật đèn phòng khách."
+        },
+        {
+          "role": "user",
+          "content": "Giảm xuống một chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Adjust living-room light brightness downward",
+        "room": "Phòng khách",
+        "target": "đèn",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-027",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật điều hòa Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật điều hòa Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "user",
+          "content": "Mát thêm chút nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Make the parents' bedroom cooler",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "decrease_temperature",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-028",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã mở rèm phòng khách."
+        },
+        {
+          "role": "user",
+          "content": "Thêm một chút nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Open the living-room curtains further",
+        "room": "Phòng khách",
+        "target": "rèm",
+        "adjustment": "increase_opening",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-029",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật TV phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật TV phòng khách."
+        },
+        {
+          "role": "user",
+          "content": "Nhỏ tiếng xuống."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Lower the living-room TV volume",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "decrease_volume",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-030",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật loa phòng bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật loa phòng bếp."
+        },
+        {
+          "role": "user",
+          "content": "To hơn tí."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase kitchen speaker volume",
+        "room": "Phòng bếp",
+        "target": "loa",
+        "adjustment": "increase_volume",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-031",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho đèn Phòng ngủ bố mẹ sáng 70%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Thôi 50% thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set parents' bedroom light brightness to 50%",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "set_brightness_50",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-032",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật điều hoà phòng ngủ bố mẹ, đặt tốc độ quạt mức 2."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật quạt."
+        },
+        {
+          "role": "user",
+          "content": "Mạnh hơn chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase the parents' bedroom AC fan speed",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "increase_fan_speed",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-033",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Mở lại một nửa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set parents' bedroom curtains to half-open",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "set_opening_50",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-034",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt đèn trần phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Bật lại đi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn the living-room ceiling light back on",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "turn_on",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-035",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn bàn làm việc ở phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Cho dịu mắt hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce the parents' bedroom desk-lamp intensity",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn bàn",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-036",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ nóng quá."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm mát Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "user",
+          "content": "Nhưng đừng tắt điều hoà."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Keep cooling the parents' bedroom while keeping the AC on",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "environment",
+        "adjustment": "cooler",
+        "constraints": [
+          "keep_air_conditioner_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-037",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng ngủ bố mẹ sáng hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng ánh sáng phòng ngủ bố mẹ."
+        },
+        {
+          "role": "user",
+          "content": "Đừng động vào đèn bàn làm việc."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase parents' bedroom lighting excluding the work desk lamp",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "exclude_work_desk_lamp"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-038",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Phòng khách thì tắt đi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off the living-room light",
+        "room": "Phòng khách",
+        "target": "đèn",
+        "adjustment": "turn_off",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-039",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Điều hòa phòng khách đang 24 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã ghi nhận."
+        },
+        {
+          "role": "user",
+          "content": "Tăng lên 2 độ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set living-room AC temperature to 26°C",
+        "room": "Phòng khách",
+        "target": "điều hòa",
+        "adjustment": "increase_temperature_by_2",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-040",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở cửa sổ Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã mở."
+        },
+        {
+          "role": "user",
+          "content": "Đóng nó lại."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Close the parents' bedroom window",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "cửa sổ",
+        "adjustment": "close",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-041",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách và phòng bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật cả hai."
+        },
+        {
+          "role": "user",
+          "content": "Tắt cái ở phòng bếp thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off only the kitchen light",
+        "room": "Phòng bếp",
+        "target": "đèn",
+        "adjustment": "turn_off",
+        "constraints": [
+          "keep_living_room_light_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-042",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "TV phòng khách để âm lượng 30."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Cho cái đó xuống 20."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set living-room TV volume to 20",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "set_volume_20",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-043",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật điều hoà phòng ngủ bố mẹ, đặt tốc độ quạt mức 2."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Lên một nấc."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase the parents' bedroom AC fan speed by one level",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "increase_fan_speed_one_step",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-044",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đèn phòng khách sáng quá."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm độ sáng."
+        },
+        {
+          "role": "user",
+          "content": "Thêm chút nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce living-room lighting further",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-045",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng bếp hơi tối."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng ánh sáng."
+        },
+        {
+          "role": "user",
+          "content": "Ừ, nhưng nhẹ thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Slightly increase kitchen lighting",
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "slight_increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-046",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt TV Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Cả đèn nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Also turn off the parents' bedroom light",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "turn_off",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-047",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ cũng vậy."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Close parents' bedroom curtains too",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "close",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-048",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn chùm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Cái này chỉ để 30% thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set the living-room chandelier brightness to 30%",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "set_brightness_30",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-049",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ mát hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm nhiệt độ."
+        },
+        {
+          "role": "user",
+          "content": "Không cần quá lạnh."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the parents' bedroom moderately",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "moderate_cooling",
+        "constraints": [
+          "avoid_overcooling"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-050",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật loa phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Tắt cái vừa bật đi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off the living-room speaker",
+        "room": "Phòng khách",
+        "target": "loa",
+        "adjustment": "turn_off",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-051",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm Phòng ngủ bố mẹ 70%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Giảm còn một nửa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set parents' bedroom curtains to 50% open",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "set_opening_50",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-052",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Đèn bàn ăn thì đừng bật."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Keep the kitchen dining light off while the kitchen light remains on",
+        "room": "Phòng bếp",
+        "target": "đèn",
+        "adjustment": "maintain_state",
+        "constraints": [
+          "keep_dining_light_off"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-053",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách bớt chói."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm ánh sáng."
+        },
+        {
+          "role": "user",
+          "content": "Chủ yếu cái đèn trần."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce brightness mainly on the living-room ceiling light",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-054",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tăng nhiệt Phòng ngủ bố mẹ lên 25 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Phòng của bé thì giữ nguyên."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Keep child bedroom temperature unchanged while retaining bedroom adjustment",
+        "room": "Phòng ngủ con",
+        "target": "điều hòa",
+        "adjustment": "maintain_state",
+        "constraints": [
+          "no_change"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-055",
+      "category": "context_resolution",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "À, ý tôi là Phòng bếp."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct target to kitchen light",
+        "room": "Phòng bếp",
+        "target": "đèn",
+        "adjustment": "turn_on",
+        "constraints": [
+          "correction_of_previous_target"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "reference_resolution",
+        "context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-056",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Ask which room, not what action."
+    },
+    {
+      "id": "LS-057",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt TV."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Ask which TV/room."
+    },
+    {
+      "id": "LS-058",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Ask which room."
+    },
+    {
+      "id": "LS-059",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho điều hòa mát hơn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Action and dimension are clear; room is missing."
+    },
+    {
+      "id": "LS-060",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Giảm độ sáng đèn phòng khách."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "device_instance"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "If multiple eligible lights exist, ask which light or whether all."
+    },
+    {
+      "id": "LS-061",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật cái đèn trong phòng ngủ."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "device_instance"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "If multiple bedroom lights exist, ask which one."
+    },
+    {
+      "id": "LS-062",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Để âm lượng 20."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "device"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Property is clear; target device is missing."
+    },
+    {
+      "id": "LS-063",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đặt 24 độ."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "device_or_room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Temperature setpoint needs a grounded HVAC target."
+    },
+    {
+      "id": "LS-064",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở một nửa."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Amount is clear; target is missing."
+    },
+    {
+      "id": "LS-065",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách dễ chịu hơn."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "environment_dimension"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Ask what feels wrong if no sensors/context resolve it."
+    },
+    {
+      "id": "LS-066",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt một cái đèn thôi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "device_instance"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Ask which light when several candidates exist."
+    },
+    {
+      "id": "LS-067",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở cửa."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "door_or_window_target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Need concrete target."
+    },
+    {
+      "id": "LS-068",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật máy lọc không khí lên mức 3."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Fan and setting known; room missing."
+    },
+    {
+      "id": "LS-069",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Giảm tiếng xuống 10."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "device"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Need speaker/TV target."
+    },
+    {
+      "id": "LS-070",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng lại giúp tôi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "No antecedent in context."
+    },
+    {
+      "id": "LS-071",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho sáng 40%."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room_or_light"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Brightness known, target missing."
+    },
+    {
+      "id": "LS-072",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật thiết bị sưởi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Need location if multiple heaters exist."
+    },
+    {
+      "id": "LS-073",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm bên trái."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "room"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Relative side alone is insufficient without room."
+    },
+    {
+      "id": "LS-074",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tăng lên 2 nấc."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "target"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Need a prior target."
+    },
+    {
+      "id": "LS-075",
+      "category": "targeted_clarification",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Chỉ bật một cái thôi."
+        }
+      ],
+      "expected": {
+        "decision": "CLARIFY",
+        "canonical_goal": "Complete a partially specified smart-home action",
+        "room": null,
+        "target": null,
+        "adjustment": null,
+        "constraints": [],
+        "missing_fields": [
+          "candidate_choice"
+        ],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "clarification",
+        "minimum_missing_information"
+      ],
+      "notes": "Need which device among candidates."
+    },
+    {
+      "id": "LS-076",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách tối quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Make the living room brighter.",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-077",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ở Phòng ngủ bố mẹ chói mắt quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce parents' bedroom lighting glare.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-078",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng bếp hơi âm u."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase kitchen lighting.",
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-079",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ sáng gắt quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Soften parents' bedroom lighting.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-080",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Trong Phòng ngủ bố mẹ nóng quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the parents' bedroom.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "temperature",
+        "adjustment": "cooler",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-081",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách lạnh quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Make the living room warmer.",
+        "room": "Phòng khách",
+        "target": "temperature",
+        "adjustment": "warmer",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-082",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ hơi bí và nóng."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Improve parents' bedroom thermal comfort.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "cool_or_ventilate",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-083",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ mát mẻ hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the parents' bedroom.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-084",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ở đây hơi oi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Make current room less hot, if current-room context is available.",
+        "room": "current_room",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-085",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách hơi tối, cho dễ nhìn hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room lighting.",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-086",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ánh sáng phòng bếp hơi khó chịu."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Adjust kitchen lighting for comfort.",
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "adjust_for_comfort",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-087",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đèn Phòng ngủ bố mẹ gắt quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce parents' bedroom light intensity.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-088",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách dịu mắt hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Soften living-room lighting.",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-089",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi muốn Phòng ngủ bố mẹ sáng rõ hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase parents' bedroom lighting.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-090",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ tối quá nhưng đừng bật đèn bàn làm việc."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase parents' bedroom lighting without the work desk lamp",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "exclude_work_desk_lamp"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-091",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách nóng, nhưng giữ máy lọc không khí đang chạy."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the living room while keeping the air purifier on",
+        "room": "Phòng khách",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [
+          "keep_air_purifier_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-092",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ lạnh quá, đừng tắt điều hòa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": [
+          "keep_ac_on"
+        ],
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "warmer",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-093",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng bếp bớt sáng nhưng vẫn đủ nhìn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": [
+          "maintain_visibility"
+        ],
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "moderate_decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-094",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách đang chói, ưu tiên rèm trước."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": [
+          "prefer_curtains"
+        ],
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "reduce_glare",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-095",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Màn hình TV phản sáng quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce ambient glare affecting TV.",
+        "room": "current_room",
+        "target": "lighting",
+        "adjustment": "reduce_glare",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-096",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ tối, nhưng không bật đèn bàn làm việc."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase parents' bedroom lighting without the work desk lamp",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "exclude_work_desk_lamp"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-097",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho ánh sáng Phòng ngủ bố mẹ ấm áp hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Adjust parents' bedroom lighting to warmer ambience.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "warmer_light",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-098",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Không khí phòng khách ngột ngạt quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Improve living-room air comfort.",
+        "room": "Phòng khách",
+        "target": "air_quality",
+        "adjustment": "improve_airflow",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-099",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ hơi lạnh, tăng nhẹ thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Warm parents' bedroom slightly.",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "slightly_warmer",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-100",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bếp nóng quá, làm mát vừa phải."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool kitchen moderately.",
+        "room": "Phòng bếp",
+        "target": "climate",
+        "adjustment": "moderate_cooling",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-101",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách sáng sủa lên tí."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Slightly brighten living room.",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "slight_increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-102",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Giảm bớt ánh sáng cho dịu mắt."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce lighting when current room is known.",
+        "room": "current_room",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-103",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ con hơi tối nhưng đừng quá sáng."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": [
+          "avoid_overbrightening"
+        ],
+        "room": "Phòng ngủ con",
+        "target": "lighting",
+        "adjustment": "moderate_increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-104",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách hơi lạnh, chỉnh cho dễ chịu thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Warm living room conservatively.",
+        "room": "Phòng khách",
+        "target": "climate",
+        "adjustment": "moderate_warming",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-105",
+      "category": "environmental_adjustment",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ánh sáng đèn chùm phòng khách yếu quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room chandelier brightness.",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "semantic_sufficiency",
+        "environmental_goal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-106",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ tối quá."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng ánh sáng."
+        },
+        {
+          "role": "user",
+          "content": "Đừng bật đèn bàn làm việc."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tăng thêm một chút nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase parents' bedroom lighting further while keeping the work desk lamp off",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "exclude_work_desk_lamp"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-107",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ mát hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm mát."
+        },
+        {
+          "role": "user",
+          "content": "Nhưng giữ máy lọc không khí bật."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Thêm một chút nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the parents' bedroom further while keeping the air purifier on",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [
+          "keep_air_purifier_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-108",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật TV phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Âm lượng 25 thôi."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Giảm thêm 5."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set living-room TV volume to 20",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "set_volume_20",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-109",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm phòng khách 70%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Đừng mở cửa sổ."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Cho sáng thêm tí."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room brightness while keeping window closed",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "keep_window_closed"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-110",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ nóng quá."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm mát."
+        },
+        {
+          "role": "user",
+          "content": "Không dưới 24 độ nhé."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Giảm điều hoà còn 24 độ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set the parents' bedroom AC to 24°C without going below 24°C",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "set_temperature_24",
+        "constraints": [
+          "min_temperature_24"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-111",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt đèn bàn làm việc phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Để đèn ngủ phòng ngủ bố mẹ bật nhé."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tắt thêm TV phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off the parents' bedroom TV while keeping the night light on",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "TV",
+        "adjustment": "turn_off",
+        "constraints": [
+          "keep_night_light_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-112",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ tối hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm sáng."
+        },
+        {
+          "role": "user",
+          "content": "Đèn ngủ phải giữ nguyên."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Giảm thêm chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce parents' bedroom lighting further while preserving night-light state",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [
+          "keep_night_light_unchanged"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-113",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật máy lọc không khí phòng khách mức 2."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Nếu vẫn nóng thì tăng lên."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Vẫn nóng."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room air-purifier fan speed based on the prior condition",
+        "room": "Phòng khách",
+        "target": "máy lọc không khí",
+        "adjustment": "increase_fan_speed",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-114",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng bếp sáng hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng sáng."
+        },
+        {
+          "role": "user",
+          "content": "Nhưng chỉ đèn bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Thêm 10% nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase only the kitchen-light brightness by another 10%",
+        "room": "Phòng bếp",
+        "target": "đèn",
+        "adjustment": "increase_brightness_10",
+        "constraints": [
+          "only_kitchen_light"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-115",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ nóng."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm mát."
+        },
+        {
+          "role": "user",
+          "content": "Đừng mở cửa sổ."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Và đừng tắt máy lọc không khí."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Làm mát thêm."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the parents' bedroom further while the window stays closed and the air purifier stays on",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [
+          "keep_window_closed",
+          "keep_air_purifier_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-116",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm phòng ngủ bố mẹ còn 80%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã mở."
+        },
+        {
+          "role": "user",
+          "content": "Không đóng thấp hơn 60%."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Đóng thêm chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Close the parents' bedroom curtain further but not below 60% open",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "decrease_opening",
+        "constraints": [
+          "min_opening_60"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-117",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách bớt chói."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm sáng."
+        },
+        {
+          "role": "user",
+          "content": "TV vẫn phải xem rõ."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Giảm thêm tí."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce living-room glare further while preserving TV visibility",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "decrease_glare",
+        "constraints": [
+          "preserve_tv_visibility"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-118",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đặt đèn bàn làm việc phòng ngủ bố mẹ ở 50%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ đến 70% thôi."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tăng thêm 10%."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set the parents' bedroom work lamp to 60% without exceeding 70%",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn bàn",
+        "adjustment": "set_brightness_60",
+        "constraints": [
+          "max_brightness_70"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-119",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt TV phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Nếu tôi đổi ý thì bật lại."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Bật lại đi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn living-room TV back on",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "turn_on",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-120",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ ấm hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng nhiệt."
+        },
+        {
+          "role": "user",
+          "content": "Không quá 27 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Thêm một chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Warm parents' bedroom further without exceeding 27°C",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "warmer",
+        "constraints": [
+          "max_temperature_27"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-121",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật loa phòng khách, đặt âm lượng 20."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Âm lượng không quá 30."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tăng âm lượng thêm 5."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set living-room speaker volume to 25 without exceeding 30",
+        "room": "Phòng khách",
+        "target": "loa",
+        "adjustment": "set_volume_25",
+        "constraints": [
+          "max_volume_30"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-122",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Nhưng chừa một khe nhỏ."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Thêm chút ánh sáng tự nhiên."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Open parents' bedroom curtains slightly while keeping mostly closed",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "slight_opening",
+        "constraints": [
+          "mostly_closed"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-123",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách nóng."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm mát."
+        },
+        {
+          "role": "user",
+          "content": "Ưu tiên máy lọc không khí, chưa dùng điều hoà."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Mát thêm chút nữa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Improve living-room comfort using the air purifier before AC",
+        "room": "Phòng khách",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [
+          "prefer_air_purifier_before_ac"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-124",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng khách tối."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng sáng."
+        },
+        {
+          "role": "user",
+          "content": "Ưu tiên mở rèm."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Sáng thêm."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room brightness preferring curtains first",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "prefer_curtains"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-125",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật điều hòa Phòng ngủ bố mẹ 25 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Đừng thay đổi tốc độ quạt điều hoà."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Giảm còn 24."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set the parents' bedroom AC to 24°C while preserving its fan speed",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "set_temperature_24",
+        "constraints": [
+          "keep_ac_fan_speed_unchanged"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-126",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt tất cả đèn phòng bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Trừ đèn bàn ăn."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tắt hết phần còn lại."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off the kitchen light while keeping the dining light on",
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "turn_off",
+        "constraints": [
+          "keep_dining_light_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-127",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đặt đèn chùm phòng khách ở 30%."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ tăng sáng."
+        },
+        {
+          "role": "user",
+          "content": "Không quá 50%."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tăng thêm 10%."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set the living-room chandelier to 40% while staying at or below 50%",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "set_brightness_40",
+        "constraints": [
+          "max_brightness_50"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-128",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở cửa sổ phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã mở."
+        },
+        {
+          "role": "user",
+          "content": "Nếu trời mưa thì đóng lại."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Ngoài trời đang mưa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Close living-room window due to previously stated condition",
+        "room": "Phòng khách",
+        "target": "cửa sổ",
+        "adjustment": "close",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-129",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn ngủ phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Giữ ở mức thấp thôi."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Tăng lên chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Slightly increase night-light brightness while keeping it low",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn ngủ",
+        "adjustment": "slight_increase_brightness",
+        "constraints": [
+          "keep_low"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-130",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ hơi lạnh."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm ấm."
+        },
+        {
+          "role": "user",
+          "content": "Đừng tắt máy lọc không khí."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Ấm thêm chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Warm the parents' bedroom further while the air purifier stays on",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "warmer",
+        "constraints": [
+          "keep_air_purifier_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-131",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "TV phòng khách hơi to."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm âm lượng."
+        },
+        {
+          "role": "user",
+          "content": "Nhưng đừng mute."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Giảm thêm."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce living-room TV volume further without muting",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "decrease_volume",
+        "constraints": [
+          "do_not_mute"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-132",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ cũng đóng."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Mở lại cái phòng khách một nửa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set living-room curtains to 50% open",
+        "room": "Phòng khách",
+        "target": "rèm",
+        "adjustment": "set_opening_50",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-133",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách và bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Bếp để 40% thôi."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Phòng khách thì giữ nguyên."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Keep living-room lighting unchanged while preserving kitchen at 40%",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "maintain_state",
+        "constraints": [
+          "kitchen_brightness_40"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-134",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ mát hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ làm mát."
+        },
+        {
+          "role": "user",
+          "content": "Không giảm dưới 24 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Giảm điều hoà còn 24 độ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set the parents' bedroom AC to 24°C without going below 24°C",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "set_temperature_24",
+        "constraints": [
+          "min_temperature_24"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-135",
+      "category": "long_conversation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn bàn ăn phòng bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Ánh sáng ấm thôi."
+        },
+        {
+          "role": "assistant",
+          "content": "Được."
+        },
+        {
+          "role": "user",
+          "content": "Sáng hơn một chút."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Slightly increase the warm kitchen dining-light brightness",
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "slight_increase_brightness",
+        "constraints": [
+          "warm_color_temperature"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "long_context",
+        "constraint_persistence",
+        "negation_preservation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-136",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi chuẩn bị bật."
+        },
+        {
+          "role": "user",
+          "content": "Thôi, đừng bật nữa."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel pending living-room light action",
+        "room": "Phòng khách",
+        "target": "đèn",
+        "adjustment": "cancel",
+        "constraints": [
+          "do_not_turn_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-137",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt TV phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi chuẩn bị tắt."
+        },
+        {
+          "role": "user",
+          "content": "Không, giữ nguyên."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel pending TV shutdown",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "cancel",
+        "constraints": [
+          "keep_current_state"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-138",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ mát hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi sẽ giảm nhiệt."
+        },
+        {
+          "role": "user",
+          "content": "Không cần nữa."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel pending parents' bedroom cooling",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "cancel",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-139",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không phải phòng khách, Phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct target to parents' bedroom light",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "turn_on",
+        "constraints": [
+          "correction"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-140",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Để điều hòa 24 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "À 25 độ mới đúng."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct AC setpoint to 25°C",
+        "room": null,
+        "target": "điều hòa",
+        "adjustment": "set_temperature_25",
+        "constraints": [
+          "correction"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-141",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tăng đèn lên 70%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không, 60 thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct light brightness to 60%",
+        "room": null,
+        "target": "đèn",
+        "adjustment": "set_brightness_60",
+        "constraints": [
+          "correction"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-142",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt hết đèn phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Trừ đèn ngủ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off parents' bedroom lights except the night light",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "turn_off",
+        "constraints": [
+          "keep_night_light_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-143",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật TV và loa phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Loa thì thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn on living-room TV only",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "turn_on",
+        "constraints": [
+          "do_not_turn_on_speaker"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-144",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Đừng mở hết."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Open parents' bedroom curtains partially",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "partial_open",
+        "constraints": [
+          "not_fully_open"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-145",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách sáng hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Nhưng không bật thêm thiết bị mới."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room brightness using currently active lighting only",
+        "room": "Phòng khách",
+        "target": "lighting",
+        "adjustment": "increase_brightness",
+        "constraints": [
+          "no_new_devices"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-146",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt điều hòa Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Khoan, đừng tắt."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel AC shutdown",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "cancel",
+        "constraints": [
+          "keep_ac_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-147",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật máy lọc không khí phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Thôi bỏ đi."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel living-room air-purifier activation",
+        "room": "Phòng khách",
+        "target": "máy lọc không khí",
+        "adjustment": "cancel",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-148",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở cửa sổ Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không mở cửa sổ, mở rèm thôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Open parents' bedroom curtains instead of window",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "open",
+        "constraints": [
+          "do_not_open_window"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-149",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho TV to hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Ý tôi là loa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase speaker volume instead of TV volume",
+        "room": null,
+        "target": "loa",
+        "adjustment": "increase_volume",
+        "constraints": [
+          "correction"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-150",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt đèn phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tắt đèn trần."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off only living-room ceiling light",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "turn_off",
+        "constraints": [
+          "only_ceiling_light"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-151",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ tối hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Đừng đóng rèm."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reduce parents' bedroom lighting without closing curtains",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "decrease_brightness",
+        "constraints": [
+          "do_not_close_curtains"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-152",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật tất cả đèn bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không bật đèn bàn ăn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn on the kitchen light but keep the dining light off",
+        "room": "Phòng bếp",
+        "target": "lighting",
+        "adjustment": "turn_on",
+        "constraints": [
+          "exclude_dining_light"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-153",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tăng nhiệt phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không quá 27 độ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Warm living room without exceeding 27°C",
+        "room": "Phòng khách",
+        "target": "climate",
+        "adjustment": "warmer",
+        "constraints": [
+          "max_temperature_27"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-154",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho loa nhỏ xuống."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Đừng tắt hẳn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Lower speaker volume without turning it off",
+        "room": null,
+        "target": "loa",
+        "adjustment": "decrease_volume",
+        "constraints": [
+          "do_not_turn_off"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-155",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng cửa sổ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không phải phòng khách, đóng cửa sổ phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct the target to the parents' bedroom window",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "cửa sổ",
+        "adjustment": "close",
+        "constraints": [
+          "correction_of_previous_target"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-156",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt đèn chùm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Thôi để nguyên."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel living-room chandelier shutdown",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "cancel",
+        "constraints": [
+          "keep_current_state"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-157",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật điều hòa phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Đừng tăng tốc độ quạt điều hoà quá mức 3."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn on living-room AC without high-power mode",
+        "room": "Phòng khách",
+        "target": "điều hòa",
+        "adjustment": "turn_on",
+        "constraints": [
+          "max_ac_fan_speed_3"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-158",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm phòng khách hết cỡ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Khoan, chỉ một nửa."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct living-room curtain opening to 50%",
+        "room": "Phòng khách",
+        "target": "rèm",
+        "adjustment": "set_opening_50",
+        "constraints": [
+          "correction"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-159",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã hiểu."
+        },
+        {
+          "role": "user",
+          "content": "Không cần đèn bàn làm việc."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn on the parents' bedroom night light without the work desk lamp",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "turn_on",
+        "constraints": [
+          "exclude_work_desk_lamp"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-160",
+      "category": "negation_cancel_correction",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt TV."
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn tắt TV nào?"
+        },
+        {
+          "role": "user",
+          "content": "Thôi không tắt nữa."
+        }
+      ],
+      "expected": {
+        "decision": "CANCEL",
+        "canonical_goal": "Cancel unresolved TV shutdown request",
+        "room": null,
+        "target": "TV",
+        "adjustment": "cancel",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "negation",
+        "cancel_or_correction"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-161",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "TV Phòng ngủ bố mẹ đang bật không?"
+        }
+      ],
+      "expected": {
+        "decision": "STATE_QUERY",
+        "canonical_goal": "Check parents' bedroom TV state",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "TV",
+        "adjustment": "query_state",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-162",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho phòng khách sáng hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Tắt điều hòa Phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off parents' bedroom AC",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "turn_off",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-163",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật loa phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Phòng ngủ con nóng quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the child bedroom",
+        "room": "Phòng ngủ con",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-164",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt TV phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Mở rèm Phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Open parents' bedroom curtains",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "open",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-165",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ mát hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Đèn chùm phòng khách tối quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase living-room chandelier brightness",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "increase_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-166",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn phòng bếp."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Điều hòa phòng khách để bao nhiêu độ?"
+        }
+      ],
+      "expected": {
+        "decision": "STATE_QUERY",
+        "canonical_goal": "Query living-room AC setpoint",
+        "room": "Phòng khách",
+        "target": "điều hòa",
+        "adjustment": "query_state",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-167",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng rèm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Tăng âm lượng TV Phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Increase parents' bedroom TV volume",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "TV",
+        "adjustment": "increase_volume",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-168",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật máy lọc không khí phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Tắt đèn bàn làm việc phòng ngủ bố mẹ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off the parents' bedroom work lamp",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn bàn",
+        "adjustment": "turn_off",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-169",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tăng sáng phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ lạnh quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Warm the parents' bedroom",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "warmer",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-170",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật TV phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Mở rèm phòng bếp."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Open kitchen curtain",
+        "room": "Phòng bếp",
+        "target": "rèm",
+        "adjustment": "open",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-171",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho Phòng ngủ bố mẹ tối hơn."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Loa phòng khách đang ở âm lượng bao nhiêu?"
+        }
+      ],
+      "expected": {
+        "decision": "STATE_QUERY",
+        "canonical_goal": "Query living-room speaker volume",
+        "room": "Phòng khách",
+        "target": "loa",
+        "adjustment": "query_state",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-172",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đóng cửa sổ phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã đóng."
+        },
+        {
+          "role": "user",
+          "content": "Bật đèn bàn ăn phòng bếp."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn on the kitchen dining light",
+        "room": "Phòng bếp",
+        "target": "đèn",
+        "adjustment": "turn_on",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-173",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tắt điều hòa Phòng ngủ bố mẹ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tắt."
+        },
+        {
+          "role": "user",
+          "content": "Rèm phòng khách mở bao nhiêu phần trăm?"
+        }
+      ],
+      "expected": {
+        "decision": "STATE_QUERY",
+        "canonical_goal": "Query living-room curtain opening",
+        "room": "Phòng khách",
+        "target": "rèm",
+        "adjustment": "query_state",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-174",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật đèn chùm phòng khách."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Phòng ngủ bố mẹ hơi nóng."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Cool the parents' bedroom",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "climate",
+        "adjustment": "cooler",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-175",
+      "category": "topic_switch_stale_context",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Cho loa nhỏ xuống."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Tắt TV phòng khách."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Turn off living-room TV",
+        "room": "Phòng khách",
+        "target": "TV",
+        "adjustment": "turn_off",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "topic_switch",
+        "stale_context_isolation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-176",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi thích đèn Phòng ngủ bố mẹ khoảng 30% vào buổi tối."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record an explicit parents' bedroom evening-light preference",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "preference_brightness_30",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-177",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi thường để điều hòa Phòng ngủ bố mẹ 25 độ khi ngủ."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record explicit sleep temperature preference",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "preference_temperature_25",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-178",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đừng bao giờ tắt máy lọc không khí phòng ngủ bố mẹ khi tôi đang ngủ."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record an explicit sleep constraint to keep the parents' bedroom air purifier on",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "máy lọc không khí",
+        "adjustment": "preference_keep_on",
+        "constraints": [
+          "keep_air_purifier_on"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-179",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi thích Phòng ngủ bố mẹ sáng hơn phòng khách."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record a preference for brighter lighting in the parents' bedroom than in the living room",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "lighting",
+        "adjustment": "preference_brighter",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-180",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi không thích ánh sáng quá trắng vào buổi tối."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record evening light-color preference",
+        "room": null,
+        "target": "lighting",
+        "adjustment": "preference_avoid_cool_white",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-181",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Để đèn phòng khách 60% nhé."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh 60%."
+        },
+        {
+          "role": "user",
+          "content": "Không, sáng quá."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reject the 60% living-room brightness outcome",
+        "room": "Phòng khách",
+        "target": "đèn",
+        "adjustment": "decrease_brightness",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PLAN_REJECTED_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-182",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Để đèn phòng khách 60% nhé."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh 60%."
+        },
+        {
+          "role": "user",
+          "content": "Ừ, mức này được."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Accept the 60% living-room brightness outcome",
+        "room": "Phòng khách",
+        "target": "đèn",
+        "adjustment": "accept_current_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PLAN_ACCEPTED_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-183",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Để đèn Phòng ngủ bố mẹ 50%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Thực ra 35% hợp hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct parents' bedroom brightness preference toward 35%",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "set_brightness_35",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PREFERENCE_CORRECTION_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-184",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Điều hòa 23 độ nhé."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Lạnh quá, 25 độ thì tốt hơn."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Correct AC preference toward 25°C",
+        "room": null,
+        "target": "điều hòa",
+        "adjustment": "set_temperature_25",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PREFERENCE_CORRECTION_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-185",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Mở rèm 80%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Không thích mở nhiều vậy."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Reject high curtain opening and reduce it",
+        "room": null,
+        "target": "rèm",
+        "adjustment": "decrease_opening",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PLAN_REJECTED_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-186",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Loa để mức 20."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Mức này vừa rồi."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Accept current speaker volume 20",
+        "room": null,
+        "target": "loa",
+        "adjustment": "accept_current_volume",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PLAN_ACCEPTED_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-187",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tối nào tôi cũng muốn đèn chùm phòng khách ở mức thấp."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record a recurring low living-room chandelier preference",
+        "room": "Phòng khách",
+        "target": "đèn trần",
+        "adjustment": "preference_low_brightness",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-188",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Khi xem TV tôi không muốn đèn trần quá sáng."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record context-specific TV lighting preference",
+        "room": null,
+        "target": "đèn trần",
+        "adjustment": "preference_dim_when_watching_tv",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-189",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi thích mở rèm phòng khách vào buổi sáng."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record morning curtain preference",
+        "room": "Phòng khách",
+        "target": "rèm",
+        "adjustment": "preference_open_morning",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-190",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đừng ghi nhớ lần này, chỉ hôm nay thôi: để Phòng ngủ bố mẹ 22 độ."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set parents' bedroom to 22°C without creating long-term preference",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "set_temperature_22",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-191",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hôm nay bật đèn phòng khách 100%, nhưng đây không phải thói quen của tôi."
+        }
+      ],
+      "expected": {
+        "decision": "PROCEED",
+        "canonical_goal": "Set living-room brightness to 100% without long-term preference learning",
+        "room": "Phòng khách",
+        "target": "đèn",
+        "adjustment": "set_brightness_100",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "NONE"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-192",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi thường thích rèm Phòng ngủ bố mẹ đóng khoảng 70%."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record parents' bedroom curtain preference around 70% closed",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "rèm",
+        "adjustment": "preference_closed_70",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-193",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đừng tự động bật TV khi tôi về nhà."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record explicit automation constraint against auto-starting TV",
+        "room": null,
+        "target": "TV",
+        "adjustment": "preference_no_auto_turn_on",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-194",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Nếu tôi nói đi ngủ thì vẫn giữ điều hòa chạy."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record routine constraint to keep AC on during sleep routine",
+        "room": null,
+        "target": "điều hòa",
+        "adjustment": "preference_keep_on_during_sleep",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-195",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hôm qua đèn 40% hơi tối, 50% hợp hơn."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record correction toward 50% brightness from prior experience",
+        "room": null,
+        "target": "đèn",
+        "adjustment": "preference_brightness_50",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_CORRECTION_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-196",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi không thích tốc độ quạt điều hoà phòng ngủ bố mẹ ở mức 3; mức 2 dễ chịu hơn."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record a parents' bedroom AC fan-speed preference for level 2 over 3",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "điều hòa",
+        "adjustment": "preference_speed_2",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_CORRECTION_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-197",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Bật điều hòa 24 độ."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã bật."
+        },
+        {
+          "role": "user",
+          "content": "Ổn đấy, lần sau cứ mức này."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Accept and promote 24°C as a reusable preference",
+        "room": null,
+        "target": "điều hòa",
+        "adjustment": "preference_temperature_24",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PLAN_ACCEPTED_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-198",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Đèn Phòng ngủ bố mẹ 30%."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Không ổn, đừng dùng mức này lần sau."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Reject 30% brightness as a future preference",
+        "room": "Phòng ngủ bố mẹ",
+        "target": "đèn",
+        "adjustment": "reject_brightness_30",
+        "constraints": [
+          "preserve_negative_preference"
+        ],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PLAN_REJECTED_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-199",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Rèm mở một nửa."
+        },
+        {
+          "role": "assistant",
+          "content": "Đã chỉnh."
+        },
+        {
+          "role": "user",
+          "content": "Lần sau mở khoảng 40% thôi."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record corrected curtain preference toward 40%",
+        "room": "current_room",
+        "target": "rèm",
+        "adjustment": "preference_opening_40",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": true,
+        "memory_expectation": "PREFERENCE_CORRECTION_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LS-200",
+      "category": "memory_feedback",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tôi thích mọi thứ yên tĩnh sau 11 giờ tối, nhất là loa phòng khách."
+        }
+      ],
+      "expected": {
+        "decision": "NO_ACTION",
+        "canonical_goal": "Record late-night quiet preference for living-room speaker",
+        "room": "Phòng khách",
+        "target": "loa",
+        "adjustment": "preference_quiet_after_23",
+        "constraints": [],
+        "missing_fields": [],
+        "should_use_context": false,
+        "memory_expectation": "PREFERENCE_EVENT"
+      },
+      "risk_tags": [
+        "memory",
+        "feedback",
+        "avoid_memory_pollution"
+      ],
+      "notes": ""
+    }
+  ]
+}

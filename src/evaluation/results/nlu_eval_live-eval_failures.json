@@ -1,0 +1,324 @@
+[
+  {
+    "id": "rt-024",
+    "utterance": "ngoi hoc bai nao",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "SOCIAL_UTTERANCE",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": "unknown",
+    "goal_schema_decision": "clarify",
+    "goal_description": "",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-025",
+    "utterance": "tập trung làm việc thôi",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "work_or_study"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": "Phòng ngủ bố mẹ",
+      "outcome": "clarification"
+    },
+    "request_type": "implicit_goal",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Tạo không gian làm việc tập trung.",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-028",
+    "utterance": "thuc day roi",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "wake_up"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "UNKNOWN",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": "implicit_goal",
+    "goal_schema_decision": "clarify",
+    "goal_description": "",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-033",
+    "utterance": "good night nhé",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "SOCIAL_UTTERANCE",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": "unknown",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Chúc ngủ ngon",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-034",
+    "utterance": "good night nhe",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "prepare_for_sleep"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "SOCIAL_UTTERANCE",
+      "targets": [],
+      "area": null,
+      "outcome": "clarification"
+    },
+    "request_type": "unknown",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Chúc ngủ ngon",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-039",
+    "utterance": "xem tivi thôi",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "tv_phong_khach"
+      ],
+      "area": "Phòng khách",
+      "outcome": "clarification"
+    },
+    "request_type": "implicit_goal",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Bật TV để xem.",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-040",
+    "utterance": "xem tivi thoi",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "watch_movie"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "tv_phong_khach"
+      ],
+      "area": "Phòng khách",
+      "outcome": "clarification"
+    },
+    "request_type": "implicit_goal",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Bật TV để xem.",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "rt-046",
+    "utterance": "bao thuc keu roi",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "utterance_type": "ROUTINE_INTENT",
+      "intent": "wake_up"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ENVIRONMENT_REQUEST",
+      "targets": [],
+      "area": "Phòng khách",
+      "outcome": "clarification"
+    },
+    "request_type": "unknown",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Tạo không gian phòng khách phù hợp với việc có khách.",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-004",
+    "utterance": "đi ngủ thôi",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "proceed"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ROUTINE_INTENT",
+      "targets": [],
+      "area": "Phòng ngủ bố mẹ",
+      "outcome": "clarification"
+    },
+    "request_type": "implicit_goal",
+    "goal_schema_decision": "clarify",
+    "goal_description": "Chuẩn bị cho việc đi ngủ",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-005",
+    "utterance": "tôi sắp về nhà",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "proceed"
+    },
+    "actual": {
+      "decision": "clarify",
+      "utterance_type": "ROUTINE_INTENT",
+      "targets": [],
+      "area": "Phòng khách",
+      "outcome": "clarification"
+    },
+    "request_type": "implicit_goal",
+    "goal_schema_decision": "clarify",
+    "goal_description": "đưa nhà về trạng thái phù hợp khi về nhà",
+    "plan_actions": [],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-006",
+    "utterance": "mở khoá cửa chính",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "khoa_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": "direct_command",
+    "goal_schema_decision": "proceed",
+    "goal_description": "mở khoá cửa chính",
+    "plan_actions": [
+      [
+        "khoa_cua_chinh",
+        "lock",
+        "unlock"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-007",
+    "utterance": "khoá cửa chính lại",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "khoa_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": "direct_command",
+    "goal_schema_decision": "proceed",
+    "goal_description": "khoá cửa chính lại",
+    "plan_actions": [
+      [
+        "khoa_cua_chinh",
+        "lock",
+        "lock"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-008",
+    "utterance": "tắt camera cửa chính",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "camera_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": "direct_command",
+    "goal_schema_decision": "proceed",
+    "goal_description": "tắt camera cửa chính",
+    "plan_actions": [
+      [
+        "camera_cua_chinh",
+        "on_off",
+        "turn_off"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  }
+]

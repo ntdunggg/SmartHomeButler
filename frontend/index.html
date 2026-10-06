@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>VinButler</title>
+<script>
+const token = localStorage.getItem('sh_token');
+if (token) {
+  fetch('/api/v1/auth/me', { headers: { 'Authorization': 'Bearer ' + token } })
+    .then(r => {
+      window.location.replace(r.ok ? '/home_assistant.html' : '/login.html');
+    })
+    .catch(() => { window.location.replace('/login.html'); });
+} else {
+  window.location.replace('/login.html');
+}
+</script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,421 @@
+{
+  "generated_at": "2026-09-01T01:13:42.116435+00:00",
+  "n_samples": 75,
+  "rounds": 5,
+  "commands_per_round": 15,
+  "difficulty_order": [
+    "đa bước",
+    "có tham số",
+    "mơ hồ / truy vấn trạng thái",
+    "đơn giản"
+  ],
+  "groups": {
+    "đa bước": {
+      "n_samples": 15,
+      "mean_ms": 665.3,
+      "p50_ms": 39.0,
+      "max_ms": 3533.0,
+      "samples": [
+        {
+          "command": "tối nay có khách, chuẩn bị phòng khách",
+          "latency_ms": 3533,
+          "nlu_source": "llm"
+        },
+        {
+          "command": "đi ngủ thôi",
+          "latency_ms": 3450,
+          "nlu_source": "llm"
+        },
+        {
+          "command": "dọn nhà nào",
+          "latency_ms": 2504,
+          "nlu_source": "llm"
+        },
+        {
+          "command": "tối nay có khách, chuẩn bị phòng khách",
+          "latency_ms": 39,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đi ngủ thôi",
+          "latency_ms": 57,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "dọn nhà nào",
+          "latency_ms": 28,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tối nay có khách, chuẩn bị phòng khách",
+          "latency_ms": 33,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đi ngủ thôi",
+          "latency_ms": 55,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "dọn nhà nào",
+          "latency_ms": 28,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tối nay có khách, chuẩn bị phòng khách",
+          "latency_ms": 38,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đi ngủ thôi",
+          "latency_ms": 59,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "dọn nhà nào",
+          "latency_ms": 32,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tối nay có khách, chuẩn bị phòng khách",
+          "latency_ms": 36,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đi ngủ thôi",
+          "latency_ms": 59,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "dọn nhà nào",
+          "latency_ms": 29,
+          "nlu_source": "rules"
+        }
+      ]
+    },
+    "có tham số": {
+      "n_samples": 20,
+      "mean_ms": 583.5,
+      "p50_ms": 30.5,
+      "max_ms": 10153.0,
+      "samples": [
+        {
+          "command": "điều hoà phòng ngủ 24 độ",
+          "latency_ms": 10153,
+          "nlu_source": "llm"
+        },
+        {
+          "command": "đặt độ sáng đèn bếp 60%",
+          "latency_ms": 696,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "quạt mức 2",
+          "latency_ms": 19,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "âm lượng tv 35",
+          "latency_ms": 222,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "điều hoà phòng ngủ 24 độ",
+          "latency_ms": 52,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đặt độ sáng đèn bếp 60%",
+          "latency_ms": 31,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "quạt mức 2",
+          "latency_ms": 16,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "âm lượng tv 35",
+          "latency_ms": 30,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "điều hoà phòng ngủ 24 độ",
+          "latency_ms": 53,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đặt độ sáng đèn bếp 60%",
+          "latency_ms": 32,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "quạt mức 2",
+          "latency_ms": 17,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "âm lượng tv 35",
+          "latency_ms": 26,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "điều hoà phòng ngủ 24 độ",
+          "latency_ms": 59,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đặt độ sáng đèn bếp 60%",
+          "latency_ms": 28,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "quạt mức 2",
+          "latency_ms": 17,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "âm lượng tv 35",
+          "latency_ms": 30,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "điều hoà phòng ngủ 24 độ",
+          "latency_ms": 54,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đặt độ sáng đèn bếp 60%",
+          "latency_ms": 28,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "quạt mức 2",
+          "latency_ms": 18,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "âm lượng tv 35",
+          "latency_ms": 89,
+          "nlu_source": "rules"
+        }
+      ]
+    },
+    "mơ hồ / truy vấn trạng thái": {
+      "n_samples": 10,
+      "mean_ms": 22.0,
+      "p50_ms": 19.5,
+      "max_ms": 32.0,
+      "samples": [
+        {
+          "command": "tắt đèn",
+          "latency_ms": 32,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đèn phòng khách đang thế nào",
+          "latency_ms": 24,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn",
+          "latency_ms": 19,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đèn phòng khách đang thế nào",
+          "latency_ms": 29,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn",
+          "latency_ms": 23,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đèn phòng khách đang thế nào",
+          "latency_ms": 20,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn",
+          "latency_ms": 18,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đèn phòng khách đang thế nào",
+          "latency_ms": 18,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn",
+          "latency_ms": 18,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đèn phòng khách đang thế nào",
+          "latency_ms": 19,
+          "nlu_source": "rules"
+        }
+      ]
+    },
+    "đơn giản": {
+      "n_samples": 30,
+      "mean_ms": 305.3,
+      "p50_ms": 27.0,
+      "max_ms": 5019.0,
+      "samples": [
+        {
+          "command": "bật đèn phòng khách",
+          "latency_ms": 5019,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn phòng khách",
+          "latency_ms": 238,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bat den phong khach",
+          "latency_ms": 253,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "khoá cửa",
+          "latency_ms": 32,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đóng cửa sổ",
+          "latency_ms": 21,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "kéo rèm",
+          "latency_ms": 2605,
+          "nlu_source": "llm"
+        },
+        {
+          "command": "bật đèn phòng khách",
+          "latency_ms": 26,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn phòng khách",
+          "latency_ms": 50,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bat den phong khach",
+          "latency_ms": 138,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "khoá cửa",
+          "latency_ms": 19,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đóng cửa sổ",
+          "latency_ms": 20,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "kéo rèm",
+          "latency_ms": 26,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bật đèn phòng khách",
+          "latency_ms": 25,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn phòng khách",
+          "latency_ms": 159,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bat den phong khach",
+          "latency_ms": 50,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "khoá cửa",
+          "latency_ms": 20,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đóng cửa sổ",
+          "latency_ms": 18,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "kéo rèm",
+          "latency_ms": 27,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bật đèn phòng khách",
+          "latency_ms": 29,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn phòng khách",
+          "latency_ms": 52,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bat den phong khach",
+          "latency_ms": 49,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "khoá cửa",
+          "latency_ms": 21,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đóng cửa sổ",
+          "latency_ms": 21,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "kéo rèm",
+          "latency_ms": 27,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bật đèn phòng khách",
+          "latency_ms": 26,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "tắt đèn phòng khách",
+          "latency_ms": 63,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "bat den phong khach",
+          "latency_ms": 51,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "khoá cửa",
+          "latency_ms": 19,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "đóng cửa sổ",
+          "latency_ms": 27,
+          "nlu_source": "rules"
+        },
+        {
+          "command": "kéo rèm",
+          "latency_ms": 27,
+          "nlu_source": "rules"
+        }
+      ]
+    }
+  }
+}

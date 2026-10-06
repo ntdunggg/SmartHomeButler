@@ -1,0 +1,22 @@
+{"id": "neg-001", "utterance": "đừng bật điều hoà phòng khách", "context": {}, "expect": {"negated": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "neg-002", "utterance": "dung bat dieu hoa phong khach", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-003", "utterance": "đừng tắt tivi phòng khách", "context": {}, "expect": {"negated": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "neg-004", "utterance": "dung tat tivi phong khach", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-005", "utterance": "khỏi bật đèn bếp", "context": {}, "expect": {"negated": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "neg-006", "utterance": "khoi bat den bep", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-007", "utterance": "thôi không cần bật loa thông minh", "context": {}, "expect": {"negated": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "neg-008", "utterance": "thoi khong can bat loa thong minh", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-009", "utterance": "chưa cần bật bình nóng lạnh", "context": {}, "expect": {"negated": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "neg-010", "utterance": "chua can bat binh nong lanh", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-011", "utterance": "đừng có mở rèm phòng khách", "context": {}, "expect": {"negated": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "neg-012", "utterance": "dung co mo rem phong khach", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-013", "utterance": "khỏi tắt điều hoà phòng khách", "context": {}, "expect": {"negated": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "neg-014", "utterance": "khoi tat dieu hoa phong khach", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-015", "utterance": "thôi không cần tắt đèn bếp", "context": {}, "expect": {"negated": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "neg-016", "utterance": "thoi khong can tat den bep", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}
+{"id": "neg-017", "utterance": "không phải", "context": {}, "expect": {"intent": "reject"}, "expected_route": "deterministic"}
+{"id": "neg-018", "utterance": "sai rồi", "context": {}, "expect": {"intent": "reject"}, "expected_route": "deterministic"}
+{"id": "neg-019", "utterance": "thôi không", "context": {}, "expect": {"intent": "reject"}, "expected_route": "deterministic"}
+{"id": "neg-020", "utterance": "không đúng", "context": {}, "expect": {"intent": "reject"}, "expected_route": "deterministic"}
+{"id": "neg-021", "utterance": "khong phai", "context": {}, "expect": {"intent": "reject"}, "expected_route": "deterministic"}
+{"id": "neg-022", "utterance": "đừng không bật đèn phòng khách", "context": {}, "expect": {"negated": true}, "expected_route": "deterministic"}

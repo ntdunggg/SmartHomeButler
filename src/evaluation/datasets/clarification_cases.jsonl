@@ -1,0 +1,25 @@
+{"id": "cl-001", "utterance": "bật lên đi", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-002", "utterance": "tắt giúp tôi", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-003", "utterance": "mở nó ra", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-004", "utterance": "bật đèn ngủ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-005", "utterance": "tắt đèn ngủ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-006", "utterance": "bật máy lọc không khí", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-007", "utterance": "bật máy pha cà phê", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-008", "utterance": "bật đèn phòng tắm", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-009", "utterance": "tắt lò vi sóng", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-010", "utterance": "mở đèn ban công", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-011", "utterance": "nóng quá", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-012", "utterance": "tối quá", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-013", "utterance": "ồn quá", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-014", "utterance": "đèn bếp còn bật không", "context": {}, "expect": {"intent": "query_state"}, "expected_route": "deterministic"}
+{"id": "cl-015", "utterance": "nhà có ai không", "context": {}, "expect": {"intent": "query_state"}, "expected_route": "deterministic"}
+{"id": "cl-016", "utterance": "điều hoà phòng khách bao nhiêu độ", "context": {}, "expect": {"intent": "query_state"}, "expected_route": "deterministic"}
+{"id": "cl-017", "utterance": "tivi phòng khách đang bật không", "context": {}, "expect": {"intent": "query_state"}, "expected_route": "deterministic"}
+{"id": "cl-018", "utterance": "loa thông minh còn bật không", "context": {}, "expect": {"intent": "query_state"}, "expected_route": "deterministic"}
+{"id": "cl-019", "utterance": "tăng lên đi", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-020", "utterance": "giảm xuống chút", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-021", "utterance": "đóng lại giúp mình", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-022", "utterance": "mở ra nào", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "cl-023", "utterance": "xem phim ở phòng bố mẹ", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": {"intent": "watch_movie", "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "cl-024", "utterance": "chào bạn", "context": {}, "expect": {"utterance_type": "SOCIAL_UTTERANCE"}, "expected_route": "deterministic"}
+{"id": "cl-025", "utterance": "cảm ơn nhé", "context": {}, "expect": {"utterance_type": "SOCIAL_UTTERANCE"}, "expected_route": "deterministic"}

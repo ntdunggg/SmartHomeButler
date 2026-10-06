@@ -1,0 +1,10 @@
+{"id": "gr-001", "utterance": "bật đèn bàn học", "context": {}, "expect": {"targets": ["den_ban_hoc"]}, "expected_route": "deterministic"}
+{"id": "gr-002", "utterance": "bật đèn bàn làm việc", "context": {}, "expect": {"targets": ["den_ban_lam_viec"]}, "expected_route": "deterministic"}
+{"id": "gr-003", "utterance": "tắt máy rửa chén", "context": {}, "expect": {"targets": ["may_rua_bat"]}, "expected_route": "deterministic"}
+{"id": "gr-004", "utterance": "bật vô tuyến", "context": {}, "expect": {"targets": ["tv_phong_khach"]}, "expected_route": "deterministic"}
+{"id": "gr-005", "utterance": "bật máy hút bụi", "context": {}, "expect": {"targets": ["robot_hut_bui"]}, "expected_route": "deterministic"}
+{"id": "gr-006", "utterance": "bật điều hoà", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "gr-007", "utterance": "bật đèn ngủ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "gr-008", "utterance": "tắt cửa sổ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "gr-009", "utterance": "bật điều hoà phòng con", "context": {}, "expect": {"targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "gr-010", "utterance": "tắt đèn ngủ con", "context": {}, "expect": {"targets": ["den_ngu_con"], "decision": "proceed"}, "expected_route": "deterministic"}

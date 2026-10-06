@@ -1,0 +1,34 @@
+{"id": "ref-001", "utterance": "bật nó lên", "context": {"last_device_id": "den_bep"}, "expect": {"targets": ["den_bep"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-002", "utterance": "tắt nó đi", "context": {"last_device_id": "den_bep"}, "expect": {"targets": ["den_bep"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-003", "utterance": "tat no di", "context": {"last_device_id": "den_bep"}, "expect": {"targets": ["den_bep"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-004", "utterance": "bật nó lên", "context": {"last_device_id": "dieu_hoa_phong_khach"}, "expect": {"targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-005", "utterance": "tắt nó đi", "context": {"last_device_id": "dieu_hoa_phong_khach"}, "expect": {"targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-006", "utterance": "tat no di", "context": {"last_device_id": "dieu_hoa_phong_khach"}, "expect": {"targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-007", "utterance": "bật nó lên", "context": {"last_device_id": "tv_phong_khach"}, "expect": {"targets": ["tv_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-008", "utterance": "tắt nó đi", "context": {"last_device_id": "tv_phong_khach"}, "expect": {"targets": ["tv_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-009", "utterance": "tat no di", "context": {"last_device_id": "tv_phong_khach"}, "expect": {"targets": ["tv_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-010", "utterance": "bật nó lên", "context": {"last_device_id": "den_chum_phong_khach"}, "expect": {"targets": ["den_chum_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-011", "utterance": "tắt nó đi", "context": {"last_device_id": "den_chum_phong_khach"}, "expect": {"targets": ["den_chum_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-012", "utterance": "tat no di", "context": {"last_device_id": "den_chum_phong_khach"}, "expect": {"targets": ["den_chum_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-013", "utterance": "bật nó lên", "context": {"last_device_id": "loa_phong_khach"}, "expect": {"targets": ["loa_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-014", "utterance": "tắt nó đi", "context": {"last_device_id": "loa_phong_khach"}, "expect": {"targets": ["loa_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-015", "utterance": "tat no di", "context": {"last_device_id": "loa_phong_khach"}, "expect": {"targets": ["loa_phong_khach"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-016", "utterance": "bật nó lên", "context": {"last_device_id": "binh_nong_lanh"}, "expect": {"targets": ["binh_nong_lanh"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-017", "utterance": "tắt nó đi", "context": {"last_device_id": "binh_nong_lanh"}, "expect": {"targets": ["binh_nong_lanh"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-018", "utterance": "tat no di", "context": {"last_device_id": "binh_nong_lanh"}, "expect": {"targets": ["binh_nong_lanh"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-019", "utterance": "bật nó lên", "context": {"last_device_id": "robot_hut_bui"}, "expect": {"targets": ["robot_hut_bui"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-020", "utterance": "tắt nó đi", "context": {"last_device_id": "robot_hut_bui"}, "expect": {"targets": ["robot_hut_bui"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-021", "utterance": "tat no di", "context": {"last_device_id": "robot_hut_bui"}, "expect": {"targets": ["robot_hut_bui"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-022", "utterance": "bật nó lên", "context": {"last_device_id": "may_rua_bat"}, "expect": {"targets": ["may_rua_bat"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-023", "utterance": "tắt nó đi", "context": {"last_device_id": "may_rua_bat"}, "expect": {"targets": ["may_rua_bat"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-024", "utterance": "tat no di", "context": {"last_device_id": "may_rua_bat"}, "expect": {"targets": ["may_rua_bat"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-025", "utterance": "bật nó lên", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-026", "utterance": "tắt cái đó đi", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-027", "utterance": "để nó như cũ", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-028", "utterance": "mở ra đi", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-029", "utterance": "đóng lại giúp", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-030", "utterance": "bật cái vừa nãy", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-031", "utterance": "tắt cái kia", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-032", "utterance": "bật lên", "context": {}, "expect": {"decision": "clarify"}, "expected_route": "deterministic"}
+{"id": "ref-033", "utterance": "tắt nó đi", "context": {"last_device_id": "den_ban_hoc", "recent_dialogue": ["bật den_ban_hoc"]}, "expect": {"targets": ["den_ban_hoc"], "decision": "proceed"}, "expected_route": "deterministic"}
+{"id": "ref-034", "utterance": "tắt nó đi", "context": {"last_device_id": "tv_phong_bo_me", "recent_dialogue": ["bật tv_phong_bo_me"]}, "expect": {"targets": ["tv_phong_bo_me"], "decision": "proceed"}, "expected_route": "deterministic"}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "uns-006",
+    "utterance": "mở khoá cửa chính",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "khoa_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": "direct_command",
+    "goal_schema_decision": "proceed",
+    "goal_description": "mở khoá cửa chính",
+    "plan_actions": [
+      [
+        "khoa_cua_chinh",
+        "lock",
+        "unlock"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-007",
+    "utterance": "khoá cửa chính lại",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "khoa_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": "direct_command",
+    "goal_schema_decision": "proceed",
+    "goal_description": "khoá cửa chính lại",
+    "plan_actions": [
+      [
+        "khoa_cua_chinh",
+        "lock",
+        "lock"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  },
+  {
+    "id": "uns-008",
+    "utterance": "tắt camera cửa chính",
+    "route": "llm",
+    "expected_route": "deterministic",
+    "expect": {
+      "decision": "clarify"
+    },
+    "actual": {
+      "decision": "proceed",
+      "utterance_type": "DEVICE_COMMAND",
+      "targets": [
+        "camera_cua_chinh"
+      ],
+      "area": null,
+      "outcome": "candidate_plan"
+    },
+    "request_type": "direct_command",
+    "goal_schema_decision": "proceed",
+    "goal_description": "tắt camera cửa chính",
+    "plan_actions": [
+      [
+        "camera_cua_chinh",
+        "on_off",
+        "turn_off"
+      ]
+    ],
+    "missing_information": [],
+    "schema_repairs": 0
+  }
+]

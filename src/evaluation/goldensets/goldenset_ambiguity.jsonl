@@ -1,0 +1,86 @@
+{"id": "A01", "category": "cau_mo_ho", "turns": [{"utterance": "tắt đèn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A02", "category": "cau_mo_ho", "turns": [{"utterance": "bật đèn lên", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A03", "category": "cau_mo_ho", "turns": [{"utterance": "mở ra", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A04", "category": "cau_mo_ho", "turns": [{"utterance": "đóng lại", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A05", "category": "cau_mo_ho", "turns": [{"utterance": "bật lên đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A06", "category": "cau_mo_ho", "turns": [{"utterance": "tắt đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A07", "category": "cau_mo_ho", "turns": [{"utterance": "chỉnh nhiệt độ", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A08", "category": "cau_mo_ho", "turns": [{"utterance": "tăng lên", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A09", "category": "cau_mo_ho", "turns": [{"utterance": "giảm xuống chút", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A10", "category": "cau_mo_ho", "turns": [{"utterance": "để nó to hơn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A11", "category": "cau_mo_ho", "turns": [{"utterance": "nhỏ lại giúp tôi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A12", "category": "cau_mo_ho", "turns": [{"utterance": "tắt nó đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A13", "category": "cau_mo_ho", "turns": [{"utterance": "bật cái đó lên", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A14", "category": "cau_mo_ho", "turns": [{"utterance": "mở cái kia ra", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A15", "category": "cau_mo_ho", "turns": [{"utterance": "làm gì đó đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A16", "category": "cau_mo_ho", "turns": [{"utterance": "giúp tôi với", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A17", "category": "cau_mo_ho", "turns": [{"utterance": "xử lý giúp tôi cái này", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A18", "category": "cau_mo_ho", "turns": [{"utterance": "chỉnh lại cho hợp lý hơn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A19", "category": "cau_mo_ho", "turns": [{"utterance": "cho nó ổn hơn đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A20", "category": "cau_mo_ho", "turns": [{"utterance": "làm cái gì đó cho phòng", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A21", "category": "cau_mo_ho", "turns": [{"utterance": "phòng ngủ", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A22", "category": "cau_mo_ho", "turns": [{"utterance": "đèn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A23", "category": "cau_mo_ho", "turns": [{"utterance": "điều hoà", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A24", "category": "cau_mo_ho", "turns": [{"utterance": "cái quạt", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A25", "category": "cau_mo_ho", "turns": [{"utterance": "bật", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A26", "category": "cau_mo_ho", "turns": [{"utterance": "tắt hết", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A27", "category": "cau_mo_ho", "turns": [{"utterance": "mở hết ra", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A28", "category": "cau_mo_ho", "turns": [{"utterance": "tăng nhiệt độ lên tí", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A29", "category": "cau_mo_ho", "turns": [{"utterance": "giảm độ sáng", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A30", "category": "cau_mo_ho", "turns": [{"utterance": "để yên tĩnh hơn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A31", "category": "cau_mo_ho", "turns": [{"utterance": "bật đèn phòng", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A32", "category": "cau_mo_ho", "turns": [{"utterance": "tắt đèn ở đó", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A33", "category": "cau_mo_ho", "turns": [{"utterance": "mở rèm", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A34", "category": "cau_mo_ho", "turns": [{"utterance": "đóng cửa sổ", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A35", "category": "cau_mo_ho", "turns": [{"utterance": "bật tivi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A36", "category": "cau_mo_ho", "turns": [{"utterance": "tắt loa", "ctx": {}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A37", "category": "cau_mo_ho", "turns": [{"utterance": "chỉnh cho sáng hơn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A38", "category": "cau_mo_ho", "turns": [{"utterance": "cho ấm hơn đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A39", "category": "cau_mo_ho", "turns": [{"utterance": "tối quá", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A40", "category": "cau_mo_ho", "turns": [{"utterance": "ồn quá", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A41", "category": "cau_mo_ho", "turns": [{"utterance": "mát lên đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A42", "category": "cau_mo_ho", "turns": [{"utterance": "ấm lên chút", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A43", "category": "cau_mo_ho", "turns": [{"utterance": "sáng lên nào", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A44", "category": "cau_mo_ho", "turns": [{"utterance": "to lên tí", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A45", "category": "cau_mo_ho", "turns": [{"utterance": "khoá lại", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A46", "category": "cau_mo_ho", "turns": [{"utterance": "mở khoá đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A47", "category": "cau_mo_ho", "turns": [{"utterance": "bật máy lọc", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "A48", "category": "cau_mo_ho", "turns": [{"utterance": "tắt bớt đi", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B01", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "nóng quá đi", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B02", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "oi bức không chịu được", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B03", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "trong phòng chói mắt quá", "ctx": {"focus_room": "Phòng ngủ con"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B04", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "tối quá chẳng thấy gì", "ctx": {"focus_room": "Phòng bếp"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B05", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "ồn quá đầu óc không tập trung được", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B06", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "phòng bí quá khó thở", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B07", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "lạnh run hết cả người", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B08", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "nắng chiều hắt vào chói quá", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B09", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "chuẩn bị đi ngủ đi", "ctx": {"focus_room": "Phòng ngủ con"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B10", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "chuẩn bị xem phim nào", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B11", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "tôi muốn ngồi đọc sách thư giãn", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B12", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "làm cho phòng dễ chịu hơn chút", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B13", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "tạo không khí ấm cúng cho bữa tối", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B14", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "người nóng ran vừa tập thể dục xong", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B15", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "mắt mỏi vì nhìn màn hình cả ngày", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B16", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "phòng có mùi ẩm mốc khó chịu", "ctx": {"focus_room": "Phòng ngủ con"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B17", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "muốn không gian yên tĩnh để ngủ trưa", "ctx": {"focus_room": "Phòng ngủ con"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B18", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "chuẩn bị chỗ làm việc buổi tối", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B19", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "cho phòng sáng sủa lên tí", "ctx": {"focus_room": "Phòng bếp"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B20", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "làm mát phòng giúp tôi", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B21", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "giảm bớt ánh sáng cho dịu mắt", "ctx": {"focus_room": "Phòng ngủ con"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "B22", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "bật gì đó cho đỡ ngột ngạt", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B23", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "tôi cần tỉnh táo làm việc khuya", "ctx": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B24", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "cho không khí trong lành hơn", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "B25", "category": "yeu_cau_mo_ho", "turns": [{"utterance": "phòng nóng và bí, xử lý giúp", "ctx": {"focus_room": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}]}
+{"id": "C01-anaphora", "category": "hoi_thoai_dai", "turns": [{"utterance": "bật đèn phòng khách", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["den_chum_phong_khach"], "dev_none": []}, {"utterance": "tắt nó đi", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["den_chum_phong_khach"], "dev_none": []}]}
+{"id": "C02-refine-room", "category": "hoi_thoai_dai", "turns": [{"utterance": "trong phòng chói mắt quá", "ctx": {"speaker_location": "Phòng khách"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}, {"utterance": "à ở phòng ngủ con mà", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["den_ngu_con"], "dev_none": ["den_chum_phong_khach"]}]}
+{"id": "C03-carry-adjust", "category": "hoi_thoai_dai", "turns": [{"utterance": "trong phòng chói mắt quá", "ctx": {"speaker_location": "Phòng ngủ con"}, "expect": ["candidate_plan"], "dev_any": [], "dev_none": []}, {"utterance": "giảm bớt độ sáng nữa đi", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["den_ngu_con"], "dev_none": []}]}
+{"id": "C04-slotfill", "category": "hoi_thoai_dai", "turns": [{"utterance": "tắt đèn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}, {"utterance": "phòng khách", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["den_chum_phong_khach"], "dev_none": []}]}
+{"id": "C05-cancel-pending", "category": "hoi_thoai_dai", "turns": [{"utterance": "tắt đèn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}, {"utterance": "thôi khỏi", "ctx": {}, "expect": ["answer", "cancelled", "no_goal"], "dev_any": [], "dev_none": []}]}
+{"id": "C06-ownroom-parent", "category": "hoi_thoai_dai", "turns": [{"utterance": "bật đèn phòng ngủ của tôi", "ctx": {"speaker_home_room": "Phòng ngủ bố mẹ"}, "expect": ["candidate_plan"], "dev_any": ["den_ngu_bo_me"], "dev_none": ["den_ngu_con"]}, {"utterance": "tắt bớt đèn bàn làm việc đi", "ctx": {}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "C07-ownroom-kid", "category": "hoi_thoai_dai", "turns": [{"utterance": "đèn phòng của con sáng quá", "ctx": {"speaker_home_room": "Phòng ngủ con"}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}, {"utterance": "giảm xuống nữa đi", "ctx": {}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "C08-type-in-room", "category": "hoi_thoai_dai", "turns": [{"utterance": "tắt đèn phòng ngủ con", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["den_ngu_con", "den_ban_hoc"], "dev_none": []}, {"utterance": "bật lại đi", "ctx": {}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "C09-state-query", "category": "hoi_thoai_dai", "turns": [{"utterance": "điều hoà phòng khách đang bật không", "ctx": {}, "expect": ["answer", "clarification"], "dev_any": [], "dev_none": []}, {"utterance": "thế còn đèn thì sao", "ctx": {}, "expect": ["answer", "clarification"], "dev_any": [], "dev_none": []}]}
+{"id": "C10-negation", "category": "hoi_thoai_dai", "turns": [{"utterance": "đừng bật đèn phòng khách nhé", "ctx": {}, "expect": ["answer", "candidate_plan", "no_goal"], "dev_any": [], "dev_none": []}, {"utterance": "bật điều hoà phòng khách lên", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["dieu_hoa_phong_khach"], "dev_none": []}]}
+{"id": "C11-two-pending-global-cancel", "category": "hoi_thoai_dai", "turns": [{"utterance": "tắt đèn", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}, {"utterance": "chỉnh nhiệt độ", "ctx": {}, "expect": ["clarification"], "dev_any": [], "dev_none": []}, {"utterance": "huỷ hết đi", "ctx": {}, "expect": ["answer", "cancelled"], "dev_any": [], "dev_none": []}]}
+{"id": "C12-correction-comma", "category": "hoi_thoai_dai", "turns": [{"utterance": "bật đèn phòng bếp, à nhầm, phòng khách", "ctx": {}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": ["den_bep"]}]}
+{"id": "C13-multi-turn-mixed", "category": "hoi_thoai_dai", "turns": [{"utterance": "bật điều hoà phòng ngủ bố mẹ", "ctx": {}, "expect": ["candidate_plan"], "dev_any": ["dieu_hoa_phong_bo_me"], "dev_none": []}, {"utterance": "nóng quá giảm nhiệt độ đi", "ctx": {}, "expect": ["candidate_plan", "clarification"], "dev_any": [], "dev_none": []}, {"utterance": "thôi đủ rồi cảm ơn", "ctx": {}, "expect": ["answer", "cancelled", "clarification", "no_goal"], "dev_any": [], "dev_none": []}]}

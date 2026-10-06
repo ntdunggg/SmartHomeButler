@@ -1,0 +1,12 @@
+{"id": "can-001", "utterance": "thôi khỏi", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-002", "utterance": "huỷ đi", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-003", "utterance": "bỏ đi", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-004", "utterance": "thôi không cần nữa", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-005", "utterance": "quên đi", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-006", "utterance": "thôi vậy", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-007", "utterance": "khỏi làm", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-008", "utterance": "bỏ hết đi", "context": {}, "expect": {"is_cancellation": true, "intent": "cancel"}, "expected_route": "deterministic"}
+{"id": "can-009", "utterance": "thoi khoi", "context": {}, "expect": {"is_cancellation": true}, "expected_route": "deterministic"}
+{"id": "can-010", "utterance": "huy di", "context": {}, "expect": {"is_cancellation": true}, "expected_route": "deterministic"}
+{"id": "can-011", "utterance": "bo di", "context": {}, "expect": {"is_cancellation": true}, "expected_route": "deterministic"}
+{"id": "can-012", "utterance": "quen di", "context": {}, "expect": {"is_cancellation": true}, "expected_route": "deterministic"}

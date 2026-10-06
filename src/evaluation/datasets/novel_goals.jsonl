@@ -1,0 +1,12 @@
+{"id": "novel-01", "utterance": "phòng hơi bí, làm gì đó cho dễ chịu đi", "context": {"focus_room": "Phòng khách"}, "expect": {"novel": true, "utterance_type": "ENVIRONMENT_REQUEST"}, "expected_route": "llm"}
+{"id": "novel-02", "utterance": "chuẩn bị không gian làm việc buổi tối giúp mình", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-03", "utterance": "nhà đang ngột ngạt quá", "context": {"focus_room": "Phòng khách"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-04", "utterance": "tối nay tôi muốn thư giãn với một bộ phim", "context": {"focus_room": "Phòng khách"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-05", "utterance": "buồn ngủ rồi đấy, lo liệu giúp tôi", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-06", "utterance": "chuẩn bị đón khách tối nay ở phòng khách", "context": {"focus_room": "Phòng khách"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-07", "utterance": "làm cho phòng dịu lại một chút", "context": {"focus_room": "Phòng khách"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-08", "utterance": "con cần tập trung học bài", "context": {"focus_room": "Phòng ngủ con"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-09", "utterance": "trời oi bức khó chịu quá", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-10", "utterance": "về đến nhà rồi, làm cho ấm cúng lên", "context": {"focus_room": "Phòng khách"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-11", "utterance": "không gian hơi tù túng, thoáng lên chút đi", "context": {"focus_room": "Phòng bếp"}, "expect": {"novel": true}, "expected_route": "llm"}
+{"id": "novel-12", "utterance": "chuẩn bị cho bé đi ngủ giúp mình nhé", "context": {"focus_room": "Phòng ngủ con"}, "expect": {"novel": true}, "expected_route": "llm"}

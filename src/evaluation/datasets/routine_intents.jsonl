@@ -1,0 +1,51 @@
+{"id": "rt-001", "utterance": "đi ngủ thôi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-002", "utterance": "di ngu thoi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-003", "utterance": "chuẩn bị đi ngủ nào", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-004", "utterance": "chuan bi di ngu nao", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-005", "utterance": "tới giờ ngủ rồi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-006", "utterance": "toi gio ngu roi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-007", "utterance": "tôi sắp về nhà", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "expected_route": "deterministic"}
+{"id": "rt-008", "utterance": "toi sap ve nha", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "expected_route": "deterministic"}
+{"id": "rt-009", "utterance": "tôi về tới nơi rồi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "expected_route": "deterministic"}
+{"id": "rt-010", "utterance": "toi ve toi noi roi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "expected_route": "deterministic"}
+{"id": "rt-011", "utterance": "cả nhà chuẩn bị ra ngoài", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-012", "utterance": "ca nha chuan bi ra ngoai", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-013", "utterance": "tôi đi làm đây", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-014", "utterance": "toi di lam day", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-015", "utterance": "ra khỏi nhà thôi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-016", "utterance": "ra khoi nha thoi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-017", "utterance": "mình xem phim nào", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "expected_route": "deterministic"}
+{"id": "rt-018", "utterance": "minh xem phim nao", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "expected_route": "deterministic"}
+{"id": "rt-019", "utterance": "coi phim thôi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "expected_route": "deterministic"}
+{"id": "rt-020", "utterance": "coi phim thoi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "expected_route": "deterministic"}
+{"id": "rt-021", "utterance": "tôi vào việc đây", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "expected_route": "deterministic"}
+{"id": "rt-022", "utterance": "toi vao viec day", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "expected_route": "deterministic"}
+{"id": "rt-023", "utterance": "ngồi học bài nào", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "expected_route": "deterministic"}
+{"id": "rt-024", "utterance": "ngoi hoc bai nao", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "expected_route": "deterministic"}
+{"id": "rt-025", "utterance": "tập trung làm việc thôi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "expected_route": "deterministic"}
+{"id": "rt-026", "utterance": "tap trung lam viec thoi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "expected_route": "deterministic"}
+{"id": "rt-027", "utterance": "thức dậy rồi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "expected_route": "deterministic"}
+{"id": "rt-028", "utterance": "thuc day roi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "expected_route": "deterministic"}
+{"id": "rt-029", "utterance": "dọn cơm ăn thôi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "expected_route": "deterministic"}
+{"id": "rt-030", "utterance": "don com an thoi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "expected_route": "deterministic"}
+{"id": "rt-031", "utterance": "nhà có khách tới", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "expected_route": "deterministic"}
+{"id": "rt-032", "utterance": "nha co khach toi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "expected_route": "deterministic"}
+{"id": "rt-033", "utterance": "good night nhé", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-034", "utterance": "good night nhe", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "expected_route": "deterministic"}
+{"id": "rt-035", "utterance": "tôi về tới rồi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "expected_route": "deterministic"}
+{"id": "rt-036", "utterance": "toi ve toi roi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "expected_route": "deterministic"}
+{"id": "rt-037", "utterance": "đi vắng vài hôm", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-038", "utterance": "di vang vai hom", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "expected_route": "deterministic"}
+{"id": "rt-039", "utterance": "xem tivi thôi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "expected_route": "deterministic"}
+{"id": "rt-040", "utterance": "xem tivi thoi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "expected_route": "deterministic"}
+{"id": "rt-041", "utterance": "bữa tối tới rồi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "expected_route": "deterministic"}
+{"id": "rt-042", "utterance": "bua toi toi roi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "expected_route": "deterministic"}
+{"id": "rt-043", "utterance": "đón khách nào", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "expected_route": "deterministic"}
+{"id": "rt-044", "utterance": "don khach nao", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "expected_route": "deterministic"}
+{"id": "rt-045", "utterance": "báo thức kêu rồi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "expected_route": "deterministic"}
+{"id": "rt-046", "utterance": "bao thuc keu roi", "context": {}, "expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "expected_route": "deterministic"}
+{"id": "rt-047", "utterance": "Tối nay tôi muốn thư giãn với một bộ phim", "context": {}, "expect": {"intent": "watch_movie"}, "expected_route": "llm"}
+{"id": "rt-048", "utterance": "Tôi mệt rồi, muốn nghỉ ngơi thôi", "context": {}, "expect": {"intent": "prepare_for_sleep"}, "expected_route": "llm"}
+{"id": "rt-049", "utterance": "Mình ra ngoài một lát rồi về", "context": {}, "expect": {"intent": "leave_home"}, "expected_route": "llm"}
+{"id": "rt-050", "utterance": "Về đến nhà rồi, dễ chịu quá", "context": {}, "expect": {"intent": "arrive_home"}, "expected_route": "llm"}
+{"id": "rt-051", "utterance": "Cần tập trung hoàn thành báo cáo", "context": {}, "expect": {"intent": "work_or_study"}, "expected_route": "llm"}

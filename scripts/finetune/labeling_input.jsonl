@@ -1,0 +1,319 @@
+{"id": "can-001", "utterance": "thôi khỏi", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-002", "utterance": "huỷ đi", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-003", "utterance": "bỏ đi", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-004", "utterance": "thôi không cần nữa", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-005", "utterance": "quên đi", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-006", "utterance": "thôi vậy", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-007", "utterance": "khỏi làm", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-008", "utterance": "bỏ hết đi", "context": {}, "reference_expect": {"is_cancellation": true, "intent": "cancel"}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-009", "utterance": "thoi khoi", "context": {}, "reference_expect": {"is_cancellation": true}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-010", "utterance": "huy di", "context": {}, "reference_expect": {"is_cancellation": true}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-011", "utterance": "bo di", "context": {}, "reference_expect": {"is_cancellation": true}, "source_file": "cancellation_cases.jsonl"}
+{"id": "can-012", "utterance": "quen di", "context": {}, "reference_expect": {"is_cancellation": true}, "source_file": "cancellation_cases.jsonl"}
+{"id": "cl-001", "utterance": "bật lên đi", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-002", "utterance": "tắt giúp tôi", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-003", "utterance": "mở nó ra", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-004", "utterance": "bật đèn ngủ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-005", "utterance": "tắt đèn ngủ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-006", "utterance": "bật máy lọc không khí", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-007", "utterance": "bật máy pha cà phê", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-008", "utterance": "bật đèn phòng tắm", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-009", "utterance": "tắt lò vi sóng", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-010", "utterance": "mở đèn ban công", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-011", "utterance": "nóng quá", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-012", "utterance": "tối quá", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-013", "utterance": "ồn quá", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-014", "utterance": "đèn bếp còn bật không", "context": {}, "reference_expect": {"intent": "query_state"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-015", "utterance": "nhà có ai không", "context": {}, "reference_expect": {"intent": "query_state"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-016", "utterance": "điều hoà phòng khách bao nhiêu độ", "context": {}, "reference_expect": {"intent": "query_state"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-017", "utterance": "tivi phòng khách đang bật không", "context": {}, "reference_expect": {"intent": "query_state"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-018", "utterance": "loa thông minh còn bật không", "context": {}, "reference_expect": {"intent": "query_state"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-019", "utterance": "tăng lên đi", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-020", "utterance": "giảm xuống chút", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-021", "utterance": "đóng lại giúp mình", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-022", "utterance": "mở ra nào", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-023", "utterance": "xem phim ở phòng bố mẹ", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "reference_expect": {"intent": "watch_movie", "decision": "proceed"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-024", "utterance": "chào bạn", "context": {}, "reference_expect": {"utterance_type": "SOCIAL_UTTERANCE"}, "source_file": "clarification_cases.jsonl"}
+{"id": "cl-025", "utterance": "cảm ơn nhé", "context": {}, "reference_expect": {"utterance_type": "SOCIAL_UTTERANCE"}, "source_file": "clarification_cases.jsonl"}
+{"id": "con-001", "utterance": "bật nó lên", "context": {"last_device_id": "den_bep"}, "reference_expect": {"targets": ["den_bep"], "decision": "proceed"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-002", "utterance": "bật nó lên", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-003", "utterance": "nóng quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_cooler", "decision": "proceed"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-004", "utterance": "nóng quá", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-005", "utterance": "xem phim ở phòng khách", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "watch_movie", "decision": "proceed"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-006", "utterance": "xem phim ở phòng bố mẹ", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "reference_expect": {"intent": "watch_movie", "decision": "proceed"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-007", "utterance": "tắt đèn bếp", "context": {}, "reference_expect": {"targets": ["den_bep"], "decision": "proceed"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "con-008", "utterance": "tắt đèn ngủ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "context_contrast_pairs.jsonl"}
+{"id": "cor-001", "utterance": "nhầm rồi, tắt đèn phòng khách", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off", "targets": ["den_chum_phong_khach"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-002", "utterance": "nham roi, tat den phong khach", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-003", "utterance": "à mà bật đèn bếp đi", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on", "targets": ["den_bep"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-004", "utterance": "a ma bat den bep di", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-005", "utterance": "không phải đèn bếp, ý tôi là bật đèn chùm", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on", "targets": ["den_chum_phong_khach"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-006", "utterance": "khong phai den bep, y toi la bat den chum", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-007", "utterance": "ý mình là tắt tivi phòng khách", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off", "targets": ["tv_phong_khach"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-008", "utterance": "y minh la tat tivi phong khach", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-009", "utterance": "sửa lại, bật điều hoà phòng con", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on", "targets": ["dieu_hoa_phong_con"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-010", "utterance": "sua lai, bat dieu hoa phong con", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-011", "utterance": "nhầm, tắt đèn bàn học", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off", "targets": ["den_ban_hoc"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-012", "utterance": "nham, tat den ban hoc", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-013", "utterance": "à mà tắt loa thông minh đi", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off", "targets": ["loa_phong_khach"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-014", "utterance": "a ma tat loa thong minh di", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_off"}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-015", "utterance": "đổi thành bật bình nóng lạnh", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on", "targets": ["binh_nong_lanh"]}, "source_file": "correction_cases.jsonl"}
+{"id": "cor-016", "utterance": "doi thanh bat binh nong lanh", "context": {}, "reference_expect": {"is_correction": true, "intent": "turn_on"}, "source_file": "correction_cases.jsonl"}
+{"id": "gr-001", "utterance": "bật đèn bàn học", "context": {}, "reference_expect": {"targets": ["den_ban_hoc"]}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-002", "utterance": "bật đèn bàn làm việc", "context": {}, "reference_expect": {"targets": ["den_ban_lam_viec"]}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-003", "utterance": "tắt máy rửa chén", "context": {}, "reference_expect": {"targets": ["may_rua_bat"]}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-004", "utterance": "bật vô tuyến", "context": {}, "reference_expect": {"targets": ["tv_phong_khach"]}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-005", "utterance": "bật máy hút bụi", "context": {}, "reference_expect": {"targets": ["robot_hut_bui"]}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-006", "utterance": "bật điều hoà", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-007", "utterance": "bật đèn ngủ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-008", "utterance": "tắt cửa sổ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-009", "utterance": "bật điều hoà phòng con", "context": {}, "reference_expect": {"targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "device_grounding.jsonl"}
+{"id": "gr-010", "utterance": "tắt đèn ngủ con", "context": {}, "reference_expect": {"targets": ["den_ngu_con"], "decision": "proceed"}, "source_file": "device_grounding.jsonl"}
+{"id": "dc-001", "utterance": "bật đèn bếp", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_bep"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-002", "utterance": "bat den bep", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_bep"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-003", "utterance": "tắt đèn bếp", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_bep"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-004", "utterance": "tat den bep", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_bep"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-005", "utterance": "bật đèn bếp giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["den_bep"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-006", "utterance": "bật đèn chùm", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-007", "utterance": "bat den chum", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-008", "utterance": "tắt đèn chùm", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-009", "utterance": "tat den chum", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-010", "utterance": "bật đèn chùm giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-011", "utterance": "bật đèn bàn ăn", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_ban_an"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-012", "utterance": "bat den ban an", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_ban_an"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-013", "utterance": "tắt đèn bàn ăn", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_ban_an"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-014", "utterance": "tat den ban an", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_ban_an"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-015", "utterance": "bật đèn bàn ăn giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["den_ban_an"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-016", "utterance": "bật đèn bàn học", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-017", "utterance": "bat den ban hoc", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-018", "utterance": "tắt đèn bàn học", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-019", "utterance": "tat den ban hoc", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-020", "utterance": "bật đèn bàn học giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-021", "utterance": "bật đèn bàn làm việc", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_ban_lam_viec"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-022", "utterance": "bat den ban lam viec", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["den_ban_lam_viec"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-023", "utterance": "tắt đèn bàn làm việc", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_ban_lam_viec"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-024", "utterance": "tat den ban lam viec", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["den_ban_lam_viec"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-025", "utterance": "bật đèn bàn làm việc giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["den_ban_lam_viec"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-026", "utterance": "bật tivi phòng khách", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-027", "utterance": "bat tivi phong khach", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-028", "utterance": "tắt tivi phòng khách", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-029", "utterance": "tat tivi phong khach", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-030", "utterance": "bật tivi phòng khách giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-031", "utterance": "bật tv phòng bố mẹ", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["tv_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-032", "utterance": "bat tv phong bo me", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["tv_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-033", "utterance": "tắt tv phòng bố mẹ", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["tv_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-034", "utterance": "tat tv phong bo me", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["tv_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-035", "utterance": "bật tv phòng bố mẹ giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["tv_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-036", "utterance": "bật loa thông minh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-037", "utterance": "bat loa thong minh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-038", "utterance": "tắt loa thông minh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-039", "utterance": "tat loa thong minh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-040", "utterance": "bật loa thông minh giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-041", "utterance": "bật bình nóng lạnh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-042", "utterance": "bat binh nong lanh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-043", "utterance": "tắt bình nóng lạnh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-044", "utterance": "tat binh nong lanh", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-045", "utterance": "bật bình nóng lạnh giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-046", "utterance": "bật robot hút bụi", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-047", "utterance": "bat robot hut bui", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-048", "utterance": "tắt robot hút bụi", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-049", "utterance": "tat robot hut bui", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-050", "utterance": "bật robot hút bụi giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-051", "utterance": "bật máy rửa bát", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-052", "utterance": "bat may rua bat", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-053", "utterance": "tắt máy rửa bát", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-054", "utterance": "tat may rua bat", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-055", "utterance": "bật máy rửa bát giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-056", "utterance": "bật điều hoà phòng khách", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-057", "utterance": "bat dieu hoa phong khach", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-058", "utterance": "tắt điều hoà phòng khách", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-059", "utterance": "tat dieu hoa phong khach", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-060", "utterance": "bật điều hoà phòng khách giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-061", "utterance": "bật điều hoà phòng con", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-062", "utterance": "bat dieu hoa phong con", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-063", "utterance": "tắt điều hoà phòng con", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-064", "utterance": "tat dieu hoa phong con", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-065", "utterance": "bật điều hoà phòng con giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-066", "utterance": "bật máy lọc không khí phòng bố mẹ", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["may_loc_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-067", "utterance": "bat may loc khong khi phong bo me", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_on", "targets": ["may_loc_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-068", "utterance": "tắt máy lọc không khí phòng bố mẹ", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["may_loc_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-069", "utterance": "tat may loc khong khi phong bo me", "context": {}, "reference_expect": {"utterance_type": "DEVICE_COMMAND", "intent": "turn_off", "targets": ["may_loc_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-070", "utterance": "bật máy lọc không khí phòng bố mẹ giúp mình với", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["may_loc_phong_bo_me"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-071", "utterance": "đặt điều hoà phòng khách 25 độ", "context": {}, "reference_expect": {"intent": "set_value", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-072", "utterance": "chỉnh điều hoà phòng khách xuống 24 độ", "context": {}, "reference_expect": {"intent": "set_value", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-073", "utterance": "để điều hoà phòng con 26 độ", "context": {}, "reference_expect": {"intent": "set_value", "targets": ["dieu_hoa_phong_con"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-074", "utterance": "tăng điều hoà phòng khách lên", "context": {}, "reference_expect": {"intent": "increase_value", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-075", "utterance": "giảm điều hoà phòng khách đi", "context": {}, "reference_expect": {"intent": "decrease_value", "targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-076", "utterance": "đặt đèn chùm 50 phần trăm", "context": {}, "reference_expect": {"intent": "set_value", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-077", "utterance": "tăng đèn bàn học lên", "context": {}, "reference_expect": {"intent": "increase_value", "targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-078", "utterance": "giảm đèn chùm xuống", "context": {}, "reference_expect": {"intent": "decrease_value", "targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-079", "utterance": "bật tv phòng khách", "context": {}, "reference_expect": {"intent": "turn_on", "targets": ["tv_phong_khach"]}, "source_file": "direct_commands.jsonl"}
+{"id": "dc-080", "utterance": "tat robot", "context": {}, "reference_expect": {"intent": "turn_off", "targets": ["robot_hut_bui"]}, "source_file": "direct_commands.jsonl"}
+{"id": "env-001", "utterance": "nóng quá đi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_cooler"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-002", "utterance": "nong qua di", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_cooler"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-003", "utterance": "oi bức thật", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_cooler"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-004", "utterance": "oi buc that", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_cooler"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-005", "utterance": "lạnh quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_warmer"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-006", "utterance": "lanh qua", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_warmer"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-007", "utterance": "rét run rồi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_warmer"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-008", "utterance": "ret run roi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_warmer"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-009", "utterance": "tối quá chẳng thấy gì", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_brighter"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-010", "utterance": "toi qua chang thay gi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_brighter"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-011", "utterance": "thiếu sáng quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_brighter"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-012", "utterance": "thieu sang qua", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_brighter"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-013", "utterance": "tối om luôn", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_brighter"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-014", "utterance": "toi om luon", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_brighter"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-015", "utterance": "chói mắt quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_darker"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-016", "utterance": "choi mat qua", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_darker"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-017", "utterance": "sáng quá đi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_darker"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-018", "utterance": "sang qua di", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_darker"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-019", "utterance": "ồn quá đi mất", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "reduce_noise"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-020", "utterance": "on qua di mat", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "reduce_noise"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-021", "utterance": "ầm ĩ quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "reduce_noise"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-022", "utterance": "am i qua", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "reduce_noise"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-023", "utterance": "ngột ngạt khó thở quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "improve_air_quality"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-024", "utterance": "ngot ngat kho tho qua", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "improve_air_quality"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-025", "utterance": "không khí hôi quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "improve_air_quality"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-026", "utterance": "khong khi hoi qua", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "improve_air_quality"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-027", "utterance": "bí quá, thiếu gió", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "increase_airflow"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-028", "utterance": "bi qua, thieu gio", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "increase_airflow"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-029", "utterance": "nực nội quá đi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_cooler"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-030", "utterance": "nuc noi qua di", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_cooler"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-031", "utterance": "buốt tay rồi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_warmer"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-032", "utterance": "buot tay roi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_warmer"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-033", "utterance": "lóa hết cả mắt", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "make_darker"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-034", "utterance": "loa het ca mat", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "make_darker"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-035", "utterance": "hầm quá không có gió", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"utterance_type": "ENVIRONMENT_REQUEST", "intent": "increase_airflow"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-036", "utterance": "ham qua khong co gio", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"intent": "increase_airflow"}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-037", "utterance": "Làm chỗ này dễ chịu hơn một chút", "context": {"focus_room": "Phòng khách"}, "reference_expect": {}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-038", "utterance": "Ở đây khó tập trung quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {}, "source_file": "implicit_environment.jsonl"}
+{"id": "env-039", "utterance": "Tôi không muốn nó sáng như lúc nãy", "context": {"focus_room": "Phòng khách"}, "reference_expect": {}, "source_file": "implicit_environment.jsonl"}
+{"id": "neg-001", "utterance": "đừng bật điều hoà phòng khách", "context": {}, "reference_expect": {"negated": true, "intent": "turn_on"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-002", "utterance": "dung bat dieu hoa phong khach", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-003", "utterance": "đừng tắt tivi phòng khách", "context": {}, "reference_expect": {"negated": true, "intent": "turn_off"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-004", "utterance": "dung tat tivi phong khach", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-005", "utterance": "khỏi bật đèn bếp", "context": {}, "reference_expect": {"negated": true, "intent": "turn_on"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-006", "utterance": "khoi bat den bep", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-007", "utterance": "thôi không cần bật loa thông minh", "context": {}, "reference_expect": {"negated": true, "intent": "turn_on"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-008", "utterance": "thoi khong can bat loa thong minh", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-009", "utterance": "chưa cần bật bình nóng lạnh", "context": {}, "reference_expect": {"negated": true, "intent": "turn_on"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-010", "utterance": "chua can bat binh nong lanh", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-011", "utterance": "đừng có mở rèm phòng khách", "context": {}, "reference_expect": {"negated": true, "intent": "turn_on"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-012", "utterance": "dung co mo rem phong khach", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-013", "utterance": "khỏi tắt điều hoà phòng khách", "context": {}, "reference_expect": {"negated": true, "intent": "turn_off"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-014", "utterance": "khoi tat dieu hoa phong khach", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-015", "utterance": "thôi không cần tắt đèn bếp", "context": {}, "reference_expect": {"negated": true, "intent": "turn_off"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-016", "utterance": "thoi khong can tat den bep", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-017", "utterance": "không phải", "context": {}, "reference_expect": {"intent": "reject"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-018", "utterance": "sai rồi", "context": {}, "reference_expect": {"intent": "reject"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-019", "utterance": "thôi không", "context": {}, "reference_expect": {"intent": "reject"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-020", "utterance": "không đúng", "context": {}, "reference_expect": {"intent": "reject"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-021", "utterance": "khong phai", "context": {}, "reference_expect": {"intent": "reject"}, "source_file": "negation_cases.jsonl"}
+{"id": "neg-022", "utterance": "đừng không bật đèn phòng khách", "context": {}, "reference_expect": {"negated": true}, "source_file": "negation_cases.jsonl"}
+{"id": "novel-01", "utterance": "phòng hơi bí, làm gì đó cho dễ chịu đi", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"novel": true, "utterance_type": "ENVIRONMENT_REQUEST"}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-02", "utterance": "chuẩn bị không gian làm việc buổi tối giúp mình", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-03", "utterance": "nhà đang ngột ngạt quá", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-04", "utterance": "tối nay tôi muốn thư giãn với một bộ phim", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-05", "utterance": "buồn ngủ rồi đấy, lo liệu giúp tôi", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-06", "utterance": "chuẩn bị đón khách tối nay ở phòng khách", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-07", "utterance": "làm cho phòng dịu lại một chút", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-08", "utterance": "con cần tập trung học bài", "context": {"focus_room": "Phòng ngủ con"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-09", "utterance": "trời oi bức khó chịu quá", "context": {"focus_room": "Phòng ngủ bố mẹ"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-10", "utterance": "về đến nhà rồi, làm cho ấm cúng lên", "context": {"focus_room": "Phòng khách"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-11", "utterance": "không gian hơi tù túng, thoáng lên chút đi", "context": {"focus_room": "Phòng bếp"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "novel-12", "utterance": "chuẩn bị cho bé đi ngủ giúp mình nhé", "context": {"focus_room": "Phòng ngủ con"}, "reference_expect": {"novel": true}, "source_file": "novel_goals.jsonl"}
+{"id": "ref-001", "utterance": "bật nó lên", "context": {"last_device_id": "den_bep"}, "reference_expect": {"targets": ["den_bep"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-002", "utterance": "tắt nó đi", "context": {"last_device_id": "den_bep"}, "reference_expect": {"targets": ["den_bep"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-003", "utterance": "tat no di", "context": {"last_device_id": "den_bep"}, "reference_expect": {"targets": ["den_bep"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-004", "utterance": "bật nó lên", "context": {"last_device_id": "dieu_hoa_phong_khach"}, "reference_expect": {"targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-005", "utterance": "tắt nó đi", "context": {"last_device_id": "dieu_hoa_phong_khach"}, "reference_expect": {"targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-006", "utterance": "tat no di", "context": {"last_device_id": "dieu_hoa_phong_khach"}, "reference_expect": {"targets": ["dieu_hoa_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-007", "utterance": "bật nó lên", "context": {"last_device_id": "tv_phong_khach"}, "reference_expect": {"targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-008", "utterance": "tắt nó đi", "context": {"last_device_id": "tv_phong_khach"}, "reference_expect": {"targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-009", "utterance": "tat no di", "context": {"last_device_id": "tv_phong_khach"}, "reference_expect": {"targets": ["tv_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-010", "utterance": "bật nó lên", "context": {"last_device_id": "den_chum_phong_khach"}, "reference_expect": {"targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-011", "utterance": "tắt nó đi", "context": {"last_device_id": "den_chum_phong_khach"}, "reference_expect": {"targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-012", "utterance": "tat no di", "context": {"last_device_id": "den_chum_phong_khach"}, "reference_expect": {"targets": ["den_chum_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-013", "utterance": "bật nó lên", "context": {"last_device_id": "loa_phong_khach"}, "reference_expect": {"targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-014", "utterance": "tắt nó đi", "context": {"last_device_id": "loa_phong_khach"}, "reference_expect": {"targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-015", "utterance": "tat no di", "context": {"last_device_id": "loa_phong_khach"}, "reference_expect": {"targets": ["loa_phong_khach"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-016", "utterance": "bật nó lên", "context": {"last_device_id": "binh_nong_lanh"}, "reference_expect": {"targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-017", "utterance": "tắt nó đi", "context": {"last_device_id": "binh_nong_lanh"}, "reference_expect": {"targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-018", "utterance": "tat no di", "context": {"last_device_id": "binh_nong_lanh"}, "reference_expect": {"targets": ["binh_nong_lanh"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-019", "utterance": "bật nó lên", "context": {"last_device_id": "robot_hut_bui"}, "reference_expect": {"targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-020", "utterance": "tắt nó đi", "context": {"last_device_id": "robot_hut_bui"}, "reference_expect": {"targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-021", "utterance": "tat no di", "context": {"last_device_id": "robot_hut_bui"}, "reference_expect": {"targets": ["robot_hut_bui"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-022", "utterance": "bật nó lên", "context": {"last_device_id": "may_rua_bat"}, "reference_expect": {"targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-023", "utterance": "tắt nó đi", "context": {"last_device_id": "may_rua_bat"}, "reference_expect": {"targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-024", "utterance": "tat no di", "context": {"last_device_id": "may_rua_bat"}, "reference_expect": {"targets": ["may_rua_bat"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-025", "utterance": "bật nó lên", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-026", "utterance": "tắt cái đó đi", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-027", "utterance": "để nó như cũ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-028", "utterance": "mở ra đi", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-029", "utterance": "đóng lại giúp", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-030", "utterance": "bật cái vừa nãy", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-031", "utterance": "tắt cái kia", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-032", "utterance": "bật lên", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-033", "utterance": "tắt nó đi", "context": {"last_device_id": "den_ban_hoc", "recent_dialogue": ["bật den_ban_hoc"]}, "reference_expect": {"targets": ["den_ban_hoc"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "ref-034", "utterance": "tắt nó đi", "context": {"last_device_id": "tv_phong_bo_me", "recent_dialogue": ["bật tv_phong_bo_me"]}, "reference_expect": {"targets": ["tv_phong_bo_me"], "decision": "proceed"}, "source_file": "reference_resolution.jsonl"}
+{"id": "rt-001", "utterance": "đi ngủ thôi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-002", "utterance": "di ngu thoi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-003", "utterance": "chuẩn bị đi ngủ nào", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-004", "utterance": "chuan bi di ngu nao", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-005", "utterance": "tới giờ ngủ rồi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-006", "utterance": "toi gio ngu roi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-007", "utterance": "tôi sắp về nhà", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-008", "utterance": "toi sap ve nha", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-009", "utterance": "tôi về tới nơi rồi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-010", "utterance": "toi ve toi noi roi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-011", "utterance": "cả nhà chuẩn bị ra ngoài", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-012", "utterance": "ca nha chuan bi ra ngoai", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-013", "utterance": "tôi đi làm đây", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-014", "utterance": "toi di lam day", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-015", "utterance": "ra khỏi nhà thôi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-016", "utterance": "ra khoi nha thoi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-017", "utterance": "mình xem phim nào", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-018", "utterance": "minh xem phim nao", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-019", "utterance": "coi phim thôi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-020", "utterance": "coi phim thoi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-021", "utterance": "tôi vào việc đây", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-022", "utterance": "toi vao viec day", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-023", "utterance": "ngồi học bài nào", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-024", "utterance": "ngoi hoc bai nao", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-025", "utterance": "tập trung làm việc thôi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-026", "utterance": "tap trung lam viec thoi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-027", "utterance": "thức dậy rồi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-028", "utterance": "thuc day roi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-029", "utterance": "dọn cơm ăn thôi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-030", "utterance": "don com an thoi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-031", "utterance": "nhà có khách tới", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-032", "utterance": "nha co khach toi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-033", "utterance": "good night nhé", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-034", "utterance": "good night nhe", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-035", "utterance": "tôi về tới rồi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-036", "utterance": "toi ve toi roi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-037", "utterance": "đi vắng vài hôm", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-038", "utterance": "di vang vai hom", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-039", "utterance": "xem tivi thôi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-040", "utterance": "xem tivi thoi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-041", "utterance": "bữa tối tới rồi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-042", "utterance": "bua toi toi roi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "eat_meal"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-043", "utterance": "đón khách nào", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-044", "utterance": "don khach nao", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "receive_guest"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-045", "utterance": "báo thức kêu rồi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-046", "utterance": "bao thuc keu roi", "context": {}, "reference_expect": {"utterance_type": "ROUTINE_INTENT", "intent": "wake_up"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-047", "utterance": "Tối nay tôi muốn thư giãn với một bộ phim", "context": {}, "reference_expect": {"intent": "watch_movie"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-048", "utterance": "Tôi mệt rồi, muốn nghỉ ngơi thôi", "context": {}, "reference_expect": {"intent": "prepare_for_sleep"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-049", "utterance": "Mình ra ngoài một lát rồi về", "context": {}, "reference_expect": {"intent": "leave_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-050", "utterance": "Về đến nhà rồi, dễ chịu quá", "context": {}, "reference_expect": {"intent": "arrive_home"}, "source_file": "routine_intents.jsonl"}
+{"id": "rt-051", "utterance": "Cần tập trung hoàn thành báo cáo", "context": {}, "reference_expect": {"intent": "work_or_study"}, "source_file": "routine_intents.jsonl"}
+{"id": "uns-001", "utterance": "đặt đèn bếp 25 độ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-002", "utterance": "để đèn chùm 30 độ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-003", "utterance": "chỉnh tivi phòng khách 26 độ", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-004", "utterance": "đi ngủ thôi", "context": {}, "reference_expect": {"decision": "proceed"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-005", "utterance": "tôi sắp về nhà", "context": {}, "reference_expect": {"decision": "proceed"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-006", "utterance": "mở khoá cửa chính", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-007", "utterance": "khoá cửa chính lại", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-008", "utterance": "tắt camera cửa chính", "context": {}, "reference_expect": {"decision": "clarify"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-009", "utterance": "bật đèn phòng khách", "context": {}, "reference_expect": {"decision": "proceed"}, "source_file": "unsupported_assumptions.jsonl"}
+{"id": "uns-010", "utterance": "tắt đèn bếp", "context": {}, "reference_expect": {"decision": "proceed"}, "source_file": "unsupported_assumptions.jsonl"}

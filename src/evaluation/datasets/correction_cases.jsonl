@@ -1,0 +1,16 @@
+{"id": "cor-001", "utterance": "nhầm rồi, tắt đèn phòng khách", "context": {}, "expect": {"is_correction": true, "intent": "turn_off", "targets": ["den_chum_phong_khach"]}, "expected_route": "deterministic"}
+{"id": "cor-002", "utterance": "nham roi, tat den phong khach", "context": {}, "expect": {"is_correction": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "cor-003", "utterance": "à mà bật đèn bếp đi", "context": {}, "expect": {"is_correction": true, "intent": "turn_on", "targets": ["den_bep"]}, "expected_route": "deterministic"}
+{"id": "cor-004", "utterance": "a ma bat den bep di", "context": {}, "expect": {"is_correction": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "cor-005", "utterance": "không phải đèn bếp, ý tôi là bật đèn chùm", "context": {}, "expect": {"is_correction": true, "intent": "turn_on", "targets": ["den_chum_phong_khach"]}, "expected_route": "deterministic"}
+{"id": "cor-006", "utterance": "khong phai den bep, y toi la bat den chum", "context": {}, "expect": {"is_correction": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "cor-007", "utterance": "ý mình là tắt tivi phòng khách", "context": {}, "expect": {"is_correction": true, "intent": "turn_off", "targets": ["tv_phong_khach"]}, "expected_route": "deterministic"}
+{"id": "cor-008", "utterance": "y minh la tat tivi phong khach", "context": {}, "expect": {"is_correction": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "cor-009", "utterance": "sửa lại, bật điều hoà phòng con", "context": {}, "expect": {"is_correction": true, "intent": "turn_on", "targets": ["dieu_hoa_phong_con"]}, "expected_route": "deterministic"}
+{"id": "cor-010", "utterance": "sua lai, bat dieu hoa phong con", "context": {}, "expect": {"is_correction": true, "intent": "turn_on"}, "expected_route": "deterministic"}
+{"id": "cor-011", "utterance": "nhầm, tắt đèn bàn học", "context": {}, "expect": {"is_correction": true, "intent": "turn_off", "targets": ["den_ban_hoc"]}, "expected_route": "deterministic"}
+{"id": "cor-012", "utterance": "nham, tat den ban hoc", "context": {}, "expect": {"is_correction": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "cor-013", "utterance": "à mà tắt loa thông minh đi", "context": {}, "expect": {"is_correction": true, "intent": "turn_off", "targets": ["loa_phong_khach"]}, "expected_route": "deterministic"}
+{"id": "cor-014", "utterance": "a ma tat loa thong minh di", "context": {}, "expect": {"is_correction": true, "intent": "turn_off"}, "expected_route": "deterministic"}
+{"id": "cor-015", "utterance": "đổi thành bật bình nóng lạnh", "context": {}, "expect": {"is_correction": true, "intent": "turn_on", "targets": ["binh_nong_lanh"]}, "expected_route": "deterministic"}
+{"id": "cor-016", "utterance": "doi thanh bat binh nong lanh", "context": {}, "expect": {"is_correction": true, "intent": "turn_on"}, "expected_route": "deterministic"}

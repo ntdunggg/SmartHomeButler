@@ -1,0 +1,22 @@
+# Ollama Modelfile cho model NLU tiếng Việt đã fine-tune (Qwen2.5-3B + LoRA, xem train_unsloth.py).
+#
+# Cách dùng: đặt file .gguf tải từ Kaggle CẠNH file này rồi chạy:
+#     ollama create ha-qwen25 -f Modelfile
+#
+# Tên "ha-qwen25" phải khớp MODEL_NAME trong .env để backend gọi đúng model.
+
+FROM ./Qwen2.5-3B-Instruct.Q4_K_M.gguf
+
+# Chat template chuẩn Qwen2.5 (ChatML) — phải khớp template lúc train, nếu lệch thì model
+# sinh ra rác vì nó không nhận ra ranh giới lượt nói.
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>
+"""
+
+# temperature 0: tác vụ này là phân loại + trích xuất slot, cần đầu ra TẤT ĐỊNH, không sáng tạo.
+PARAMETER temperature 0
+PARAMETER stop <|im_end|>

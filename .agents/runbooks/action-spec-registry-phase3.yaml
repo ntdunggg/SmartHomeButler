@@ -1,0 +1,43 @@
+name: action-spec-registry-phase3
+initial: contract_baseline
+
+nodes:
+  contract_baseline:
+    prompt: Lock the product contract and capture targeted pre-change evidence.
+    before_transfer:
+      - type: command
+        run: rtk pytest -q tests/test_agent_v2/test_harness.py tests/test_iot/test_simulator.py
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 180
+  architecture:
+    prompt: Approve the deterministic registry boundary and migration ownership.
+  implementation:
+    prompt: Implement ActionSpecRegistry and migrate deterministic consumers without changing dynamic policy ownership.
+    before_transfer:
+      - type: command
+        run: rtk git diff --check
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 60
+  verification:
+    prompt: Run targeted registry, validator, execution, simulator, and guardrail tests.
+    before_transfer:
+      - type: command
+        run: rtk pytest -q tests/test_domain/test_action_registry.py tests/test_agent_v2/test_harness.py tests/test_iot/test_simulator.py tests/test_services/test_agent_execution_p1.py
+        cwd: /Users/phaihoang/Documents/P-021
+        timeout: 240
+  acceptance:
+    prompt: Check each product acceptance criterion against QA evidence.
+  done:
+    prompt: Synthesize the final Tech Lead delivery decision.
+
+edges:
+  - from: contract_baseline
+    to: architecture
+  - from: architecture
+    to: implementation
+  - from: implementation
+    to: verification
+  - from: verification
+    to: acceptance
+  - from: acceptance
+    to: done
