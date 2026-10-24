@@ -1,0 +1,19 @@
+# Bí mật và cấu hình cục bộ (.env.example vẫn được theo dõi)
+.env
+
+# Môi trường ảo
+.venv/
+venv/
+
+# Dữ liệu chạy (SQLite, dữ liệu mẫu tự tạo khi khởi động)
+data/
+
+# Cache Python và công cụ
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# macOS
+.DS_Store

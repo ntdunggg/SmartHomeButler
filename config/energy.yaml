@@ -1,0 +1,59 @@
+# Cấu hình năng lượng & phần thưởng RL cho hệ multi-agent (spec §8, §34, §40).
+# KHÔNG hardcode các ngưỡng/trọng số này trong agent logic (spec §8).
+
+# --- §8 Power Load model: ngưỡng chuyển NORMAL → MODERATE → CRITICAL (watt) ---
+power_load:
+  moderate_threshold_w: 3500
+  critical_threshold_w: 5000
+
+# --- §40 Energy Optimizer: trọng số score theo power mode (§41 dynamic priority) ---
+# Score = wComfort*Comfort + wPreference*PreferenceMatch - wEnergy*Energy - wConstraint*ConstraintPenalty
+optimizer_weights:
+  NORMAL:
+    comfort: 1.0
+    preference: 0.8
+    energy: 0.2
+    constraint: 5.0
+  MODERATE:
+    comfort: 0.8
+    preference: 0.6
+    energy: 0.6
+    constraint: 5.0
+  CRITICAL:
+    comfort: 0.5
+    preference: 0.3
+    energy: 1.5
+    constraint: 5.0
+
+# Chuẩn hoá thành phần energy trong score: chia watt cho hằng số này để đưa về ~[0,1].
+energy_normalizer_w: 2000
+
+# --- §34 Reward mapping cho Preference RL (deterministic/configurable) ---
+# LLM KHÔNG tự sinh reward number (spec §34).
+reward:
+  explicit_accept: 1.0
+  no_correction: 0.2
+  slight_adjustment: -0.3
+  explicit_reject: -1.0
+
+# --- Preference RL learning rate (§32 Q(s,a) ← Q(s,a) + α[r - Q(s,a)]) ---
+rl:
+  learning_rate: 0.3
+
+# --- Ước lượng công suất theo loại thiết bị (watt) — nguồn: ước tính manufacturer (§42).
+#     Thiết bị/khả năng không có ở đây → power = unknown (KHÔNG bịa, spec §42).
+device_power_w:
+  light: 12
+  air_conditioner: 900
+  water_heater: 2000
+  heater: 1500
+  fan: 45
+  air_purifier: 30
+  tv: 100
+  speaker: 15
+  curtain: 0
+  window: 0
+  vacuum: 40
+  dishwasher: 1800
+  door_lock: 0
+  camera: 8
