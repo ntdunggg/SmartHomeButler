@@ -119,51 +119,13 @@ async def on_suggestion(suggestion) -> None:
 
     Đề xuất có ``user_id`` (sinh từ thói quen của một người) chỉ gửi tới các máy
     của đúng người đó; đề xuất chung cả hộ (không khí, thời tiết...) gửi cho mọi máy.
+
+    Xác nhận thói quen mới đi cùng kênh này (``kind`` = ``habit_confirm``): client tự
+    nhận diện qua ``kind`` trong payload, không cần event riêng.
     """
-    from src.domain.enums import SuggestionKind
-
-    if getattr(suggestion, "kind", "") == SuggestionKind.HABIT_CONFIRM:
-        await notify_habit_confirm(suggestion)
-        return
-
     await manager.broadcast(
         suggestion.household_id,
         {"type": "suggestion", "suggestion": suggestion.to_dict()},
-        user_id=getattr(suggestion, "user_id", None),
-    )
-
-
-async def notify_habit_confirm(suggestion) -> None:
-    """Đẩy event riêng khi phát hiện thói quen mới, chờ user xác nhận lưu.
-
-    Cấu trúc event khác với ``suggestion`` thông thường để FE hiển thị đúng loại
-    toast/modal: tiêu đề + mô tả + nút ``Lưu thói quen`` / ``Bỏ qua``.
-
-    Chỉ gửi tới đúng user sở hữu thói quen (``user_id``), không broadcast cả hộ.
-    """
-    step = suggestion.steps[0] if suggestion.steps else {}
-    sug_dict = suggestion.to_dict()
-    await manager.broadcast(
-        suggestion.household_id,
-        {
-            "type": "habit_confirm_request",
-            "suggestion_id": suggestion.id,
-            "suggestion": sug_dict,
-            "title_vi": suggestion.title_vi,
-            "message_vi": suggestion.message_vi,
-            "device_slug": step.get("device_slug", ""),
-            "action": step.get("action", ""),
-            "hour": step.get("hour", 0),
-            "occurrences": step.get("occurrences", 0),
-            "confidence": step.get("confidence", 0.0),
-            "created_at": suggestion.created_at,
-        },
-        user_id=getattr(suggestion, "user_id", None),
-    )
-    # Đồng thời đẩy qua kênh suggestion tiêu chuẩn để các client UI chuẩn đều nhận được
-    await manager.broadcast(
-        suggestion.household_id,
-        {"type": "suggestion", "suggestion": sug_dict},
         user_id=getattr(suggestion, "user_id", None),
     )
 

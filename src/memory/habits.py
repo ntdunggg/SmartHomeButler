@@ -17,7 +17,7 @@ cửa sổ 30 ngày, confidence tụt dưới ngưỡng, thói quen ngừng đ�
 Cơ chế tự sửa đó chỉ đúng nếu MỖI lượt quét đều TÍNH LẠI mọi thói quen đã học chứ
 không chỉ những combo còn bằng chứng: một thói quen mà bằng chứng trôi hết khỏi cửa
 sổ sẽ không có bucket nào chạm tới, nên phải hạ ``confidence`` về 0 một cách chủ động
-(``learn_habits`` làm ở cuối), nếu không nó đóng băng và đề xuất mãi (#3).
+(``detect_new_habits`` làm ở cuối), nếu không nó đóng băng và đề xuất mãi (#3).
 """
 
 from __future__ import annotations
@@ -27,21 +27,24 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from src.config import get_settings
 from src.core import clock
 from src.domain.enums import ActionStatus
-from src.domain.models import ActionLog, Device, Habit
+from src.domain.models import ActionLog, Device, Habit, HabitConfirmRejection
 from src.iot.registry import spec_for
 from src.services.audit import SOURCE_AUTOMATION
 
 LOOKBACK_DAYS = 30
 
+# Thời gian không hỏi lại một thói quen mới mà người dùng đã bỏ qua.
+HABIT_REJECTION_TTL = timedelta(hours=24)
+
 # Nguồn gốc một thói quen. "manual" = người dùng tự thêm qua giao diện; vòng học
 # không được sinh, ghi đè hay decay loại này (nó không có bằng chứng ActionLog nên
-# sẽ bị hạ về 0 ngay nếu không loại trừ). "learned" = do learn_habits tự tổng hợp.
+# sẽ bị hạ về 0 ngay nếu không loại trừ). "learned" = do vòng quét tự tổng hợp.
 SOURCE_LEARNED = "learned"
 SOURCE_MANUAL = "manual"
 
@@ -70,94 +73,11 @@ class NewHabitCandidate:
         return (self.user_id, self.device_slug, self.action, self.hour)
 
 
-def learn_habits(session: Session, *, household_id: int) -> list[Habit]:
-    """Quét lịch sử và cập nhật bảng thói quen. Trả về các thói quen đủ tin cậy."""
-    settings = get_settings()
-    # Bám ĐỒNG HỒ MÔ PHỎNG, không phải giờ thực: log được đóng dấu theo clock.now()
-    # (xem models._utcnow) nên cửa sổ học cũng phải theo cùng đồng hồ, nếu không khi
-    # demo đóng băng/đổi giờ thì cửa sổ trượt khỏi dữ liệu (#1/#4).
-    now = clock.now()
-    since = now - timedelta(days=LOOKBACK_DAYS)
-
-    rows = session.execute(
-        select(ActionLog, Device.slug)
-        .join(Device, Device.id == ActionLog.device_id)
-        .where(
-            ActionLog.household_id == household_id,
-            ActionLog.status == ActionStatus.EXECUTED,
-            ActionLog.created_at >= since,
-            # Cận trên: khi nhảy đồng hồ LÙI, log đóng dấu ở "tương lai" không được
-            # học ngay như thể đã xảy ra (#12).
-            ActionLog.created_at <= now,
-            # Chỉ hành vi do người khởi xướng mới là bằng chứng về thói quen của họ.
-            # Bấm "đồng ý" với đề xuất của chính hệ thống thì không phải.
-            ActionLog.source != SOURCE_AUTOMATION,
-        )
-    ).all()
-
-    # (user_id, slug, action, hour) -> tập các ngày xảy ra
-    buckets: dict[Signature, set] = defaultdict(set)
-    # Cùng khoá -> đếm bộ THAM SỐ hay dùng nhất (mấy độ, mức sáng bao nhiêu) để
-    # đề xuất tái hiện đúng giá trị, không gửi params rỗng (#2).
-    bucket_params: dict[Signature, Counter] = defaultdict(Counter)
-    observed_days: set = set()
-
-    for log, slug in rows:
-        # Giờ & NGÀY theo múi giờ địa phương — khớp cái người dùng thấy: hành động
-        # 22:30 (VN) gom vào giờ 22 và đúng ngày đó, thay vì 15h/nhầm ngày như UTC
-        # (#14/#15).
-        local = clock.to_local(log.created_at)
-        day = local.date()
-        observed_days.add(day)
-        sig = (log.user_id, slug, log.action, local.hour)
-        buckets[sig].add(day)
-        if log.params:
-            bucket_params[sig][json.dumps(log.params, sort_keys=True, ensure_ascii=False)] += 1
-
-    total_days = len(observed_days) or 1
-    learned: list[Habit] = []
-    strong: set[Signature] = set()
-
-    # Chữ ký của các thói quen TẠO TAY — vòng học không đụng vào (không upsert đè, không
-    # decay). Người dùng đã tự đặt thì đó là ý muốn tường minh, không phải suy luận từ log.
-    manual_sigs = _manual_signatures(session, household_id=household_id)
-
-    for sig, days in buckets.items():
-        if sig in manual_sigs:
-            continue  # slot đã có thói quen tay chiếm giữ — không tạo learned trùng chữ ký
-        occurrences = len(days)
-        if occurrences < settings.habit_min_occurrences:
-            continue  # chưa đủ ngày -> chưa tạo/không nâng thành thói quen (tránh rác)
-        user_id, slug, action, hour = sig
-        confidence = min(1.0, occurrences / total_days)
-        habit = _upsert(
-            session,
-            household_id=household_id,
-            user_id=user_id,
-            slug=slug,
-            action=action,
-            hour=hour,
-            occurrences=occurrences,
-            confidence=confidence,
-            params=_top_params(bucket_params.get(sig)),
-        )
-        strong.add(sig)
-        if confidence >= settings.habit_min_confidence:
-            learned.append(habit)
-
-    _decay_stale(session, household_id=household_id, strong=strong, buckets=buckets, total_days=total_days)
-    # Session dùng autoflush=False: đẩy các thay đổi occurrences/confidence xuống DB
-    # ngay, để due_habits chạy SAU trong CÙNG vòng quét (run_once) đọc đúng giá trị
-    # mới — nếu không, thói quen vừa decay vẫn lọt một vòng đề xuất.
-    session.flush()
-    return learned
-
-
 def detect_new_habits(session: Session, *, household_id: int) -> list[NewHabitCandidate]:
     """Quét lịch sử, cập nhật thói quen ĐÃ CÓ, và trả về danh sách thói quen MỚI TINH.
 
-    Khác với ``learn_habits()``: với thói quen chưa từng có trong DB, hàm này KHÔNG gọi
-    ``_upsert()`` — thay vào đó trả về ``NewHabitCandidate`` để automation engine emit
+    Với thói quen chưa từng có trong DB, hàm này KHÔNG gọi ``_upsert()`` — thay vào đó
+    trả về ``NewHabitCandidate`` để automation engine emit
     Suggestion HABIT_CONFIRM, cho user quyết định trước khi lưu.
 
     Với thói quen ĐÃ có trong DB (update confidence/occurrences), vẫn gọi ``_upsert()``
@@ -271,6 +191,67 @@ def commit_new_habit(
         occurrences=candidate.occurrences,
         confidence=candidate.confidence,
         params=candidate.params,
+    )
+
+
+def record_habit_rejection(
+    session: Session,
+    *,
+    household_id: int,
+    candidate: NewHabitCandidate,
+    now: datetime | None = None,
+) -> None:
+    """Ghi nhớ user đã bỏ qua xác nhận thói quen này: không hỏi lại trong ``HABIT_REJECTION_TTL``.
+
+    Gọi từ ``decide_suggestion()`` khi user bấm Bỏ qua trên popup HABIT_CONFIRM.
+    """
+    now = now or clock.now()
+    # Dọn các dòng đã hết hạn của cả hộ để bảng không phình mãi.
+    session.execute(
+        delete(HabitConfirmRejection).where(
+            HabitConfirmRejection.household_id == household_id,
+            HabitConfirmRejection.expires_at <= now,
+        )
+    )
+    session.execute(delete(HabitConfirmRejection).where(*_rejection_match(household_id, candidate)))
+    session.add(
+        HabitConfirmRejection(
+            household_id=household_id,
+            user_id=candidate.user_id,
+            device_slug=candidate.device_slug,
+            action=candidate.action,
+            hour=candidate.hour,
+            expires_at=now + HABIT_REJECTION_TTL,
+        )
+    )
+    session.flush()
+
+
+def is_habit_rejected(
+    session: Session,
+    *,
+    household_id: int,
+    candidate: NewHabitCandidate,
+    now: datetime | None = None,
+) -> bool:
+    """Thói quen này còn trong thời gian không hỏi lại (user đã bỏ qua chưa tới 24h)?"""
+    now = now or clock.now()
+    found = session.scalar(
+        select(HabitConfirmRejection.id)
+        .where(*_rejection_match(household_id, candidate), HabitConfirmRejection.expires_at > now)
+        .limit(1)
+    )
+    return found is not None
+
+
+def _rejection_match(household_id: int, candidate: NewHabitCandidate) -> tuple:
+    # SQLAlchemy dịch so sánh với None thành IS NULL, nên thói quen không gắn user vẫn khớp đúng.
+    return (
+        HabitConfirmRejection.household_id == household_id,
+        HabitConfirmRejection.user_id == candidate.user_id,
+        HabitConfirmRejection.device_slug == candidate.device_slug,
+        HabitConfirmRejection.action == candidate.action,
+        HabitConfirmRejection.hour == candidate.hour,
     )
 
 

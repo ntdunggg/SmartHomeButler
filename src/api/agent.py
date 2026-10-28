@@ -16,7 +16,7 @@ from src.core.permissions import resolve_access
 from src.db.session import session_scope
 from src.domain.enums import ActionStatus, Role, SuggestionKind
 from src.domain.models import Approval, Device, Habit, User
-from src.memory.habits import commit_new_habit, mark_triggered, snooze
+from src.memory.habits import NewHabitCandidate, commit_new_habit, mark_triggered, record_habit_rejection, snooze
 from src.models.schemas import (
     ApprovalDecision,
     ApprovalOut,
@@ -37,7 +37,7 @@ from src.services import context as context_service
 from src.services.agent_execution import ExecutionContext, agent_execution
 from src.services.agent_jobs import jobs
 from src.services.approval_guard import ApprovalCheckCode, check_approval, expire_approval
-from src.services.automation import registry
+from src.services.automation import Suggestion, registry
 from src.services.nlu_gateway import NluRequest, NluResponse, analyze
 
 router = APIRouter(prefix="/agent", tags=["agent"])
@@ -403,52 +403,29 @@ async def decide_suggestion(
     if suggestion.user_id is not None and suggestion.user_id != user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Đề xuất này không dành cho bạn.")
 
+    # Xác nhận thói quen mới: không thực thi thiết bị, chỉ lưu hoặc ghi nhớ từ chối.
+    # Đặt TRƯỚC nhánh hoãn: loại này không có habit_id để hoãn, nếu đi qua nhánh đó thì
+    # đề xuất bị gỡ mà không ghi gì, và vòng quét 30s sau sẽ hỏi lại ngay.
+    if suggestion.kind == SuggestionKind.HABIT_CONFIRM:
+        registry.pop(suggestion_id, session=session)
+        candidate = _habit_candidate_from_suggestion(suggestion)
+        if decision.accepted:
+            habit = commit_new_habit(session, household_id=user.household_id, candidate=candidate)
+            session.commit()
+            return {
+                "ok": True,
+                "habit_id": habit.id,
+                "message_vi": f"Đã lưu thói quen \u201c{suggestion.title_vi}\u201d. Tôi sẽ nhắc bạn mỗi ngày!",
+            }
+        record_habit_rejection(session, household_id=user.household_id, candidate=candidate)
+        session.commit()
+        return {"ok": True, "message_vi": "Đã bỏ qua. Tôi sẽ không hỏi lại trong 24h."}
+
     if decision.snooze_minutes > 0:
         result = _snooze_suggestion(session, suggestion, minutes=decision.snooze_minutes)
         registry.pop(suggestion_id, session=session)
         session.commit()
         return result
-
-    # --- Nánh riêng cho HABIT_CONFIRM: không thực thi thiết bị, chỉ lưu (hoặc từ chối) thói quen ---
-    if suggestion.kind == SuggestionKind.HABIT_CONFIRM:
-        registry.pop(suggestion_id, session=session)
-        if not decision.accepted:
-            # Ghi nhớ từ chối 24h — không spam popup trong thời gian này
-            from src.memory.habits import NewHabitCandidate
-            from src.services.automation import registry as auto_registry
-            step = suggestion.steps[0] if suggestion.steps else {}
-            candidate = NewHabitCandidate(
-                user_id=suggestion.user_id,
-                device_slug=step.get("device_slug", ""),
-                action=step.get("action", ""),
-                hour=step.get("hour", 0),
-                occurrences=step.get("occurrences", 1),
-                confidence=step.get("confidence", 0.0),
-                params=step.get("params") or {},
-            )
-            auto_registry.reject_habit_confirm(user.household_id, candidate)
-            session.commit()
-            return {"ok": True, "message_vi": "Đã bỏ qua. Tôi sẽ không hỏi lại trong 24h."}
-
-        # Accepted: lưu thói quen vào DB
-        step = suggestion.steps[0] if suggestion.steps else {}
-        from src.memory.habits import NewHabitCandidate
-        candidate = NewHabitCandidate(
-            user_id=suggestion.user_id,
-            device_slug=step.get("device_slug", ""),
-            action=step.get("action", ""),
-            hour=step.get("hour", 0),
-            occurrences=step.get("occurrences", 1),
-            confidence=step.get("confidence", 0.0),
-            params=step.get("params") or {},
-        )
-        habit = commit_new_habit(session, household_id=user.household_id, candidate=candidate)
-        session.commit()
-        return {
-            "ok": True,
-            "habit_id": habit.id,
-            "message_vi": f"Đã lưu thói quen \u201c{suggestion.title_vi}\u201d. Tôi sẽ nhắc bạn mỗi ngày!",
-        }
 
     if not decision.accepted:
         _mark_habit_handled(session, suggestion)
@@ -485,6 +462,20 @@ async def decide_suggestion(
             "message_vi": approval.reason_vi,
         }
     return {"ok": True, "message_vi": "\n".join(executed) or "Không có gì cần thay đổi."}
+
+
+def _habit_candidate_from_suggestion(suggestion: Suggestion) -> NewHabitCandidate:
+    """Dựng lại thói quen đang chờ xác nhận từ ``steps`` đã lưu trong đề xuất."""
+    step = suggestion.steps[0] if suggestion.steps else {}
+    return NewHabitCandidate(
+        user_id=suggestion.user_id,
+        device_slug=step.get("device_slug", ""),
+        action=step.get("action", ""),
+        hour=step.get("hour", 0),
+        occurrences=step.get("occurrences", 1),
+        confidence=step.get("confidence", 0.0),
+        params=step.get("params") or {},
+    )
 
 
 def _snooze_suggestion(session, suggestion, *, minutes: int) -> dict:

@@ -3,7 +3,7 @@ from sqlalchemy import delete, select
 from src.config import get_settings
 from src.domain.enums import ActionStatus
 from src.domain.models import ActionLog, Device, Habit
-from src.memory.habits import learn_habits
+from tests.helpers_habits import learn_confirmed
 
 
 async def test_map_and_chat_actions_both_become_habit_evidence(
@@ -55,7 +55,7 @@ async def test_map_and_chat_actions_both_become_habit_evidence(
     assert ("user", "den_bep", kitchen_action) in executed
     assert ("agent", "den_chum_phong_khach", living_action) in executed
 
-    learned = learn_habits(seeded, household_id=1)
+    learned = learn_confirmed(seeded, household_id=1)
     signatures = {(habit.device_slug, habit.action) for habit in learned}
     assert ("den_bep", kitchen_action) in signatures
     assert ("den_chum_phong_khach", living_action) in signatures

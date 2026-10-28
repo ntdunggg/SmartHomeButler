@@ -35,7 +35,7 @@ from src.domain.models import Device, Household, PendingSuggestion, Sensor
 from src.iot.factory import get_bus
 from src.iot.registry import SENSOR_BY_SLUG, spec_for, spec_from_device
 from src.iot.simulator import ACTION_CLOSE, ACTION_TURN_OFF, ACTION_TURN_ON, drift_sensor
-from src.memory.habits import NewHabitCandidate, detect_new_habits, due_habits
+from src.memory.habits import NewHabitCandidate, detect_new_habits, due_habits, is_habit_rejected
 from src.services.audit import SOURCE_AUTOMATION, log_action
 from src.services.context import sensor_values, someone_home
 
@@ -126,6 +126,8 @@ class SuggestionRegistry:
     DB đảm bảo không mất khi user offline hoặc server restart.
     """
 
+    def __init__(self) -> None:
+        self._items: dict[str, Suggestion] = {}
 
     def add(self, suggestion: Suggestion, *, session: Session | None = None) -> None:
         self._items[suggestion.id] = suggestion
@@ -225,43 +227,6 @@ class SuggestionRegistry:
             and s.steps[0].get("hour") == sig[3]
             for s in self._items.values()
         )
-
-    # ------------------------------------------------------------------
-    # Rejection TTL cache (in-memory): tránh spam HABIT_CONFIRM sau khi
-    # user bấm Bỏ qua. Key = (household_id, user_id, device_slug, action, hour),
-    # value = epoch seconds khi hết TTL.
-    # ------------------------------------------------------------------
-    _REJECTION_TTL_SECONDS = 86_400  # 24 giờ
-
-    def __init__(self) -> None:
-        self._items: dict[str, Suggestion] = {}
-        self._rejected_habits: dict[tuple, float] = {}  # sig -> expire_at (monotonic)
-
-    def reject_habit_confirm(
-        self,
-        household_id: int,
-        candidate: NewHabitCandidate,
-    ) -> None:
-        """Đánh dấu chữ ký này đã bị từ chối, không emit lại trong 24h."""
-        import time
-        key = (household_id, candidate.user_id, candidate.device_slug, candidate.action, candidate.hour)
-        self._rejected_habits[key] = time.monotonic() + self._REJECTION_TTL_SECONDS
-
-    def is_habit_confirm_rejected(
-        self,
-        household_id: int,
-        candidate: NewHabitCandidate,
-    ) -> bool:
-        """Còn trong thời gian blacklist (user đã bỏ qua < 24h trước)?"""
-        import time
-        key = (household_id, candidate.user_id, candidate.device_slug, candidate.action, candidate.hour)
-        expire_at = self._rejected_habits.get(key)
-        if expire_at is None:
-            return False
-        if time.monotonic() > expire_at:
-            self._rejected_habits.pop(key, None)
-            return False
-        return True
 
 
 registry = SuggestionRegistry()
@@ -661,7 +626,7 @@ class AutomationEngine:
                 new_candidates = detect_new_habits(session, household_id=household_id)
                 for candidate in new_candidates:
                     if (
-                        not registry.is_habit_confirm_rejected(household_id, candidate)
+                        not is_habit_rejected(session, household_id=household_id, candidate=candidate)
                         and not registry.has_pending_habit_confirm(household_id, candidate)
                     ):
                         produced.append(_new_habit_confirm_suggestion(candidate, household_id))
