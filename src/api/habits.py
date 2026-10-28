@@ -184,7 +184,7 @@ async def delete_habit(habit_id: int, user: CurrentUser, session: DbSession) -> 
     """Bỏ một thói quen học nhầm — nó ngừng sinh đề xuất vĩnh viễn.
 
     KHÔNG xoá dòng khỏi bảng. ``habits`` là bảng DẪN XUẤT từ ``action_logs``: xoá đi
-    thì vòng ``learn_habits`` kế tiếp (mỗi 30s) tái tạo lại y nguyên theo chữ ký
+    thì vòng quét kế tiếp (mỗi 30s) tái tạo lại y nguyên theo chữ ký
     (hộ, người, thiết bị, hành động, giờ) vì dữ liệu nguồn vẫn còn. Tắt mới là thứ
     bền — ``_upsert`` chỉ cập nhật số liệu thống kê, không bao giờ đụng ``enabled``.
     """

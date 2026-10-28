@@ -14,8 +14,9 @@ from sqlalchemy import select
 from src.core import clock
 from src.domain.enums import AccessEffect
 from src.domain.models import AccessRule, Device, Habit, User
-from src.memory import habit_editing, habits
+from src.memory import habit_editing
 from src.models.schemas import HabitDraftIn
+from tests.helpers_habits import learn_confirmed
 
 _LIGHT = "den_chum_phong_khach"
 _AC = "dieu_hoa_phong_khach"  # HIGH_POWER — thành viên chưa được cấp quyền
@@ -123,9 +124,9 @@ def test_manual_habit_survives_learning_decay(seeded) -> None:
         habit_editing.commit(seeded, user=bo, drafts=[_draft(action="turn_on", hour=6)])
         # Chạy vòng học nhiều lần: không có ActionLog cho slot này.
         hh = bo.household_id
-        habits.learn_habits(seeded, household_id=hh)
+        learn_confirmed(seeded, household_id=hh)
         clock.set_clock(frozen_ms=0, mode="live")
-        habits.learn_habits(seeded, household_id=hh)
+        learn_confirmed(seeded, household_id=hh)
         row = seeded.scalar(select(Habit).where(Habit.user_id == bo.id, Habit.device_slug == _LIGHT, Habit.hour == 6))
         assert row.source == "manual" and row.confidence == 1.0 and row.enabled is True
     finally:

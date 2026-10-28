@@ -304,7 +304,7 @@ class Habit(Base):
     # để 0 (nó gom theo giờ), nên learned habit giữ nguyên hành vi cũ. Xem due_habits.
     minute: Mapped[int] = mapped_column(Integer, default=0)
     # Nguồn gốc: "learned" (vòng học tự sinh từ ActionLog) hay "manual" (người dùng tự
-    # thêm). Thói quen tay KHÔNG bị learn_habits/_decay_stale đụng tới — nếu không, một
+    # thêm). Thói quen tay KHÔNG bị detect_new_habits/_decay_stale đụng tới — nếu không, một
     # thói quen chưa có bằng chứng lịch sử sẽ bị decay về 0 ngay vòng sau. Xem memory/habits.py.
     source: Mapped[str] = mapped_column(String(16), default="learned")
     # Chủ hộ/thành viên có thể tắt một thói quen học nhầm để nó ngừng sinh đề xuất
@@ -313,6 +313,24 @@ class Habit(Base):
     snoozed_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_triggered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow)
+
+
+class HabitConfirmRejection(Base):
+    """Thói quen MỚI mà người dùng đã bỏ qua ở popup xác nhận (HABIT_CONFIRM).
+
+    Lưu DB thay vì bộ nhớ để restart server không khiến người dùng bị hỏi lại trước
+    khi hết ``expires_at``. Chữ ký khớp với ``NewHabitCandidate.signature``.
+    """
+
+    __tablename__ = "habit_confirm_rejections"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    household_id: Mapped[int] = mapped_column(ForeignKey("households.id", ondelete="CASCADE"), index=True)
+    user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=True)
+    device_slug: Mapped[str] = mapped_column(String(64), nullable=False)
+    action: Mapped[str] = mapped_column(String(64), nullable=False)
+    hour: Mapped[int] = mapped_column(Integer, nullable=False)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
 
 
 class EpisodicMemory(Base):

@@ -8788,26 +8788,6 @@ API.onWS('suggestion', (msg) => {
   if (NotifCenter.addSuggestion(sug)) showSuggestionToast(sug);
 });
 
-API.onWS('habit_confirm_request', (msg) => {
-  const sug = msg.suggestion || {
-    id: msg.suggestion_id,
-    kind: 'habit_confirm',
-    title_vi: msg.title_vi,
-    message_vi: msg.message_vi,
-    steps: [{
-      device_slug: msg.device_slug,
-      action: msg.action,
-      hour: msg.hour,
-      occurrences: msg.occurrences,
-      confidence: msg.confidence,
-    }],
-    user_id: msg.user_id,
-    created_at: msg.created_at || new Date().toISOString(),
-  };
-  if (!canUserReceiveSuggestion(sug)) return;
-  if (NotifCenter.addSuggestion(sug)) showSuggestionToast(sug);
-});
-
 // ── MỤC 12: APPROVAL với expires_at countdown ────────────────
 function fmtCountdown(expiresAt) {
   if (!expiresAt) return '';

@@ -1,12 +1,21 @@
 # Bí mật và cấu hình cục bộ (.env.example vẫn được theo dõi)
 .env
+.env.*
+!.env.example
 
 # Môi trường ảo
 .venv/
 venv/
+env/
 
 # Dữ liệu chạy (SQLite, dữ liệu mẫu tự tạo khi khởi động)
 data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Log
+logs/
 
 # Cache Python và công cụ
 __pycache__/
@@ -15,5 +24,13 @@ __pycache__/
 .ruff_cache/
 .mypy_cache/
 
-# macOS
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS / Windows
 .DS_Store
+Thumbs.db

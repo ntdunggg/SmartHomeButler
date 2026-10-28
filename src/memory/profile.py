@@ -64,7 +64,7 @@ def build_member_profile(session: Session, *, household_id: int, user_id: int) -
     """Gộp Preference + ResidentProfile(routine) + Habit của một thành viên thành hồ sơ.
 
     Chỉ đọc — không quy tụ, không ghi. Việc học/nâng thói quen vẫn ở `store.consolidate` và
-    `habits.learn_habits`; đây chỉ trình bày lại kết quả."""
+    `habits.detect_new_habits`; đây chỉ trình bày lại kết quả."""
     prefs = session.scalars(
         select(Preference).where(Preference.household_id == household_id, Preference.user_id == user_id)
     ).all()

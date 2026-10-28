@@ -215,7 +215,7 @@ async def get_profile(member_id: int, owner: OwnerUser, session: DbSession) -> M
     """Hồ sơ hành vi + lịch trình theo buổi mà agent đã học cho một thành viên.
 
     Chỉ đọc: tổng hợp sở thích, thói quen đã học (routine) và habit theo giờ. Không thay đổi
-    gì — việc học vẫn ở tầng consolidate/learn_habits."""
+    gì — việc học vẫn ở tầng consolidate/detect_new_habits."""
     user = _get_member(session, member_id, owner)
     profile = build_member_profile(session, household_id=owner.household_id, user_id=user.id)
     return MemberProfileOut(
