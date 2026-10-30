@@ -1,4 +1,4 @@
-# 🏠 VinButler — Trợ lý nhà thông minh tiếng Việt
+# 🏠 SmartHomeButler — Trợ lý nhà thông minh tiếng Việt
 
 Agent hiểu lệnh tiếng Việt, điều khiển thiết bị trong nhà, hỏi lại khi lệnh chưa rõ, và yêu cầu chủ hộ duyệt khi thành viên dùng thiết bị được cấp quyền `request`.
 
@@ -34,7 +34,7 @@ Agent hiểu lệnh tiếng Việt, điều khiển thiết bị trong nhà, h�
 
 ## Kiến trúc
 
-![Kiến trúc tổng quan VinButler](docs/diagrams/architecture-overview.png)
+![Kiến trúc tổng quan SmartHomeButler](docs/diagrams/architecture-overview.png)
 
 Chi tiết pipeline 5 tầng, luồng HITL và ánh xạ thành phần → mã nguồn: **[docs/architecture.md](docs/architecture.md)**.
 

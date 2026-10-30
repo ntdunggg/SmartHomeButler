@@ -1,4 +1,4 @@
-# Sơ đồ kiến trúc — VinButler
+# Sơ đồ kiến trúc — SmartHomeButler
 
 > Sơ đồ xuất ra **ảnh PNG** (trong `docs/diagrams/`) để hiển thị tức thì trên mọi nền tảng; nguồn Mermaid dựng ảnh nằm trong lịch sử git.
 > Nguồn: phân tích trực tiếp `src/` — pipeline 5 tầng `src/agent/pipeline.py` (spec §56).
