@@ -6,6 +6,8 @@ Ba quy tắc:
 2. ``docs/CHANGELOG.md`` luôn có mục ``## [Chưa phát hành]``.
 3. Mỗi ADR trong ``docs/decisions/`` có đủ trạng thái, ngày, các mục bắt buộc và có tên
    trong bảng của ``docs/decisions/README.md``.
+4. Mỗi file lỗi ``docs/findings/NN-*.md`` có ngày ghi nhận, mức, trạng thái và có tên trong
+   sổ lỗi ``docs/findings/README.md``; mã trong sổ lỗi không trùng nhau.
 
 Bỏ qua quy tắc 1 cho một commit thật sự không cần ghi (ví dụ chỉ sửa chính tả trong
 comment): ``SKIP_DOCS_CHECK=1 git commit ...``. Lần bỏ qua được in ra để người commit tự chịu.
@@ -27,6 +29,9 @@ CODE_EXCLUDES = ("evals/results/", "evals/holdout_log.jsonl")
 ADR_STATUSES = ("Đề xuất", "Đã chấp nhận", "Bị thay thế", "Huỷ")
 ADR_SECTIONS = ("## Bối cảnh", "## Quyết định", "## Hệ quả")
 ADR_NAME = re.compile(r"^(\d{4})-[a-z0-9-]+\.md$")
+FINDINGS_DIR = "docs/findings"
+FINDING_NAME = re.compile(r"^(\d{2})-[a-z0-9-]+\.md$")
+FINDING_LEVELS = ("Cao", "Chặn", "Trung bình", "Thấp")
 
 
 def check_changed(paths: list[str]) -> list[str]:
@@ -73,6 +78,40 @@ def check_adrs(decisions_dir: Path) -> list[str]:
     return errors
 
 
+def check_findings(findings_dir: Path) -> list[str]:
+    errors: list[str] = []
+    register_path = findings_dir / "README.md"
+    if not register_path.exists():
+        return [f"Thiếu sổ lỗi {FINDINGS_DIR}/README.md."]
+    register = register_path.read_text(encoding="utf-8")
+    codes = re.findall(r"^\| (\d{2}) \|", register, re.MULTILINE)
+    dupes = sorted({c for c in codes if codes.count(c) > 1})
+    if dupes:
+        errors.append(f"Sổ lỗi có mã trùng: {', '.join(dupes)}.")
+    for path in sorted(findings_dir.glob("*.md")):
+        if path.name == "README.md":
+            continue
+        match = FINDING_NAME.match(path.name)
+        if not match:
+            errors.append(f"{path.name}: tên file lỗi phải dạng NN-ten-ngan.md (chữ thường, không dấu).")
+            continue
+        if match.group(1) == "00":  # file mẫu
+            continue
+        text = path.read_text(encoding="utf-8")
+        if not re.search(r"^- \*\*Ngày ghi nhận:\*\* \d{4}-\d{2}-\d{2}", text, re.MULTILINE):
+            errors.append(f"{path.name}: thiếu '- **Ngày ghi nhận:** YYYY-MM-DD'.")
+        level = re.search(r"^- \*\*Mức:\*\* (.+)$", text, re.MULTILINE)
+        if not level or not level.group(1).strip().startswith(FINDING_LEVELS):
+            errors.append(f"{path.name}: thiếu hoặc sai '- **Mức:**' (một trong: {', '.join(FINDING_LEVELS)}).")
+        if not re.search(r"^- \*\*Trạng thái:\*\* \S", text, re.MULTILINE):
+            errors.append(f"{path.name}: thiếu '- **Trạng thái:**'.")
+        if match.group(1) not in codes:
+            errors.append(f"{path.name}: mã {match.group(1)} chưa có dòng trong sổ lỗi {FINDINGS_DIR}/README.md.")
+        elif f"({path.name})" not in register:
+            errors.append(f"{path.name}: dòng {match.group(1)} trong sổ lỗi chưa dẫn link tới file này.")
+    return errors
+
+
 def _git_paths(*args: str) -> list[str]:
     out = subprocess.run(["git", *args], capture_output=True, text=True, check=True, cwd=ROOT).stdout
     return [line.strip() for line in out.splitlines() if line.strip()]
@@ -85,7 +124,11 @@ def main(argv: list[str] | None = None) -> int:
     group.add_argument("--base", help="Kiểm tra mọi thay đổi từ nhánh gốc, ví dụ --base main")
     args = parser.parse_args(argv)
 
-    errors = check_changelog((ROOT / CHANGELOG).read_text(encoding="utf-8")) + check_adrs(ROOT / DECISIONS_DIR)
+    errors = (
+        check_changelog((ROOT / CHANGELOG).read_text(encoding="utf-8"))
+        + check_adrs(ROOT / DECISIONS_DIR)
+        + check_findings(ROOT / FINDINGS_DIR)
+    )
     changed: list[str] = []
     if args.staged:
         changed = _git_paths("diff", "--cached", "--name-only", "--diff-filter=ACMRD")

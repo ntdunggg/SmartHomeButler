@@ -57,8 +57,34 @@ def test_adr_must_be_complete_and_indexed(tmp_path):
     assert any("chưa có trong bảng" in e for e in errors)
 
 
+VALID_FINDING = """# Finding 01 — X
+
+- **Ngày ghi nhận:** 2026-11-08
+- **Mức:** Cao
+- **Trạng thái:** Ghi nhận
+"""
+
+
+def test_finding_must_be_complete_and_registered(tmp_path):
+    _write(tmp_path, "README.md", "| Mã | Lỗi |\n|---|---|\n| 01 | x | [01-x.md](01-x.md) |\n| 02 | y | — |\n")
+    _write(tmp_path, "00-mau.md", "mẫu")
+    _write(tmp_path, "01-x.md", VALID_FINDING)
+    assert check_docs.check_findings(tmp_path) == []
+
+    _write(tmp_path, "03-z.md", VALID_FINDING.replace("Cao", "Rất cao"))
+    errors = check_docs.check_findings(tmp_path)
+    assert any("Mức" in e for e in errors)
+    assert any("chưa có dòng trong sổ lỗi" in e for e in errors)
+
+
+def test_register_codes_must_be_unique(tmp_path):
+    _write(tmp_path, "README.md", "| 01 | a |\n| 01 | b |\n")
+    assert any("trùng" in e for e in check_docs.check_findings(tmp_path))
+
+
 def test_repository_docs_follow_the_rules():
     """Tài liệu thật của repo: CHANGELOG có mục chưa phát hành, mọi ADR đủ chuẩn."""
     changelog = (ROOT / "docs" / "CHANGELOG.md").read_text(encoding="utf-8")
     assert check_docs.check_changelog(changelog) == []
     assert check_docs.check_adrs(ROOT / "docs" / "decisions") == []
+    assert check_docs.check_findings(ROOT / "docs" / "findings") == []

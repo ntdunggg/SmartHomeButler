@@ -2,6 +2,7 @@
 
 - **Ngày ghi nhận:** 2026-10-29
 - **Commit kiểm tra:** `77dd9ef` (main)
+- **Mức:** Trung bình
 - **Trạng thái:** ĐÃ XÁC NHẬN, CHƯA SỬA. File này tổng hợp trước khi sửa.
 - **Script tái hiện:** [`probe_relative_magnitude.py`](probe_relative_magnitude.py)
 

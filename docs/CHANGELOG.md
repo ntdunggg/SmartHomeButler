@@ -21,6 +21,8 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - Kế hoạch thực hiện `docs/plan.md`: quy trình bảy bước từ finding tới đo sau khi sửa, bản đồ finding → bộ đo → lộ trình → ADR, sáu giai đoạn, bảng quyết định đang chờ gom từ finding 01, 02 và các ADR.
 
 ### Thay đổi
+- Cố định hướng đi trong `CLAUDE.md` (và `AGENTS.md` cho các công cụ AI khác) theo [ADR-0008](decisions/0008-uu-tien-theo-yeu-cau-cua-thay.md): làm đủ 4 yêu cầu của thầy theo 5 bước; chỉ sửa ngay lỗi an toàn hoặc lỗi chặn use case. `plan.md` và `roadmap.md` viết lại gọn theo 5 bước, các việc khác vào mục *Để sau*.
+- Luật ghi lại lỗi: mọi lỗi phát hiện được ghi vào sổ lỗi `docs/findings/README.md` (mã, mức, ảnh hưởng, quyết định) và mục *Lỗi đã biết* ngay trong phiên tìm ra; mẫu `docs/findings/00-mau.md`; `scripts/check_docs.py` kiểm tra file lỗi đủ trường và có trong sổ.
 - Chốt hai quyết định trước khi sửa finding 01 và 02: câu tương đối dùng ba nấc đã khai báo cho cả hai nhánh (độ sáng 15/30/50, [ADR-0007](decisions/0007-buoc-nhay-tuong-doi.md)); đợt 1 của finding 02 chỉ chặn thực thi ngay và hỏi lại, dùng regex. Chưa đổi code.
 - Cấu hình LLM chuyển sang Gemini qua endpoint tương thích OpenAI (`gemini-3.5-flash`, mức suy luận `low`, embedding `gemini-embedding-001` 1024 chiều). Lý do: key OpenAI cũ bị từ chối (401). Mức `medium` làm một lần gọi mất khoảng 29 giây, mức `low` khoảng 3 giây. Xem [ADR-0005](decisions/0005-mo-hinh-ngon-ngu.md).
 
@@ -41,6 +43,9 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - Lệnh tới thiết bị không có trong nhà (van, quạt, cửa garage) bị hỏi lại phòng thay vì báo không có.
 - “Đặt độ sáng lên tối đa” thành bật đèn thay vì đặt 100%; không hiểu đổi màu và nhiệt độ màu đèn.
 - Câu hỏi ngày giờ, “ai đang ở nhà”, “bỏ qua”, “bắt đầu robot hút bụi” bị hiểu thành lệnh thiếu phòng.
+- “Nhiệt độ phòng khách bao nhiêu” trả nhiệt độ ngoài trời (lỗi 09).
+- Lệnh media và robot đã nêu thiết bị vẫn bị hỏi lại phòng: “tạm dừng TV phòng khách”, “robot hút bụi về đế sạc” (lỗi 10).
+- Mã lỗi đầy đủ, mức và quyết định: [sổ lỗi](findings/README.md).
 - “Mình sắp đi ngủ rồi” hỏi lại “Phòng khách hay Phòng bếp” thay vì phòng ngủ (quan sát khi chạy Gemini, chưa điều tra).
 
 ## [Mốc 0] — 2026-10-30 · commit `617bd17`

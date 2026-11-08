@@ -1,8 +1,6 @@
 # Lộ trình
 
-Cập nhật lần cuối: 2026-11-08. Mỗi khi một bước đổi trạng thái, cập nhật bảng dưới đây và ghi vào [`CHANGELOG`](CHANGELOG.md). Khi đổi **thứ tự hoặc phạm vi** các bước, viết một ADR trong [`decisions/`](decisions/).
-
-Chi tiết từng gói việc, quy trình sửa lỗi và các quyết định đang chờ: xem [`plan.md`](plan.md).
+Cập nhật lần cuối: 2026-11-08. Hướng đi cố định trong [`CLAUDE.md`](../CLAUDE.md) và [ADR-0008](decisions/0008-uu-tien-theo-yeu-cau-cua-thay.md). Chi tiết từng việc: [`plan.md`](plan.md). Khi đổi **thứ tự hoặc phạm vi** các bước, viết ADR mới.
 
 ## Yêu cầu của thầy (họp tháng 11/2026)
 
@@ -15,19 +13,16 @@ Chi tiết từng gói việc, quy trình sửa lỗi và các quyết định �
 
 Trạng thái: ✅ xong · 🔄 đang làm · ⏳ chưa bắt đầu.
 
-| # | Bước | Phục vụ yêu cầu | Trạng thái | Quyết định liên quan |
+| Bước | Việc | Yêu cầu | Trạng thái | Liên quan |
 |---|---|---|---|---|
-| 0 | Kết nối LLM (Gemini) và bộ khung đo có giao thức khách quan | 3 | ✅ | [0003](decisions/0003-giao-thuc-danh-gia.md), [0005](decisions/0005-mo-hinh-ngon-ngu.md) |
-| 1 | Số liệu đầu tiên: 265 câu test tiếng Việt của Home Assistant | 3 | 🔄 `ha_vi` xong (68.4% chỉ luật); còn `timed`, `relative`, `catalog` | [0003](decisions/0003-giao-thuc-danh-gia.md) |
-| 2 | Sửa ba lỗi đã biết (câu tương đối, lệnh có mốc tương lai, kho thiết bị), có số trước và sau | 1 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
-| 3 | Bộ 12–15 use case có kết quả mong đợi | 1, 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
-| 4 | Kho thiết bị đọc từ DB và template thiết bị | 1 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
-| 5 | Giả lập tách tiến trình qua MQTT, màn hình luồng thực thi | 2 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
-| 6 | Tab thống kê độ chính xác (online từ phản hồi, offline từ bộ đo) | 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
-| 7 | Tổ chức lại thành 8 agent, thêm Mediator và Q&A | 4 | ⏳ | [0004](decisions/0004-multi-agent.md), [0006](decisions/0006-hoa-giai-xung-dot.md) |
-| 8 | Hẹn giờ và trigger do người dùng đặt | 1, 4 | ⏳ | [0004](decisions/0004-multi-agent.md) |
-| 9 | Bộ nhớ dài hạn lưu DB, test bảo mật | 1 | ⏳ | — |
-| 10 | Benchmark HomeBench và SimuHome; so ba cấu hình model | 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md), [0005](decisions/0005-mo-hinh-ngon-ngu.md) |
+| Nền | Kết nối LLM, bộ khung đo, số nền `ha_vi` 68.4% (chỉ luật) | 3 | ✅ | [0003](decisions/0003-giao-thuc-danh-gia.md), [0005](decisions/0005-mo-hinh-ngon-ngu.md) |
+| ① | Chốt 10–12 use case demo, thầy duyệt, viết thành bộ đo | 1 | ⏳ | [0008](decisions/0008-uu-tien-theo-yeu-cau-cua-thay.md) |
+| ② | Sửa lỗi an toàn (02, 05) và lỗi chặn use case | 1 | ⏳ | [sổ lỗi](findings/README.md), [0007](decisions/0007-buoc-nhay-tuong-doi.md) |
+| ③ | Kho thiết bị đọc từ DB (lỗi 03); giả lập qua MQTT; màn hình luồng | 2 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
+| ④ | Tab thống kê độ chính xác (offline + online) | 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
+| ⑤ | Tổ chức lại thành 8 agent, agent hoà giải | 4 | ⏳ | [0004](decisions/0004-multi-agent.md), [0006](decisions/0006-hoa-giai-xung-dot.md) |
+
+Các việc khác: mục *Để sau* trong [`plan.md`](plan.md).
 
 ## Không làm trong đồ án này
 

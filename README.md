@@ -147,12 +147,13 @@ Bộ khung `evals/` chạy dataset qua pipeline thật và chấm theo giao th�
 
 | Tài liệu | Ghi gì |
 |---|---|
+| [CLAUDE.md](CLAUDE.md) | **Hướng đi và luật làm việc**: 4 yêu cầu của thầy, thứ tự 5 bước, luật ghi lại lỗi. Đọc trước tiên |
 | [docs/CHANGELOG.md](docs/CHANGELOG.md) | Mọi thay đổi có ảnh hưởng, số liệu đo mới, lỗi đã biết |
 | [docs/decisions/](docs/decisions/) | Quyết định hướng đi (ADR): chọn gì, vì sao, bỏ phương án nào |
 | [docs/roadmap.md](docs/roadmap.md) | Các bước tiếp theo và trạng thái, theo yêu cầu của thầy |
 | [docs/plan.md](docs/plan.md) | Kế hoạch chi tiết: quy trình sửa lỗi, gói việc từng giai đoạn, quyết định đang chờ |
 | [docs/research.md](docs/research.md) | Danh mục nguồn nghiên cứu có đánh giá độ tin cậy, ma trận tính năng ↔ nghiên cứu, danh sách số liệu tự đo được |
-| [docs/findings/](docs/findings/) | Lỗi đã xác nhận: nguyên nhân gốc, cách tái hiện, hướng sửa, test cần viết |
+| [docs/findings/](docs/findings/README.md) | Sổ lỗi: mọi lỗi đã phát hiện, mức, quyết định; phân tích chi tiết cho lỗi sẽ sửa |
 
 Bật kiểm tra trước commit một lần cho mỗi bản clone:
 

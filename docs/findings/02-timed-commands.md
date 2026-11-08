@@ -2,6 +2,7 @@
 
 - **Ngày ghi nhận:** 2026-10-29
 - **Commit kiểm tra:** `77dd9ef` (main)
+- **Mức:** Cao
 - **Trạng thái:** ĐÃ XÁC NHẬN, CHƯA SỬA. File này tổng hợp trước khi sửa.
 - **Script tái hiện:** [`probe_timed_commands.py`](probe_timed_commands.py) (hành vi SmartHomeButler), [`hassil_vi_timer.py`](hassil_vi_timer.py) (nguyên mẫu mẫu câu tiếng Việt trên hassil)
 - **Liên quan:** [Finding 01](01-relative-magnitude.md) §5 đã ghi nhận lỗi này ở dạng một dòng.
