@@ -192,7 +192,12 @@ class OpenAIEmbeddingProvider:
                     kwargs["dimensions"] = self._dimensions
                 response = self._client.embeddings.create(**kwargs)
                 # `data` không được đảm bảo theo thứ tự; API trả `index` để ghép lại.
-                by_index = {item.index: item.embedding for item in response.data}
+                # Endpoint OpenAI-compatible của Gemini bỏ trường `index` khi bằng 0
+                # (giá trị mặc định proto) → SDK đọc ra None; khi đó dùng vị trí trong `data`.
+                by_index = {
+                    (item.index if item.index is not None else pos): item.embedding
+                    for pos, item in enumerate(response.data)
+                }
                 if len(by_index) != len(pending):
                     raise ValueError("embedding response size mismatch")
                 for slot, (i, text) in enumerate(pending):

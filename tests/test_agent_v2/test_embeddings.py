@@ -118,6 +118,30 @@ def test_batch_embedding_reassembles_by_response_index():
     assert all(e.space == provider.space for e in out)
 
 
+def test_missing_zero_index_falls_back_to_position():
+    """Gemini (OpenAI-compatible) bỏ `index` khi bằng 0 → SDK trả None cho phần tử đầu."""
+
+    class _Client:
+        class embeddings:  # noqa: N801
+            @staticmethod
+            def create(**kwargs):
+                n = len(kwargs["input"])
+                items = [
+                    type("I", (), {"index": None if i == 0 else i, "embedding": [1.0 if j == i else 0.0 for j in range(n)]})()
+                    for i in range(n)
+                ]
+                return type("R", (), {"data": items})()
+
+    provider = OpenAIEmbeddingProvider(api_key="k", model="gemini-embedding-001", dimensions=0)
+    provider._client = _Client()
+    provider._disabled = False
+
+    out = provider.embed_many(["một", "hai", "ba"])
+
+    assert [list(e.vector) for e in out] == [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
+    assert all(e.space == provider.space for e in out)
+
+
 def test_repeated_text_is_embedded_once(monkeypatch):
     calls = {"n": 0}
 

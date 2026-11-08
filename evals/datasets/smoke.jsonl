@@ -1,0 +1,11 @@
+# Bộ KIỂM TRA KHUNG ĐO (smoke), không phải benchmark: vài ca để chứng minh harness chạy,
+# chấm đúng và báo đủ ca sai. Kỳ vọng ghi theo hành vi ĐÚNG mong muốn, không theo hành vi
+# hiện tại — ca gắn tag known_bug được giữ lại để thấy nó SAI cho tới khi sửa.
+# Chạy: .venv/bin/python -m evals.run evals/datasets/smoke.jsonl --split all --mode rules
+{"id": "explicit-on-living-ceiling", "tags": ["explicit"], "text": "Bật đèn trần phòng khách.", "expect": {"outcome": "candidate_plan", "actions": [{"device_id": "den_chum_phong_khach", "action": "turn_on"}]}}
+{"id": "explicit-set-brightness-80", "tags": ["explicit"], "text": "Đặt đèn trần phòng khách 80%.", "expect": {"outcome": "candidate_plan", "actions": [{"device_id": "den_chum_phong_khach", "action": "set", "params": {"percent": 80}}]}}
+{"id": "cancel-after-command", "tags": ["multi_turn", "cancel"], "turns": [{"text": "Bật đèn trần phòng khách."}, {"text": "Thôi huỷ đi.", "expect": {"outcome": "cancelled", "actions": []}}]}
+{"id": "defer-object-later", "tags": ["defer"], "text": "Để đèn trần phòng khách lát nữa.", "expect": {"outcome": "answer", "actions": []}}
+{"id": "volume-delta-from-ledger", "tags": ["multi_turn", "relative"], "turns": [{"text": "Bật TV phòng khách."}, {"text": "Âm lượng 25 thôi."}, {"text": "Giảm thêm 5.", "expect": {"outcome": "candidate_plan", "actions": [{"device_id": "tv_phong_khach", "action": "set", "params": {"percent": 20}}]}}]}
+{"id": "timed-command-not-immediate", "tags": ["timed", "known_bug"], "text": "Mười phút nữa tắt đèn trần phòng khách.", "expect": {"outcome": ["answer", "clarification", "no_action"], "actions": []}}
+{"id": "vague-hot-parents-room", "tags": ["vague", "needs_llm"], "text": "Nóng quá, mình đang ở phòng ngủ bố mẹ.", "expect": {"outcome": "candidate_plan", "actions_include": [{"device_id": "dieu_hoa_phong_bo_me", "action": "set"}]}}

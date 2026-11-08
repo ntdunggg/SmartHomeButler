@@ -34,3 +34,6 @@ __pycache__/
 # macOS / Windows
 .DS_Store
 Thumbs.db
+
+# Kết quả đo (evals/README.md); holdout_log.jsonl VẪN được theo dõi
+evals/results/
