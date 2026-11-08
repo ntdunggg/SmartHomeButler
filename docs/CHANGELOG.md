@@ -30,6 +30,7 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 ### Đo lường
 - Bộ `smoke` (7 ca, chỉ để kiểm tra khung đo): 6/7 ở cả chế độ chỉ luật và Gemini; 20% lượt hội thoại có gọi LLM.
 - **Số nền `ha_vi`, tập `dev` (174 câu), chế độ chỉ luật, 3 lần, commit hiện tại: 68.4%.** Theo nhóm: điều khiển thiết bị 72%, câu hỏi trạng thái 88%, câu thiếu phòng hỏi lại đúng 93%, lệnh không hợp lệ 45%, hẹn giờ 38%. Kết quả: `evals/results/20261108T130147Z_ha_vi_dev_rules/` (máy cục bộ).
+- `ha_vi` với Gemini (`gemini-3.5-flash`, 1 lần, không embedding): **chưa xong**, gói miễn phí hết quota sau 72/174 câu (bộ đo dừng an toàn, không chấm câu dở). Trên 72 câu đã chạy: chỉ luật 87.5%, Gemini 97.2%; LLM sửa được 7 câu (ngày giờ, ai đang ở nhà, dừng hẹn giờ), không làm hỏng câu nào; 12% lượt có gọi LLM, trung vị 6.8 giây mỗi lượt đó. Chạy tiếp: `--resume evals/results/20261108T130212Z_ha_vi_dev_llm`. Đây là số tạm, không dùng để báo cáo cho tới khi đủ 174 câu.
 
 ### Lỗi đã biết
 - Câu tương đối mất mức độ: “giảm một chút” và “giảm nhiều” đều ra ±10. Chi tiết: [findings/01](findings/01-relative-magnitude.md).
