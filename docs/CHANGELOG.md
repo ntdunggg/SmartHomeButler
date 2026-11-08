@@ -17,6 +17,7 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - Sổ quyết định hướng đi `docs/decisions/`, lộ trình `docs/roadmap.md`, nhật ký thay đổi này, và bước kiểm tra trước commit `scripts/check_docs.py`.
 - Dataset `evals/datasets/ha_vi.jsonl` từ test tiếng Việt của Home Assistant (CC-BY-4.0, commit `b1e9b989`), sinh bằng `evals/convert_ha_vi.py` với bảng ánh xạ `ha_vi_mapping.yaml`: 253/265 câu, trong đó 48 câu là lệnh tới thiết bị nhà demo không có, giữ lại để đo việc từ chối đúng.
 - Bộ chấm điểm: kỳ vọng không ghi `action` thì chỉ kiểm tra thiết bị; `any_of` cho câu có nhiều cách hiểu hợp lý.
+- `docs/research.md`: đưa vào repo danh mục 23 nguồn có đánh giá độ tin cậy, ma trận 22 tính năng ↔ nghiên cứu (cập nhật theo số đo mới), và danh sách số liệu tự đo được theo ba nhóm, gắn với giai đoạn trong kế hoạch. Trước đây chỉ có trong trang artifact và cuộc trò chuyện.
 - Kế hoạch thực hiện `docs/plan.md`: quy trình bảy bước từ finding tới đo sau khi sửa, bản đồ finding → bộ đo → lộ trình → ADR, sáu giai đoạn, bảng quyết định đang chờ gom từ finding 01, 02 và các ADR.
 
 ### Thay đổi

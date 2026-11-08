@@ -10,6 +10,7 @@ File này nối bốn nguồn thành một kế hoạch làm việc:
 | [`findings/`](findings/) | Lỗi đã xác nhận, nguyên nhân gốc, hướng sửa, test cần viết |
 | [`decisions/`](decisions/) | Quyết định hướng đi (ADR) |
 | [`../evals/`](../evals/README.md) | Bộ đo để có số liệu trước và sau |
+| [`research.md`](research.md) | Nguồn nghiên cứu (mã `Pnn`), ma trận tính năng, danh sách số liệu tự đo được |
 
 Mỗi khi xong một gói việc: đánh dấu ở đây, cập nhật trạng thái trong `roadmap.md`, ghi `CHANGELOG.md`.
 

@@ -151,6 +151,7 @@ Bộ khung `evals/` chạy dataset qua pipeline thật và chấm theo giao th�
 | [docs/decisions/](docs/decisions/) | Quyết định hướng đi (ADR): chọn gì, vì sao, bỏ phương án nào |
 | [docs/roadmap.md](docs/roadmap.md) | Các bước tiếp theo và trạng thái, theo yêu cầu của thầy |
 | [docs/plan.md](docs/plan.md) | Kế hoạch chi tiết: quy trình sửa lỗi, gói việc từng giai đoạn, quyết định đang chờ |
+| [docs/research.md](docs/research.md) | Danh mục nguồn nghiên cứu có đánh giá độ tin cậy, ma trận tính năng ↔ nghiên cứu, danh sách số liệu tự đo được |
 | [docs/findings/](docs/findings/) | Lỗi đã xác nhận: nguyên nhân gốc, cách tái hiện, hướng sửa, test cần viết |
 
 Bật kiểm tra trước commit một lần cho mỗi bản clone:
