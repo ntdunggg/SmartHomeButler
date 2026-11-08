@@ -54,8 +54,9 @@ Trường tuỳ chọn: `state` (trạng thái thiết bị ban đầu), `role` 
 
 `expect` hỗ trợ:
 - `outcome`: một giá trị hoặc danh sách giá trị chấp nhận được (`candidate_plan`, `clarification`, `cancelled`, `answer`, `no_action`).
-- `actions`: danh sách **chính xác** `{device_id, action, params?}`, không thừa không thiếu; `params` so khớp tập con.
+- `actions`: danh sách **chính xác** `{device_id, action?, params?}`, không thừa không thiếu; `params` so khớp tập con; bỏ `action` thì chỉ kiểm tra đúng thiết bị.
 - `actions_include`: chỉ cần có mặt, cho phép thừa.
 - `tol`: dung sai cho tham số số (mặc định 0).
+- `any_of`: danh sách kỳ vọng thay thế, đúng khi khớp ít nhất một. Chỉ dùng cho câu thật sự có nhiều cách hiểu hợp lý, và ghi lý do trong dataset.
 
 `datasets/smoke.jsonl` chỉ để kiểm tra khung đo, không phải benchmark.

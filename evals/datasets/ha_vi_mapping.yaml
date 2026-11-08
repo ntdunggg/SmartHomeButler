@@ -1,0 +1,83 @@
+# Ánh xạ nhà mẫu trong test tiếng Việt của Home Assistant (OHF-Voice/intents, tests/vi)
+# sang nhà demo của SmartHomeButler. Dùng bởi evals/convert_ha_vi.py.
+#
+# Nguyên tắc:
+# - Chỉ ánh xạ khi nhà demo có thiết bị tương đương RÕ RÀNG. Không có → bỏ qua ca đó và
+#   đếm theo lý do trong báo cáo chuyển đổi, không âm thầm loại.
+# - `text` là cách gọi thay vào câu (giữ nguyên ngữ pháp). Bỏ `text` = giữ nguyên chữ của HA.
+# - KHÔNG thay chữ chỉ phòng mà parser lẽ ra phải hiểu (ví dụ "bếp", "nhà bếp" = Phòng bếp):
+#   nếu parser không hiểu, đó là lỗi thật cần đo.
+# - Tạm thời: agent chưa nhận thiết bị thêm qua giao diện (docs/plan.md, finding 03), nên
+#   phải ánh xạ. Sau khi sửa kho thiết bị, chạy lại với nhà mẫu gốc của HA và so sánh.
+
+areas:
+  "phòng khách": {room: "Phòng khách"}
+  "bếp": {room: "Phòng bếp"}
+  "nhà bếp": {room: "Phòng bếp"}
+  # Nhà demo có hai phòng ngủ; HA chỉ có một. Thay bằng tên đầy đủ để câu không bị mơ hồ
+  # vì khác nhà mẫu (mơ hồ thật giữa hai phòng ngủ được đo ở bộ use case riêng).
+  "phòng ngủ": {room: "Phòng ngủ bố mẹ", text: "phòng ngủ bố mẹ"}
+  # Không có trong nhà demo:
+  "hành lang": null
+  "garage": null
+  "sảnh": null
+  "văn phòng": null
+
+# Khoá: "tên" hoặc "tên|khu vực" (khu vực theo HA). Khoá có khu vực được ưu tiên.
+entities:
+  "đèn trần": {device: den_chum_phong_khach}            # "đèn trần" là alias của Đèn chùm
+  "đèn trần|bếp": {device: den_bep, text: "đèn bếp"}    # bếp demo không có đèn trần
+  "đèn bếp": {device: den_bep}
+  "đèn nhà bếp": {device: den_bep}
+  "đèn phụ bếp": {device: den_ban_an, text: "đèn bàn ăn"}
+  "đèn phòng ngủ": {device: den_ngu_bo_me, text: "đèn ngủ bố mẹ"}
+  "tv": {device: tv_phong_khach, text: "TV phòng khách"}  # demo có hai TV
+  "máy điều hòa phòng khách": {device: dieu_hoa_phong_khach, text: "điều hoà phòng khách"}
+  "máy điều hòa phòng ngủ": {device: dieu_hoa_phong_bo_me, text: "điều hoà phòng bố mẹ"}
+  "rèm trái": {device: rem_phong_khach, text: "rèm phòng khách"}
+  "rèm cửa phòng ngủ": {device: rem_phong_bo_me, text: "rèm phòng bố mẹ"}
+  "cửa sổ phòng khách": {device: cua_so_phong_khach}
+  "cửa sổ phòng ngủ": {device: cua_so_phong_bo_me, text: "cửa sổ phòng bố mẹ"}
+  "cửa trước": {device: khoa_cua_chinh, text: "cửa chính"}
+  "rover": {device: robot_hut_bui, text: "robot"}  # câu HA có sẵn chữ "hút bụi" sau tên
+  # Không có trong nhà demo (để rõ là đã xét, không phải bị quên):
+  "đèn hành lang": null
+  "máy điều hòa văn phòng": null
+  "cửa sổ phụ phòng ngủ": null
+  "cửa sau": null
+  "cửa hành lang": null
+  "cửa phụ hành lang": null
+  "cửa garage": null
+  "cửa trượt": null
+  "quạt bàn": null
+  "quạt khách": null
+  "quạt phụ khách": null
+  "quạt trần": null
+  "van chính": null
+  "công tắc bếp": null
+  "công tắc phụ bếp": null
+  "công tắc phòng ngủ": null
+  "chế độ tiệc": null
+  "giờ tiệc": null
+
+# Domain của HA → loại thiết bị demo. null = nhà demo không có loại này.
+domains:
+  light: [light]
+  climate: [air_conditioner]
+  media_player: [tv, speaker]
+  lock: [door_lock]
+  vacuum: [vacuum]
+  cover: [curtain]
+  fan: null
+  switch: null
+  valve: null
+  scene: null
+  script: null
+
+# device_class của cover → loại thiết bị demo.
+cover_device_classes:
+  window: [window]
+  curtain: [curtain]
+  blind: [curtain]
+  shade: [curtain]
+  garage: null

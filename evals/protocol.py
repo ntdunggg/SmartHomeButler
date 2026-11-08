@@ -120,7 +120,11 @@ def _value_matches(expected: Any, actual: Any, tol: float) -> bool:
 
 
 def _action_matches(exp: dict[str, Any], act: dict[str, Any], tol: float) -> bool:
-    if exp.get("device_id") != act.get("device_id") or exp.get("action") != act.get("action"):
+    # Không ghi ``action`` = chỉ kiểm tra đúng thiết bị (cho lệnh chưa có tên hành động
+    # riêng trong hệ thống, như tạm dừng media hay robot về đế).
+    if exp.get("device_id") != act.get("device_id"):
+        return False
+    if "action" in exp and exp["action"] != act.get("action"):
         return False
     params = act.get("params") or {}
     return all(k in params and _value_matches(v, params[k], tol) for k, v in (exp.get("params") or {}).items())
@@ -132,10 +136,18 @@ def score_turn(expect: dict[str, Any], outcome: str, actions: list[dict[str, Any
     ``expect`` hỗ trợ:
       - ``outcome``: chuỗi hoặc danh sách chấp nhận được.
       - ``actions``: danh sách CHÍNH XÁC (không thừa, không thiếu) các
-        ``{device_id, action, params?}``; ``params`` so khớp tập con.
+        ``{device_id, action?, params?}``; ``params`` so khớp tập con; thiếu
+        ``action`` thì chỉ kiểm tra thiết bị.
       - ``actions_include``: chỉ cần có mặt, cho phép thừa.
       - ``tol``: dung sai số (mặc định 0).
+      - ``any_of``: danh sách kỳ vọng thay thế; đúng khi khớp ít nhất một.
     """
+    if "any_of" in expect:
+        # Câu có nhiều cách hiểu đều hợp lý: đúng khi khớp ÍT NHẤT một phương án.
+        attempts = [score_turn(alt, outcome, actions) for alt in expect["any_of"]]
+        if any(not r for r in attempts):
+            return []
+        return [f"không khớp phương án nào trong {len(attempts)}: " + " | ".join("; ".join(r) for r in attempts)]
     reasons: list[str] = []
     tol = float(expect.get("tol", 0))
     want = expect.get("outcome")

@@ -43,6 +43,10 @@ Mọi gói việc đi qua đúng bảy bước. Bước nào chưa xong thì ch�
 | [02: lệnh có mốc thời gian chạy ngay](findings/02-timed-commands.md) | **Cao**: thực thi hành động người dùng chưa muốn; “sau 10 phút” còn thành *độ sáng 10%* | `evals/datasets/timed.jsonl` | 2 (giai đoạn 1), 8 (bộ hẹn giờ) | ADR-0008 cho thiết kế bộ hẹn giờ |
 | 03 (chưa viết): agent không nhận thiết bị thêm qua giao diện | **Cao**: chặn mọi việc mở rộng | `evals/datasets/catalog.jsonl` | 4 | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
 | 04 (chưa viết): “Mình sắp đi ngủ rồi” hỏi Phòng khách / Phòng bếp | Thấp, chưa điều tra | thêm vào `usecases.jsonl` | 3 | — |
+| 05 (chưa viết): **“tắt tất cả đèn trong bếp” tắt đèn cả nhà**; “bật tất cả đèn ở đây” bật cả nhà | **Cao**: tác động lên phòng người dùng không yêu cầu | `ha_vi.jsonl` | 2 | — |
+| 06 (chưa viết): lệnh tới thiết bị không có trong nhà (van, quạt, cửa garage) bị hỏi lại thay vì báo không có | Trung bình | `ha_vi.jsonl`, tag `invalid_target` (45%) | 2 | — |
+| 07 (chưa viết): “tối đa / thấp nhất” thành bật đèn thay vì đặt 100% / mức thấp nhất; đổi màu, nhiệt độ màu không hiểu | Trung bình | `ha_vi.jsonl`, tag `HassLightSet` | 2 | — |
+| 08 (chưa viết): câu hỏi ngày giờ, “ai đang ở nhà”, “bỏ qua”, “bắt đầu robot”, “đặt táo vào danh sách” bị hiểu thành lệnh thiếu phòng | Thấp | `ha_vi.jsonl` | 3 | — |
 
 Finding 03 và 04 viết theo đúng mẫu của 01 và 02 trước khi sửa.
 
@@ -66,7 +70,10 @@ Mục tiêu: có con số **trước khi sửa** cho mọi thứ sẽ sửa ở 
 - [x] Commit `docs/findings/` (commit `4cb5ef1`); worktree sạch là điều kiện để chạy holdout.
 - [ ] Thêm cột “Ca đo” vào phần test của mỗi finding, trỏ tới `id` trong dataset (làm cùng 1.3).
 
-**1.2 Bộ test tiếng Việt của Home Assistant → `evals/datasets/ha_vi.jsonl`** (265 câu, ≈ 1–2 ngày)
+**1.2 Bộ test tiếng Việt của Home Assistant → `evals/datasets/ha_vi.jsonl`** ✅ 2026-11-08
+
+> Kết quả: 253/265 câu dùng được (205 câu thường + 48 **lệnh không hợp lệ** vì nhà demo không có thiết bị đó, giữ lại để đo việc từ chối đúng); 12 câu media bị bỏ vì không chấm công bằng được. Số nền chế độ chỉ luật trên `dev` (174 câu): **68.4%**. Câu sai đã được rà tay: tất cả là lỗi thật của agent, không phải do kỳ vọng. Danh sách lỗi mới ở mục 2 (finding 05–08) và trong CHANGELOG.
+
 - Viết `evals/convert_ha_vi.py`: đọc `tests/vi/<Intent>/*.yaml`, sinh ca theo định dạng của bộ đo.
 - **Phụ thuộc vào finding 03:** agent chưa nhận được thiết bị mới, nên các thiết bị trong file test của HA (ví dụ “đèn trần” ở “bếp”) phải **ánh xạ** sang thiết bị của nhà demo qua bảng `evals/datasets/ha_vi_mapping.yaml`. Câu không ánh xạ được thì đánh dấu và **báo số lượng**, không âm thầm bỏ.
 - Sau giai đoạn 3, chạy lại với thiết bị gốc của HA. Chênh lệch giữa hai lần đo chính là bằng chứng định lượng cho việc sửa kho thiết bị.

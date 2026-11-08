@@ -18,7 +18,7 @@ Trạng thái: ✅ xong · 🔄 đang làm · ⏳ chưa bắt đầu.
 | # | Bước | Phục vụ yêu cầu | Trạng thái | Quyết định liên quan |
 |---|---|---|---|---|
 | 0 | Kết nối LLM (Gemini) và bộ khung đo có giao thức khách quan | 3 | ✅ | [0003](decisions/0003-giao-thuc-danh-gia.md), [0005](decisions/0005-mo-hinh-ngon-ngu.md) |
-| 1 | Số liệu đầu tiên: 265 câu test tiếng Việt của Home Assistant | 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
+| 1 | Số liệu đầu tiên: 265 câu test tiếng Việt của Home Assistant | 3 | 🔄 `ha_vi` xong (68.4% chỉ luật); còn `timed`, `relative`, `catalog` | [0003](decisions/0003-giao-thuc-danh-gia.md) |
 | 2 | Sửa ba lỗi đã biết (câu tương đối, lệnh có mốc tương lai, kho thiết bị), có số trước và sau | 1 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
 | 3 | Bộ 12–15 use case có kết quả mong đợi | 1, 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
 | 4 | Kho thiết bị đọc từ DB và template thiết bị | 1 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |

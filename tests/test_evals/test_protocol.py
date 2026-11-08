@@ -69,6 +69,24 @@ def test_include_allows_extra_and_params_use_tolerance():
     assert protocol.score_turn(strict, "candidate_plan", [act]) != []
 
 
+def test_expectation_without_action_checks_device_only():
+    expect = {"actions": [{"device_id": "tv"}]}
+    assert protocol.score_turn(expect, "candidate_plan", [{"device_id": "tv", "action": "turn_off", "params": {}}]) == []
+    assert protocol.score_turn(expect, "candidate_plan", [{"device_id": "loa", "action": "turn_off", "params": {}}]) != []
+
+
+def test_any_of_passes_when_one_alternative_matches():
+    expect = {"any_of": [
+        {"outcome": "candidate_plan", "actions": [{"device_id": "den_bep", "action": "turn_off"}]},
+        {"outcome": "candidate_plan", "actions": [{"device_id": "den_bep", "action": "turn_off"},
+                                                  {"device_id": "den_ban_an", "action": "turn_off"}]},
+    ]}
+    only_one = [{"device_id": "den_bep", "action": "turn_off", "params": {}}]
+    assert protocol.score_turn(expect, "candidate_plan", only_one) == []
+    wrong = [{"device_id": "den_chum_phong_khach", "action": "turn_off", "params": {}}]
+    assert protocol.score_turn(expect, "candidate_plan", wrong)
+
+
 def test_outcome_accepts_a_list():
     expect = {"outcome": ["answer", "clarification"], "actions": []}
     assert protocol.score_turn(expect, "clarification", []) == []
