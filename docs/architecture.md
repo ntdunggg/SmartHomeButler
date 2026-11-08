@@ -33,7 +33,7 @@
 
 ![Luồng Human-in-the-loop (HITL)](diagrams/hitl-flow.png)
 
-**Giải thích:** Lệnh nhạy cảm (an ninh, thiết bị công suất lớn) dừng ở `policy_gate = CONFIRM`, lưu checkpoint bằng LangGraph `interrupt()` để **sống sót qua restart**. Khi người dùng Đồng ý, pipeline resume nhưng **không tin kế hoạch cũ** — làm tươi và kiểm tra lại toàn bộ trước khi thực thi.
+**Giải thích:** Lệnh nhạy cảm (an ninh, thiết bị công suất lớn) hoặc lệnh của thành viên cần chủ hộ duyệt không thực thi ngay mà tạo một yêu cầu duyệt (`Approval`) **lưu trong database**, nên vẫn còn sau khi khởi động lại server. Việc duyệt diễn ra ở tầng dịch vụ (`src/services/agent_execution.py`), không dùng LangGraph `interrupt()`. Khi chủ hộ đồng ý, yêu cầu được nhận bằng một lệnh `UPDATE` có điều kiện để hai người không cùng duyệt một yêu cầu. Hệ thống **không tin kế hoạch cũ**: đọc lại trạng thái, xác định lại thiết bị, kiểm tra lại quyền và giới hạn, rồi mới gửi lệnh và đọc lại trạng thái thiết bị để xác nhận (`VERIFY_MISMATCH` nếu không khớp).
 
 ---
 
@@ -53,5 +53,6 @@
 | Preference / RL | `src/agent/preference/` | bandit, reward |
 | IoT | `src/iot/` | bus (mqtt/in-process), simulator, registry |
 | Database | `src/db/`, `src/models/` | SQLAlchemy, migrate, seed |
-| External LLM | `src/services/` + `src/nlu/model_client.py` | OpenAI, fallback rule-based |
+| External LLM | `src/services/` + `src/nlu/model_client.py` | Endpoint tương thích OpenAI (Gemini, OpenAI, Ollama), fallback rule-based |
+| Đánh giá | `evals/` | Bộ khung đo có giao thức khách quan, xem `evals/README.md` |
 | External weather | `src/services/automation.py` | Open-Meteo |

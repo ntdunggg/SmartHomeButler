@@ -1,0 +1,6 @@
+#!/bin/sh
+# Bật bằng `make hooks`. Chặn commit sửa code mà không ghi docs/CHANGELOG.md,
+# và kiểm tra định dạng ADR. Bỏ qua một lần: SKIP_DOCS_CHECK=1 git commit ...
+ROOT="$(git rev-parse --show-toplevel)"
+if [ -x "$ROOT/.venv/bin/python" ]; then PY="$ROOT/.venv/bin/python"; else PY=python3; fi
+exec "$PY" "$ROOT/scripts/check_docs.py" --staged

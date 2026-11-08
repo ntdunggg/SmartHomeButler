@@ -118,7 +118,8 @@ Mật khẩu chung: `demo1234`
 
 - Kế hoạch nhiều thiết bị cho lệnh như *"tối nay có khách, chuẩn bị phòng khách"* cần LLM hợp lệ. Ở chế độ offline, lệnh này chỉ bật Đèn chùm 100%.
 - Cảnh báo xung đột sở thích (ví dụ bố 26°C, mẹ 24°C) chưa xuất hiện trong các kịch bản đã thử.
-- Khi bật LLM (`LLM_DISABLED=false`) mà khóa OpenAI là giả hoặc để trống, mỗi lệnh gọi LLM ghi lỗi `AuthenticationError` vào log, và lệnh nhiều ý không được xử lý.
+- Khi bật LLM (`LLM_DISABLED=false`) mà khóa là giả hoặc để trống, mỗi lệnh gọi LLM ghi lỗi `AuthenticationError` vào log, và lệnh nhiều ý không được xử lý.
+- Câu tương đối mất mức độ (“giảm một chút” và “giảm nhiều” đều ±10), lệnh có mốc tương lai (“mười phút nữa tắt đèn”) bị thực thi ngay, và agent chưa nhận thiết bị thêm qua giao diện. Danh sách đầy đủ ở mục *Lỗi đã biết* trong [docs/CHANGELOG.md](docs/CHANGELOG.md).
 - Tự động hoá theo thời tiết cần Internet để gọi Open-Meteo.
 - MQTT và Postgres chưa được chạy trong bản kiểm tra này.
 
@@ -134,6 +135,30 @@ Không có `make`, chạy trực tiếp: `APP_ENV=test LLM_DISABLED=true pytest 
 
 Test chạy offline, mỗi test có database riêng.
 
+## Đánh giá độ chính xác
+
+```bash
+make eval-smoke   # kiểm tra nhanh bộ khung đo, không gọi API
+```
+
+Bộ khung `evals/` chạy dataset qua pipeline thật và chấm theo giao thức cố định: tách tập phát triển và tập giữ kín, tập giữ kín chỉ chạy một lần và được ghi sổ, mỗi lần đo ghi lại commit và cấu hình model, chạy nhiều lần, báo cáo mọi ca sai. Xem [evals/README.md](evals/README.md).
+
+## Ghi lại thay đổi và hướng đi
+
+| Tài liệu | Ghi gì |
+|---|---|
+| [docs/CHANGELOG.md](docs/CHANGELOG.md) | Mọi thay đổi có ảnh hưởng, số liệu đo mới, lỗi đã biết |
+| [docs/decisions/](docs/decisions/) | Quyết định hướng đi (ADR): chọn gì, vì sao, bỏ phương án nào |
+| [docs/roadmap.md](docs/roadmap.md) | Các bước tiếp theo và trạng thái, theo yêu cầu của thầy |
+
+Bật kiểm tra trước commit một lần cho mỗi bản clone:
+
+```bash
+make hooks
+```
+
+Sau đó commit nào sửa `src/`, `evals/`, `frontend/` hoặc `config/` mà không ghi `docs/CHANGELOG.md` sẽ bị chặn, và ADR sai định dạng cũng bị chặn. `make test` cũng kiểm tra định dạng tài liệu. Khi mở pull request, làm theo checklist trong `.github/pull_request_template.md`.
+
 ## Cấu hình
 
 Xem [.env.example](.env.example). Các biến đáng chú ý:
@@ -141,7 +166,7 @@ Xem [.env.example](.env.example). Các biến đáng chú ý:
 | Biến | Mặc định | Tác dụng |
 |---|---|---|
 | `LLM_DISABLED` | `true` trong `.env.example` | `true` = chỉ dùng luật tiếng Việt, không gọi mạng. `false` = bật LLM, cần khóa hợp lệ. Nếu không có `.env`, mã mặc định là `false` nhưng không có khóa thì vẫn không gọi LLM |
-| `LLM_PROVIDER` | `openai` | `openai`, `ollama` hoặc `gemini` |
+| `LLM_PROVIDER` | `openai` | `openai`, `ollama` hoặc `gemini`. Với Gemini đặt thêm `LLM_BASE_URL` và `MODEL_NAME`, xem `.env.example` và [ADR-0005](docs/decisions/0005-mo-hinh-ngon-ngu.md) |
 | `OPENAI_API_KEY`, `MODEL_NAME` | placeholder, trống | Cần khi dùng LLM |
 | `DATABASE_URL` | `sqlite:///./data/app.db` | Đổi sang `postgresql+psycopg://…` để dùng Postgres |
 | `MQTT_ENABLED` | `false` | `true` = nối Mosquitto thay vì bus trong bộ nhớ |
