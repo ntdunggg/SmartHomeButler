@@ -150,6 +150,8 @@ Bộ khung `evals/` chạy dataset qua pipeline thật và chấm theo giao th�
 | [docs/CHANGELOG.md](docs/CHANGELOG.md) | Mọi thay đổi có ảnh hưởng, số liệu đo mới, lỗi đã biết |
 | [docs/decisions/](docs/decisions/) | Quyết định hướng đi (ADR): chọn gì, vì sao, bỏ phương án nào |
 | [docs/roadmap.md](docs/roadmap.md) | Các bước tiếp theo và trạng thái, theo yêu cầu của thầy |
+| [docs/plan.md](docs/plan.md) | Kế hoạch chi tiết: quy trình sửa lỗi, gói việc từng giai đoạn, quyết định đang chờ |
+| [docs/findings/](docs/findings/) | Lỗi đã xác nhận: nguyên nhân gốc, cách tái hiện, hướng sửa, test cần viết |
 
 Bật kiểm tra trước commit một lần cho mỗi bản clone:
 

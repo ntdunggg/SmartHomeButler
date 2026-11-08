@@ -178,9 +178,17 @@ Cần thêm:
 
 ### 4.6 Quyết định cần chốt trước khi sửa
 
-- [ ] Cách (a) regex hay (b) hassil ở §4.2.
-- [ ] Phạm vi lần sửa đầu: chỉ chặn thực thi ngay + hỏi lại / báo chưa hỗ trợ (nhỏ, an toàn), hay làm luôn bảng `scheduled_commands`.
-- [ ] Loại B có làm trong lần đầu không; danh sách cặp hành động nghịch đảo.
+- [x] **Cách (a) regex** (chốt 2026-11-08). Lý do: dùng lại xử lý không dấu, teencode, phủ định của parser hiện có; tránh hai điểm yếu wildcard ở §3.2 ("thì", "nhắc tôi uống thuốc"); không thêm phụ thuộc. Mẫu câu §4.2 dùng làm đặc tả, `hassil_vi_timer.py` làm đối chứng khi viết test.
+- [x] **Đợt 1 chỉ chặn thực thi ngay** (chốt 2026-11-08). Bảng `scheduled_commands` để đợt 2 (giai đoạn 4 trong [`plan.md`](../plan.md)), cần ADR riêng. Câu trả lời đợt 1:
+
+  | Loại | Trả lời | Thực thi |
+  |---|---|---|
+  | A | "Mình chưa hẹn giờ được. Bạn muốn mình <lệnh> ngay không?" (giữ lệnh trong `pending_clarification`) | Chỉ khi người dùng đồng ý |
+  | B | Như A, với phần "ngay" của lệnh | Chỉ khi người dùng đồng ý |
+  | C | "Mình chưa hẹn theo giờ được." | Không |
+  | D | "Bao lâu nữa ạ?" → câu trả lời đưa về A | Không |
+  | E | "Mình chưa hẹn giờ được." (trừ khi đang có câu hỏi chờ, quy ước 5 §4.2) | Không |
+- [x] **Loại B không làm trong đợt 1** (chốt 2026-11-08), xử lý như A. Danh sách cặp hành động nghịch đảo chốt ở đợt 2.
 - [ ] Giới hạn thời lượng tối đa và số lệnh hẹn mỗi nhà.
 - [ ] Quy tắc chạy bù khi khởi động lại.
 - [ ] Có gửi PR mẫu câu tiếng Việt cho `OHF-Voice/intents` không (kèm file test theo `tests/vi/`).

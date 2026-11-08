@@ -15,8 +15,10 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 ### Thêm
 - Bộ khung đánh giá `evals/` với giao thức khách quan được ép bằng code: tách `dev`/`holdout` tất định, holdout chỉ chạy một lần và ghi sổ, manifest ghi đủ cấu hình, chạy nhiều lần, báo cáo mọi ca sai. Lỗi hạ tầng (hết quota) không bị chấm là sai. Lệnh `make eval-smoke`. Xem [ADR-0003](decisions/0003-giao-thuc-danh-gia.md).
 - Sổ quyết định hướng đi `docs/decisions/`, lộ trình `docs/roadmap.md`, nhật ký thay đổi này, và bước kiểm tra trước commit `scripts/check_docs.py`.
+- Kế hoạch thực hiện `docs/plan.md`: quy trình bảy bước từ finding tới đo sau khi sửa, bản đồ finding → bộ đo → lộ trình → ADR, sáu giai đoạn, bảng quyết định đang chờ gom từ finding 01, 02 và các ADR.
 
 ### Thay đổi
+- Chốt hai quyết định trước khi sửa finding 01 và 02: câu tương đối dùng ba nấc đã khai báo cho cả hai nhánh (độ sáng 15/30/50, [ADR-0007](decisions/0007-buoc-nhay-tuong-doi.md)); đợt 1 của finding 02 chỉ chặn thực thi ngay và hỏi lại, dùng regex. Chưa đổi code.
 - Cấu hình LLM chuyển sang Gemini qua endpoint tương thích OpenAI (`gemini-3.5-flash`, mức suy luận `low`, embedding `gemini-embedding-001` 1024 chiều). Lý do: key OpenAI cũ bị từ chối (401). Mức `medium` làm một lần gọi mất khoảng 29 giây, mức `low` khoảng 3 giây. Xem [ADR-0005](decisions/0005-mo-hinh-ngon-ngu.md).
 
 ### Sửa lỗi

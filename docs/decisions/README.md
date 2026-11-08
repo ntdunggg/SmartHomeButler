@@ -29,3 +29,4 @@ Sửa lỗi hay thêm tính năng nhỏ thì chỉ cần ghi trong [`CHANGELOG`]
 | [0004](0004-multi-agent.md) | Multi-agent kết hợp nhiều kiểu tổ chức, LLM chỉ ở hai agent | Đề xuất | 2026-11-08 |
 | [0005](0005-mo-hinh-ngon-ngu.md) | Dùng Gemini gói miễn phí và đường chỉ luật; chưa tự huấn luyện model | Đã chấp nhận | 2026-11-08 |
 | [0006](0006-hoa-giai-xung-dot.md) | Hoà giải xung đột giữa thành viên theo quy trình MAP | Đề xuất | 2026-11-08 |
+| [0007](0007-buoc-nhay-tuong-doi.md) | Câu tương đối dùng ba nấc đã khai báo (độ sáng 15/30/50) cho cả hai nhánh | Đã chấp nhận | 2026-11-08 |

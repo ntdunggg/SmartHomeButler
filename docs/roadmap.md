@@ -2,6 +2,8 @@
 
 Cập nhật lần cuối: 2026-11-08. Mỗi khi một bước đổi trạng thái, cập nhật bảng dưới đây và ghi vào [`CHANGELOG`](CHANGELOG.md). Khi đổi **thứ tự hoặc phạm vi** các bước, viết một ADR trong [`decisions/`](decisions/).
 
+Chi tiết từng gói việc, quy trình sửa lỗi và các quyết định đang chờ: xem [`plan.md`](plan.md).
+
 ## Yêu cầu của thầy (họp tháng 11/2026)
 
 1. Phần mềm chạy được các use case.

@@ -254,10 +254,10 @@ Nguồn:
 ### 4.7 Quyết định cần chốt trước khi sửa
 
 - [ ] Danh sách từ của 3 nhóm (mục 4.3).
-- [ ] Con số `relative_steps` cho brightness: giữ (15, 30, 50)? Nếu giữ, "giảm độ sáng" không kèm mức độ sẽ thành −30 thay vì −10 như hiện tại.
-- [ ] Con số cho temperature (1, 2, 3) và fan_speed (1, 1, 2).
+- [x] Con số `relative_steps` cho brightness: **giữ (15, 30, 50)** (chốt 2026-11-08, [ADR-0007](../decisions/0007-buoc-nhay-tuong-doi.md)). "Giảm độ sáng" không kèm mức độ thành −30 thay vì −10.
+- [x] Con số cho temperature và fan_speed: **giữ (1, 2, 3) và (1, 1, 2)** (chốt 2026-11-08, ADR-0007).
 - [ ] Lưu `magnitude` dạng chuỗi hay dạng số (1 / 3 / 5).
-- [ ] Phạm vi lần sửa này có gồm mã lý do chạm biên không.
+- [x] Phạm vi lần sửa này **có** gồm mã lý do chạm biên `ALREADY_AT_MIN` / `ALREADY_AT_MAX`, và không để "giảm nhiều" tự tắt đèn (chốt 2026-11-08, ADR-0007).
 
 ---
 
