@@ -29,12 +29,13 @@ Khi xong một việc: đánh dấu ở đây, cập nhật `roadmap.md`, ghi `C
 
 Bước quan trọng nhất: nó định nghĩa “chạy đúng” và quyết định lỗi nào là *Chặn*.
 
-- [ ] Chọn 10–12 use case. Mỗi use case: kịch bản, người nói (vai trò), trạng thái nhà ban đầu, kết quả mong đợi.
-- [ ] Đưa danh sách cho thầy duyệt.
-- [ ] Viết thành `evals/datasets/usecases.jsonl`, mỗi use case 5–10 cách nói. Chạy đo nền.
-- [ ] Rà sổ lỗi: lỗi nào làm hỏng use case đã chốt thì đổi mức thành **Chặn**.
+- [x] Chọn use case: 13 use case có test + 3 use case cho bước ③–⑤ → [`usecases.md`](usecases.md).
+- [x] Mỗi use case là một test nghiệm thu qua API thật (`tests/test_usecases/`). **Hiện 8/13 đạt**; 5 cái hỏng do lỗi 01, 02, 03, 11, 12, 13 (đánh dấu `xfail(strict=True)`).
+- [x] Rà sổ lỗi: lỗi 01 lên **Chặn** (UC-04); ghi thêm lỗi 11 (Cao), 12 (Chặn, bước ⑤), 13.
+- [ ] **Đưa danh sách cho thầy duyệt** (mục “Cần thầy góp ý” trong `usecases.md`).
+- [ ] Bộ câu biến thể cho từng use case (`evals/datasets/usecases.jsonl`, 5–10 cách nói) để tính độ chính xác theo use case — làm cùng bước ④.
 
-Danh sách gợi ý để chọn:
+Danh sách gợi ý ban đầu (đã chốt thành [`usecases.md`](usecases.md)):
 
 | # | Use case | Thể hiện |
 |---|---|---|
@@ -56,6 +57,8 @@ Danh sách gợi ý để chọn:
 Mỗi lỗi đi đúng quy trình 7 bước ở cuối file.
 
 - [ ] **Lỗi 02** (Cao), đợt 1: chặn thực thi ngay câu có yếu tố thời gian; tách số đi kèm `phút / tiếng / giây` trước khi bắt tham số thiết bị; hỏi “làm ngay không?”. Regex, không hassil. Chi tiết: [finding 02](findings/02-timed-commands.md).
+- [ ] **Lỗi 11** (Cao, UC-02): “nóng quá” với `speaker_location` phòng bố mẹ lại chỉnh điều hoà phòng khách. Viết file finding trước khi sửa.
+- [ ] **Lỗi 01** (Chặn, UC-04): sửa theo [ADR-0007](decisions/0007-buoc-nhay-tuong-doi.md) và [finding 01](findings/01-relative-magnitude.md).
 - [ ] **Lỗi 05** (Cao): “tất cả … trong <phòng>” phải giới hạn trong phòng đó; “ở đây” khi không biết vị trí người nói thì hỏi lại. Viết file finding trước khi sửa.
 - [ ] Các lỗi được đổi thành **Chặn** ở bước ①.
 

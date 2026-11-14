@@ -148,6 +148,7 @@ Bộ khung `evals/` chạy dataset qua pipeline thật và chấm theo giao th�
 | Tài liệu | Ghi gì |
 |---|---|
 | [CLAUDE.md](CLAUDE.md) | **Hướng đi và luật làm việc**: 4 yêu cầu của thầy, thứ tự 5 bước, luật ghi lại lỗi. Đọc trước tiên |
+| [docs/usecases.md](docs/usecases.md) | Use case demo, trạng thái đạt / hỏng, lỗi chặn; test nghiệm thu trong `tests/test_usecases/` |
 | [docs/CHANGELOG.md](docs/CHANGELOG.md) | Mọi thay đổi có ảnh hưởng, số liệu đo mới, lỗi đã biết |
 | [docs/decisions/](docs/decisions/) | Quyết định hướng đi (ADR): chọn gì, vì sao, bỏ phương án nào |
 | [docs/roadmap.md](docs/roadmap.md) | Các bước tiếp theo và trạng thái, theo yêu cầu của thầy |

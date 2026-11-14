@@ -16,8 +16,8 @@ Trạng thái: ✅ xong · 🔄 đang làm · ⏳ chưa bắt đầu.
 | Bước | Việc | Yêu cầu | Trạng thái | Liên quan |
 |---|---|---|---|---|
 | Nền | Kết nối LLM, bộ khung đo, số nền `ha_vi` 68.4% (chỉ luật) | 3 | ✅ | [0003](decisions/0003-giao-thuc-danh-gia.md), [0005](decisions/0005-mo-hinh-ngon-ngu.md) |
-| ① | Chốt 10–12 use case demo, thầy duyệt, viết thành bộ đo | 1 | ⏳ | [0008](decisions/0008-uu-tien-theo-yeu-cau-cua-thay.md) |
-| ② | Sửa lỗi an toàn (02, 05) và lỗi chặn use case | 1 | ⏳ | [sổ lỗi](findings/README.md), [0007](decisions/0007-buoc-nhay-tuong-doi.md) |
+| ① | Chốt use case demo, thầy duyệt, viết thành test nghiệm thu | 1 | 🔄 13 use case + test nghiệm thu, 8/13 đạt; chờ thầy duyệt ([usecases.md](usecases.md)) | [0008](decisions/0008-uu-tien-theo-yeu-cau-cua-thay.md) |
+| ② | Sửa lỗi an toàn (02, 05, 11) và lỗi chặn use case (01) | 1 | ⏳ | [sổ lỗi](findings/README.md), [0007](decisions/0007-buoc-nhay-tuong-doi.md) |
 | ③ | Kho thiết bị đọc từ DB (lỗi 03); giả lập qua MQTT; màn hình luồng | 2 | ⏳ | [0002](decisions/0002-tang-thiet-bi-theo-home-assistant.md) |
 | ④ | Tab thống kê độ chính xác (offline + online) | 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
 | ⑤ | Tổ chức lại thành 8 agent, agent hoà giải | 4 | ⏳ | [0004](decisions/0004-multi-agent.md), [0006](decisions/0006-hoa-giai-xung-dot.md) |

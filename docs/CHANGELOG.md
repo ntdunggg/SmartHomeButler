@@ -13,6 +13,7 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 ## [Chưa phát hành]
 
 ### Thêm
+- Danh mục use case demo `docs/usecases.md` (13 use case có test, 3 use case cho bước ③–⑤), chờ thầy duyệt. Mỗi use case là một test nghiệm thu qua API thật trong `tests/test_usecases/`; use case hỏng do lỗi đã biết được đánh dấu `xfail(strict=True)` kèm mã lỗi, tự báo khi lỗi được sửa.
 - Bộ khung đánh giá `evals/` với giao thức khách quan được ép bằng code: tách `dev`/`holdout` tất định, holdout chỉ chạy một lần và ghi sổ, manifest ghi đủ cấu hình, chạy nhiều lần, báo cáo mọi ca sai. Lỗi hạ tầng (hết quota) không bị chấm là sai. Lệnh `make eval-smoke`. Xem [ADR-0003](decisions/0003-giao-thuc-danh-gia.md).
 - Sổ quyết định hướng đi `docs/decisions/`, lộ trình `docs/roadmap.md`, nhật ký thay đổi này, và bước kiểm tra trước commit `scripts/check_docs.py`.
 - Dataset `evals/datasets/ha_vi.jsonl` từ test tiếng Việt của Home Assistant (CC-BY-4.0, commit `b1e9b989`), sinh bằng `evals/convert_ha_vi.py` với bảng ánh xạ `ha_vi_mapping.yaml`: 253/265 câu, trong đó 48 câu là lệnh tới thiết bị nhà demo không có, giữ lại để đo việc từ chối đúng.
@@ -31,6 +32,7 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - `docs/architecture.md` ghi sai rằng luồng duyệt dùng LangGraph `interrupt()`. Thực tế yêu cầu duyệt lưu trong DB và được kiểm tra lại toàn bộ trước khi thực thi.
 
 ### Đo lường
+- **Use case demo: 8/13 đạt** qua API thật (chế độ không LLM). Hỏng: UC-02 (lỗi 11), UC-04 (lỗi 01), UC-07 (lỗi 12), UC-09 (lỗi 13), UC-12 (lỗi 02), UC-13 (lỗi 03).
 - Bộ `smoke` (7 ca, chỉ để kiểm tra khung đo): 6/7 ở cả chế độ chỉ luật và Gemini; 20% lượt hội thoại có gọi LLM.
 - **Số nền `ha_vi`, tập `dev` (174 câu), chế độ chỉ luật, 3 lần, commit hiện tại: 68.4%.** Theo nhóm: điều khiển thiết bị 72%, câu hỏi trạng thái 88%, câu thiếu phòng hỏi lại đúng 93%, lệnh không hợp lệ 45%, hẹn giờ 38%. Kết quả: `evals/results/20261108T130147Z_ha_vi_dev_rules/` (máy cục bộ).
 - `ha_vi` với Gemini (`gemini-3.5-flash`, 1 lần, không embedding): **chưa xong**, gói miễn phí hết quota sau 72/174 câu (bộ đo dừng an toàn, không chấm câu dở). Trên 72 câu đã chạy: chỉ luật 87.5%, Gemini 97.2%; LLM sửa được 7 câu (ngày giờ, ai đang ở nhà, dừng hẹn giờ), không làm hỏng câu nào; 12% lượt có gọi LLM, trung vị 6.8 giây mỗi lượt đó. Chạy tiếp: `--resume evals/results/20261108T130212Z_ha_vi_dev_llm`. Đây là số tạm, không dùng để báo cáo cho tới khi đủ 174 câu.
@@ -45,6 +47,9 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - Câu hỏi ngày giờ, “ai đang ở nhà”, “bỏ qua”, “bắt đầu robot hút bụi” bị hiểu thành lệnh thiếu phòng.
 - “Nhiệt độ phòng khách bao nhiêu” trả nhiệt độ ngoài trời (lỗi 09).
 - Lệnh media và robot đã nêu thiết bị vẫn bị hỏi lại phòng: “tạm dừng TV phòng khách”, “robot hút bụi về đế sạc” (lỗi 10).
+- **“Nóng quá” khi người nói đang ở phòng ngủ bố mẹ lại chỉnh điều hoà phòng khách** (lỗi 11, mức Cao).
+- Không phát hiện xung đột sở thích nhiệt độ giữa bố và mẹ cùng phòng (lỗi 12).
+- Khi tải điện cao, lệnh mới bị bỏ im lặng “chưa có hành động cụ thể nào” (lỗi 13).
 - Mã lỗi đầy đủ, mức và quyết định: [sổ lỗi](findings/README.md).
 - “Mình sắp đi ngủ rồi” hỏi lại “Phòng khách hay Phòng bếp” thay vì phòng ngủ (quan sát khi chạy Gemini, chưa điều tra).
 
