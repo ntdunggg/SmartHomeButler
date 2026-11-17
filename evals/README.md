@@ -1,4 +1,4 @@
-# Đánh giá agent VinButler
+# Đánh giá agent SmartHomeButler
 
 Bộ khung đo chạy dataset qua **pipeline thật** (`src.services.pipeline_bridge.reason`) và
 chấm kết quả theo một giao thức cố định. Các quy tắc khách quan được ép bằng code

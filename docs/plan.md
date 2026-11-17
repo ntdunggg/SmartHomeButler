@@ -20,7 +20,7 @@ Khi xong một việc: đánh dấu ở đây, cập nhật `roadmap.md`, ghi `C
 
 - [x] Kết nối Gemini, sửa lỗi embedding ([ADR-0005](decisions/0005-mo-hinh-ngon-ngu.md))
 - [x] Bộ khung đo `evals/` có giao thức khách quan ([ADR-0003](decisions/0003-giao-thuc-danh-gia.md))
-- [x] Bộ đo `ha_vi` từ 265 câu test tiếng Việt của Home Assistant: số nền chỉ luật **68.4%** trên `dev`
+- [x] Bộ đo `ha_vi` từ 265 câu test tiếng Việt của Home Assistant: số nền chỉ luật **67.6%** trên `dev` (176 câu)
 - [x] CHANGELOG, ADR, roadmap, sổ lỗi, `CLAUDE.md`, kiểm tra trước commit
 
 ---
@@ -73,7 +73,7 @@ Mỗi lỗi đi đúng quy trình 7 bước ở cuối file.
 
 - [ ] Offline: đọc `evals/results/*/summary.json`, hiển thị độ chính xác theo bộ đo, theo nhóm, theo thời gian.
 - [ ] Online: phản hồi người dùng (đồng ý, sửa lại, tự chỉnh tay trong N phút) thành tỉ lệ thành công, tỉ lệ bị sửa, tỉ lệ hỏi lại.
-- [ ] Chạy tiếp lượt Gemini của `ha_vi` (đang dừng ở 72/174 vì quota) để có bảng so sánh chỉ luật với LLM.
+- [ ] Chạy lượt Gemini của `ha_vi` trên tập `dev` mới (176 câu) để có bảng so sánh chỉ luật với LLM. Lượt dở dang trước (72/174) không chạy tiếp được vì khoá chia tập đã đổi.
 
 ## ⑤ Multi-agent (yêu cầu 4)
 

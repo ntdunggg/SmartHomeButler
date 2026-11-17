@@ -1,6 +1,6 @@
 # Đối chiếu nghiên cứu
 
-Cập nhật lần cuối: 2026-11-08. Bản trình bày cho thầy: trang “VinButler đối chiếu nghiên cứu” (artifact riêng tư, chia sẻ qua menu Share). File này là **bản gốc nằm cùng code**; khi hai bên lệch nhau, file này đúng.
+Cập nhật lần cuối: 2026-11-08. Bản trình bày cho thầy: trang “SmartHomeButler đối chiếu nghiên cứu” (artifact riêng tư, chia sẻ qua menu Share). File này là **bản gốc nằm cùng code**; khi hai bên lệch nhau, file này đúng.
 
 Mã nguồn `Pnn` được dùng thống nhất trong file này, `plan.md` và các ADR.
 
@@ -8,7 +8,7 @@ Mã nguồn `Pnn` được dùng thống nhất trong file này, `plan.md` và c
 
 Độ tin cậy: **Có số liệu** = có thực nghiệm định lượng; **Hạn chế** = bài demo, chỉ đọc được tóm tắt, hoặc chưa bình duyệt; **Chuẩn thực tế** = tài liệu kỹ thuật của sản phẩm đang dùng; **Yếu** = không dùng làm luận cứ.
 
-| Mã | Nguồn | Nơi đăng | Vai trò với VinButler | Độ tin cậy |
+| Mã | Nguồn | Nơi đăng | Vai trò với SmartHomeButler | Độ tin cậy |
 |---|---|---|---|---|
 | P1 | Li et al., *HomeBench* · [ACL Anthology](https://aclanthology.org/2025.acl-long.597) · [dữ liệu](https://github.com/BITHLP/HomeBench) | ACL 2025 | Lệnh hợp lệ / không hợp lệ, một / nhiều thiết bị | Có số liệu |
 | P2 | Seo et al., *SimuHome* · [arXiv 2509.24282](https://arxiv.org/abs/2509.24282) · [mã](https://github.com/holi-lab/SimuHome) | ICLR 2026 | 600 episode; mô hình thiết bị và môi trường theo thời gian; giấy phép CC BY-NC-ND | Có số liệu |
@@ -47,7 +47,7 @@ Hiện trạng: **Tốt** · **Một phần** · **Có lỗi** · **Chưa có**.
 | Nhóm | Tính năng | Vị trí | Hiện trạng | Bằng chứng | Áp dụng | Tiếp thu |
 |---|---|---|---|---|---|---|
 | Hiểu lệnh | Chuẩn hoá tiếng Việt (dấu, không dấu, teencode) | `src/nlu/normalizer.py` | Tốt | `ha_vi` | P16 | Đo bằng test tiếng Việt của HA |
-| | Hiểu lệnh rõ ràng không cần LLM | `src/nlu/understanding.py` | Một phần | `ha_vi`: 68.4%; “tối đa”, màu đèn, “bếp” chưa hiểu | P16 | Danh sách tên đổ vào lúc chạy từ kho thiết bị |
+| | Hiểu lệnh rõ ràng không cần LLM | `src/nlu/understanding.py` | Một phần | `ha_vi`: 67.6%; “tối đa”, màu đèn, “bếp” chưa hiểu | P16 | Danh sách tên đổ vào lúc chạy từ kho thiết bị |
 | | Câu tương đối | `src/nlu/direction.py`, `planning/manager.py:473` | Có lỗi | Finding 01 | P17 | ADR-0007: ba nấc, một hàm `relative_delta()` |
 | | Câu mơ hồ → mục tiêu (1 lần gọi LLM), hỏi lại khi thiếu | `understanding/goal_author.py`, `sufficiency.py` | Tốt | `ha_vi` (Gemini, tạm): LLM sửa 7 câu, không hỏng câu nào | P5, P11 | Từ chối theo vế kèm mã lý do |
 | | Hội thoại nhiều lượt | `agent/schemas.py:178`, `turn_intent.py`, `context/salience.py` | Tốt | test `test_long_conversation_semantics.py` | P19, P20, P21 | Đo thêm bằng chuỗi hội thoại SimuHome |
@@ -67,7 +67,7 @@ Hiện trạng: **Tốt** · **Một phần** · **Có lỗi** · **Chưa có**.
 | | Hẹn giờ, trigger do người dùng đặt | — | Chưa có | Finding 02 | P5, P16, P22 | Điều kiện có cấu trúc, không để LLM viết code |
 | Năng lượng | Ước lượng điện, tối ưu theo tải | `services/power_usage.py`, node `energy_optimizer` | Tốt | test `test_energy_optimizer.py` (8) | P7, P8, P13 | So với lời giải tối ưu (mục 3, #10) |
 | Đánh giá | Lịch sử, đo thời gian từng bước | `api/history.py`, `services/audit.py`, `pipeline.py:2324` | Một phần | — | P6 | Màn hình luồng thực thi |
-| | Thống kê độ chính xác | `evals/` | Một phần | Bộ đo đã có; `ha_vi` 68.4% | P8, P3, P12, P1, P2 | Tab thống kê online + offline |
+| | Thống kê độ chính xác | `evals/` | Một phần | Bộ đo đã có; `ha_vi` 67.6% | P8, P3, P12, P1, P2 | Tab thống kê online + offline |
 
 ## 3. Số liệu tự đo được
 
@@ -77,7 +77,7 @@ Ba nhóm: tự làm được hoàn toàn · tự kiểm lại hạn chế của 
 
 | # | Hạn chế hiện tại | Cách đo | Con số thu được | Giai đoạn | Trạng thái |
 |---|---|---|---|---|---|
-| 1 | Chưa có số về hiểu lệnh tiếng Việt | Test tiếng Việt của HA qua bộ đo | % đúng intent + thiết bị + phòng | 1 | ✅ `ha_vi` 68.4% (chỉ luật) |
+| 1 | Chưa có số về hiểu lệnh tiếng Việt | Test tiếng Việt của HA qua bộ đo | % đúng intent + thiết bị + phòng | 1 | ✅ `ha_vi` 67.6% (chỉ luật) |
 | 2 | Chưa so được với nghiên cứu khác | 300–500 câu HomeBench dịch tiếng Việt, chia đều các loại | Exact match theo cách chấm của bài | 6 | ⏳ |
 | 3 | Bộ use case chưa có kỳ vọng | 12–15 use case × 10–15 cách nói | Tỉ lệ thành công, hỏi lại, từ chối sai | 5 | ⏳ |
 | 4 | Ba lỗi đã biết | Test đỏ → sửa → đo lại | Số trước / sau | 2–3 | 🔄 đã có số trước cho kho thiết bị (gián tiếp qua `ha_vi`) |
@@ -94,7 +94,7 @@ Ba nhóm: tự làm được hoàn toàn · tự kiểm lại hạn chế của 
 
 | Bài | Hạn chế | Việc làm được | Trạng thái |
 |---|---|---|---|
-| P6 HearthNet | Demo, không số liệu | Đo chính các kịch bản họ demo trên VinButler: % từ chối đúng lệnh cũ và lệnh không có quyền, độ đầy đủ truy vết | ⏳ |
+| P6 HearthNet | Demo, không số liệu | Đo chính các kịch bản họ demo trên SmartHomeButler: % từ chối đúng lệnh cũ và lệnh không có quyền, độ đầy đủ truy vết | ⏳ |
 | P12 MAP | Không công bố số chính xác, chỉ so với một GPT-4 | Tái tạo cách thử nghiệm (nhóm 1, #7) | ⏳ |
 | P3 Auto-SLURP | Không báo cáo riêng miền IoT | Lấy mẫu miền IoT, dịch, chạy qua pipeline; ghi rõ thiết lập khác | ⏳ |
 | P7 Agentic HEMS | Kết quả bằng MILP chỉ trên giá điện Áo | Có mã: chạy lại hoặc đưa kịch bản vào energy optimizer; chỉ làm nếu còn thời gian | ⏳ |

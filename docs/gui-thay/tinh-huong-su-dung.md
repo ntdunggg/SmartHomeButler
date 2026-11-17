@@ -1,4 +1,4 @@
-# Tình huống sử dụng VinButler
+# Tình huống sử dụng SmartHomeButler
 
 **Nhóm G10 · Người báo cáo: Nguyễn Trọng Dũng · Ngày: 17/11/2026**
 
@@ -64,8 +64,3 @@
 
 **13. Thiết bị mới.** Bố thêm “Đèn cầu thang” trên giao diện rồi nói “Bật đèn cầu thang.” Kết quả đúng: đèn cầu thang bật.
 
-## Em xin ý kiến thầy
-
-1. Danh sách trên đã đủ cho phần demo chưa, cần thêm hoặc bỏ tình huống nào?
-2. Có giữ tình huống 9 (nhà dùng nhiều điện) không?
-3. Tình huống 14–16 có đúng ý thầy về giả lập kết nối thiết bị và multi-agent không?

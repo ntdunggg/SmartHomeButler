@@ -1,10 +1,8 @@
-# Kế hoạch đồ án VinButler
-
-**Nhóm G10 · Người báo cáo: Nguyễn Trọng Dũng · Ngày: 17/11/2026**
+# Kế hoạch đồ án SmartHomeButler
 
 ## 1. Bài toán
 
-VinButler là trợ lý nhà thông minh hiểu tiếng Việt cho cả gia đình. Hệ thống nhận lệnh nói tự nhiên (kể cả không dấu, hoặc câu mơ hồ như “nóng quá”), điều khiển thiết bị an toàn theo quyền của từng thành viên, học thói quen và sở thích, và tự xử lý theo môi trường, điện năng.
+SmartHomeButler: trợ lý nhà thông minh hiểu tiếng Việt cho cả gia đình. Hệ thống nhận lệnh nói tự nhiên (kể cả không dấu, hoặc câu mơ hồ như “nóng quá”), điều khiển thiết bị an toàn theo quyền của từng thành viên, học thói quen và sở thích, và tự xử lý theo môi trường, điện năng.
 
 **Mục tiêu đồ án:**
 
@@ -13,8 +11,6 @@ VinButler là trợ lý nhà thông minh hiểu tiếng Việt cho cả gia đì
 3. Thống kê được độ chính xác của agent so với mong muốn người dùng.
 4. Multi-agent, chia theo cá nhân, hằng ngày, theo phòng, theo cấp bậc.
 5. Có số liệu đánh giá khách quan, so sánh được với các nghiên cứu.
-
-**Không làm trong đồ án:** kết nối thiết bị thật, tự huấn luyện mô hình ngôn ngữ.
 
 ## 2. Hiện trạng
 
@@ -25,7 +21,7 @@ VinButler là trợ lý nhà thông minh hiểu tiếng Việt cho cả gia đì
 - Hơn 1100 bài kiểm tra tự động.
 
 **Đã đo được:**
-- Hiểu đúng **68%** trên 174 câu lệnh tiếng Việt chuẩn của Home Assistant.
+- Hiểu đúng **68%** trên 176 câu lệnh tiếng Việt chuẩn của Home Assistant.
 - **7/13** tình huống demo đã chạy đúng (chi tiết trong file *Tình huống sử dụng*).
 - Đã ghi lại 13 lỗi; 3 lỗi ảnh hưởng an toàn được ưu tiên sửa.
 
@@ -46,22 +42,7 @@ Hệ thống sẽ được tổ chức thành các agent:
 | Safety | Quyền, duyệt lệnh, khoá trẻ em | HearthNet |
 | Q&A | Trả lời câu hỏi, chỉ được đọc | SAGE, HEMA |
 
-## 4. Lộ trình
-
-| Giai đoạn | Thời gian | Việc chính | Kết quả |
-|---|---|---|---|
-| A. Nền móng | Đã xong | Rà soát hệ thống, đối chiếu nghiên cứu, bộ đo tự động, danh sách tình huống demo | Số liệu đầu tiên: 68%, 7/13 |
-| B1. Chốt tình huống demo | Đã xong, chờ thầy duyệt | 16 tình huống, mỗi tình huống có bài kiểm tra tự động | 7/13 đạt |
-| B2. Sửa lỗi an toàn | 18/11 – 29/11 | Lệnh có thời gian không chạy ngay; “nóng quá” đúng phòng; “tất cả đèn trong bếp” chỉ trong bếp; “giảm thêm chút” đúng mức | 10/13 đạt |
-| B3. Giả lập kết nối thiết bị | 30/11 – 13/12 | Thiết bị giả lập kết nối qua MQTT; nhận thiết bị mới; màn hình luồng xử lý từng lệnh | Yêu cầu 2 |
-| B4. Thống kê độ chính xác | 14/12 – 20/12 | Tab thống kê từ bộ đo và từ phản hồi người dùng | Yêu cầu 3 |
-| B5. Multi-agent | 21/12 – 10/01 | Tổ chức thành các agent như mục 3, thêm agent hoà giải | Yêu cầu 4 |
-| C. Hoàn thiện và đánh giá | 11/01 – 31/01 | Hẹn giờ thật, bộ nhớ dài hạn, đánh giá trên HomeBench và SimuHome, khảo sát người dùng | Số liệu cuối |
-| D. Báo cáo và bảo vệ | 01/02 – 14/02 | Báo cáo cuối kỳ, slide, kịch bản demo | — |
-
-Lịch lập khi chưa biết hạn nộp, em sẽ chỉnh khi có hạn chính thức.
-
-## 5. Cơ sở áp dụng
+## 4. Cơ sở áp dụng
 
 | Phần | Tiếp thu | Nguồn |
 |---|---|---|
@@ -75,7 +56,7 @@ Lịch lập khi chưa biết hạn nộp, em sẽ chỉnh khi có hạn chính 
 | Bảo mật | Chống chèn lệnh gián tiếp vào trợ lý | Invitation Is All You Need |
 | Đánh giá | Lệnh hợp lệ / không hợp lệ; nhiều nhóm chỉ số | HomeBench; SimuHome; HEMA |
 
-## 6. Đánh giá
+## 5. Đánh giá
 
 - **Bộ câu lệnh tiếng Việt của Home Assistant:** độ hiểu đúng (hiện 68%).
 - **16 tình huống demo:** số tình huống chạy đúng (hiện 7/13).
@@ -102,10 +83,3 @@ Số liệu được đo khách quan: một phần dữ liệu giữ kín, chỉ
 12. Home Assistant Developer Docs (Entities, Entity registry, MQTT Discovery) và Home Assistant Assist (hassil, intents).
 13. Google Home Developers. *Brightness trait (BrightnessRelative).*
 
-## 8. Em xin ý kiến thầy
-
-1. Hạn demo và hạn nộp để em chốt lịch.
-2. Danh sách tình huống demo (file *Tình huống sử dụng*) đã đủ chưa?
-3. Phạm vi giả lập ở bước B3 có đủ không, hay cần kết nối thiết bị thật?
-4. Cách chia agent ở mục 3 có đúng ý thầy không?
-5. Kế hoạch đánh giá ở mục 6 có phù hợp làm kết quả chính của đồ án không?

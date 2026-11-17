@@ -25,7 +25,7 @@ from pathlib import Path
 from typing import Any
 
 HARNESS_VERSION = "1"
-SPLIT_SALT = "vinbutler-eval-v1"
+SPLIT_SALT = "smarthomebutler-eval-v1"
 DEFAULT_HOLDOUT_PCT = 30
 DEFAULT_NOW = "2026-08-20T14:00:00+00:00"
 

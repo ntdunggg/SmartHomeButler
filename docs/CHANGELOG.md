@@ -22,6 +22,7 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - Kế hoạch thực hiện `docs/plan.md`: quy trình bảy bước từ finding tới đo sau khi sửa, bản đồ finding → bộ đo → lộ trình → ADR, sáu giai đoạn, bảng quyết định đang chờ gom từ finding 01, 02 và các ADR.
 
 ### Thay đổi
+- Bỏ hết tên cũ trong tài liệu, bộ đo, file gửi thầy; thống nhất tên **SmartHomeButler** (theo commit `617bd17`). Khoá chia tập của bộ đo (chuỗi cũ có chứa tên cũ) đổi thành `smarthomebutler-eval-v1` (holdout chưa chạy lần nào nên đổi được), vì vậy tập `dev` của `ha_vi` đổi từ 174 thành 176 câu và phải đo lại.
 - Cố định hướng đi trong `CLAUDE.md` (và `AGENTS.md` cho các công cụ AI khác) theo [ADR-0008](decisions/0008-uu-tien-theo-yeu-cau-cua-thay.md): làm đủ 4 yêu cầu của thầy theo 5 bước; chỉ sửa ngay lỗi an toàn hoặc lỗi chặn use case. `plan.md` và `roadmap.md` viết lại gọn theo 5 bước, các việc khác vào mục *Để sau*.
 - Luật ghi lại lỗi: mọi lỗi phát hiện được ghi vào sổ lỗi `docs/findings/README.md` (mã, mức, ảnh hưởng, quyết định) và mục *Lỗi đã biết* ngay trong phiên tìm ra; mẫu `docs/findings/00-mau.md`; `scripts/check_docs.py` kiểm tra file lỗi đủ trường và có trong sổ.
 - Chốt hai quyết định trước khi sửa finding 01 và 02: câu tương đối dùng ba nấc đã khai báo cho cả hai nhánh (độ sáng 15/30/50, [ADR-0007](decisions/0007-buoc-nhay-tuong-doi.md)); đợt 1 của finding 02 chỉ chặn thực thi ngay và hỏi lại, dùng regex. Chưa đổi code.
@@ -32,6 +33,7 @@ Các nhóm dùng trong mỗi mục: **Thêm**, **Thay đổi**, **Sửa lỗi**,
 - `docs/architecture.md` ghi sai rằng luồng duyệt dùng LangGraph `interrupt()`. Thực tế yêu cầu duyệt lưu trong DB và được kiểm tra lại toàn bộ trước khi thực thi.
 
 ### Đo lường
+- **Đo lại `ha_vi` sau khi đổi khoá chia tập: 67.6%** trên tập `dev` mới (176 câu), chỉ luật, 3 lần. Theo nhóm: điều khiển thiết bị 69%, câu hỏi 89%, thiếu phòng hỏi lại đúng 83%, lệnh không hợp lệ 47%, hẹn giờ 33%. Số 68.4% (174 câu) bên dưới đo trên tập cũ, không so trực tiếp được. Lượt Gemini dở dang (72/174) bỏ, chạy lại từ đầu khi có quota. Kết quả: `evals/results/20261117T092459Z_ha_vi_dev_rules/`.
 - **Use case demo: 7/13 đạt** (8 test đạt; UC-01 có 2 test — bản ghi trước đếm nhầm thành 8/13) qua API thật (chế độ không LLM). Hỏng: UC-02 (lỗi 11), UC-04 (lỗi 01), UC-07 (lỗi 12), UC-09 (lỗi 13), UC-12 (lỗi 02), UC-13 (lỗi 03).
 - Bộ `smoke` (7 ca, chỉ để kiểm tra khung đo): 6/7 ở cả chế độ chỉ luật và Gemini; 20% lượt hội thoại có gọi LLM.
 - **Số nền `ha_vi`, tập `dev` (174 câu), chế độ chỉ luật, 3 lần, commit hiện tại: 68.4%.** Theo nhóm: điều khiển thiết bị 72%, câu hỏi trạng thái 88%, câu thiếu phòng hỏi lại đúng 93%, lệnh không hợp lệ 45%, hẹn giờ 38%. Kết quả: `evals/results/20261108T130147Z_ha_vi_dev_rules/` (máy cục bộ).

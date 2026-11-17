@@ -37,7 +37,7 @@ HOLDOUT_LOG = ROOT / "holdout_log.jsonl"
 
 
 def _parse_args(argv: list[str]) -> argparse.Namespace:
-    p = argparse.ArgumentParser(prog="python -m evals.run", description="Đo agent VinButler theo giao thức khách quan.")
+    p = argparse.ArgumentParser(prog="python -m evals.run", description="Đo agent SmartHomeButler theo giao thức khách quan.")
     p.add_argument("dataset", type=Path)
     p.add_argument("--split", choices=["dev", "holdout", "all"], default="dev")
     p.add_argument("--mode", choices=["rules", "llm"], default="rules",
