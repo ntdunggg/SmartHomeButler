@@ -36,6 +36,15 @@ Lập ngày 17/11/2026 khi **chưa biết hạn nộp**; chỉnh lại khi thầ
 
 Nếu thời gian ngắn hơn, bước ⑤ làm phần chính trước: agent hoà giải và màn hình luồng.
 
+Sau 4 yêu cầu (đã gửi thầy trong trang kế hoạch toàn bộ đồ án, 17/11/2026):
+
+| Giai đoạn | Thời gian | Việc chính |
+|---|---|---|
+| C · Hoàn thiện và đánh giá | 11/01 – 31/01 | Bộ hẹn giờ thật và lệnh “khi … thì …”; bộ nhớ dài hạn lưu DB; lỗi mức trung bình còn lại; chạy holdout một lần; tập con HomeBench, một phần SimuHome; so 3 cấu hình model; test prompt injection; khảo sát 8–12 người dùng |
+| D · Báo cáo và bảo vệ | 01/02 – 14/02 | Báo cáo cuối kỳ, slide, kịch bản demo theo 16 use case |
+
+Nếu thời gian ngắn hơn: giữ ②–④, rút ⑤ về phần chính, rút C về đánh giá cuối.
+
 Các việc khác: mục *Để sau* trong [`plan.md`](plan.md).
 
 ## Không làm trong đồ án này
