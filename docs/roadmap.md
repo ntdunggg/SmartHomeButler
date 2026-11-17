@@ -22,6 +22,20 @@ Trạng thái: ✅ xong · 🔄 đang làm · ⏳ chưa bắt đầu.
 | ④ | Tab thống kê độ chính xác (offline + online) | 3 | ⏳ | [0003](decisions/0003-giao-thuc-danh-gia.md) |
 | ⑤ | Tổ chức lại thành 8 agent, agent hoà giải | 4 | ⏳ | [0004](decisions/0004-multi-agent.md), [0006](decisions/0006-hoa-giai-xung-dot.md) |
 
+## Lịch dự kiến
+
+Lập ngày 17/11/2026 khi **chưa biết hạn nộp**; chỉnh lại khi thầy cho hạn chính thức. Đã gửi thầy cùng trang kế hoạch.
+
+| Bước | Thời gian | Kết quả dự kiến |
+|---|---|---|
+| ① | Đã xong, chờ thầy duyệt | 16 tình huống, 7/13 đạt |
+| ② | 18/11 – 29/11 | 10/13 đạt |
+| ③ | 30/11 – 13/12 | Yêu cầu 2; 11/13 đạt |
+| ④ | 14/12 – 20/12 | Yêu cầu 3 |
+| ⑤ | 21/12 – 10/01 | Yêu cầu 4; 12/13 đạt |
+
+Nếu thời gian ngắn hơn, bước ⑤ làm phần chính trước: agent hoà giải và màn hình luồng.
+
 Các việc khác: mục *Để sau* trong [`plan.md`](plan.md).
 
 ## Không làm trong đồ án này
