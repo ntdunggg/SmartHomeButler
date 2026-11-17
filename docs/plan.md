@@ -30,7 +30,7 @@ Khi xong một việc: đánh dấu ở đây, cập nhật `roadmap.md`, ghi `C
 Bước quan trọng nhất: nó định nghĩa “chạy đúng” và quyết định lỗi nào là *Chặn*.
 
 - [x] Chọn use case: 13 use case có test + 3 use case cho bước ③–⑤ → [`usecases.md`](usecases.md).
-- [x] Mỗi use case là một test nghiệm thu qua API thật (`tests/test_usecases/`). **Hiện 8/13 đạt**; 5 cái hỏng do lỗi 01, 02, 03, 11, 12, 13 (đánh dấu `xfail(strict=True)`).
+- [x] Mỗi use case là một test nghiệm thu qua API thật (`tests/test_usecases/`). **Hiện 7/13 đạt**; 6 cái hỏng do lỗi 01, 02, 03, 11, 12, 13 (đánh dấu `xfail(strict=True)`).
 - [x] Rà sổ lỗi: lỗi 01 lên **Chặn** (UC-04); ghi thêm lỗi 11 (Cao), 12 (Chặn, bước ⑤), 13.
 - [ ] **Đưa danh sách cho thầy duyệt** (mục “Cần thầy góp ý” trong `usecases.md`).
 - [ ] Bộ câu biến thể cho từng use case (`evals/datasets/usecases.jsonl`, 5–10 cách nói) để tính độ chính xác theo use case — làm cùng bước ④.

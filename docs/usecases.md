@@ -8,7 +8,7 @@ Use case đang hỏng được đánh dấu `xfail(strict=True)` kèm mã lỗi 
 
 ## Tổng quan
 
-**Hiện tại: 8/13 use case đạt.** 5 use case hỏng vì 5 lỗi đã ghi sổ; tất cả hỏng đúng ở điều kiện nghiệm thu, không phải do test.
+**Hiện tại: 7/13 use case đạt** (8 test, vì UC-01 có 2 test). 6 use case hỏng vì 6 lỗi đã ghi sổ; tất cả hỏng đúng ở điều kiện nghiệm thu, không phải do test.
 
 | UC | Use case | Yêu cầu của thầy | Thể hiện | Trạng thái | Lỗi chặn | Sửa ở bước |
 |---|---|---|---|---|---|---|
