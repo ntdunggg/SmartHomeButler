@@ -22,7 +22,7 @@ SmartHomeButler: trợ lý nhà thông minh hiểu tiếng Việt cho cả gia �
 
 **Đã đo được:**
 - Hiểu đúng **68%** trên 176 câu lệnh tiếng Việt chuẩn của Home Assistant.
-- **7/13** tình huống demo đã chạy đúng (chi tiết trong file *Tình huống sử dụng*).
+- 19 use case được đặc tả trong tài liệu *Đặc tả use case*; **7/13** kịch bản kiểm thử nghiệm thu đã chạy đúng.
 - Đã ghi lại 13 lỗi; 3 lỗi ảnh hưởng an toàn được ưu tiên sửa.
 
 ## 3. Hướng kiến trúc

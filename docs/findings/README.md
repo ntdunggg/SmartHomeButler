@@ -19,7 +19,7 @@ Mọi lỗi phát hiện được đều ghi ở đây **ngay trong phiên tìm 
 
 | Mã | Lỗi | Mức | Ảnh hưởng | Quyết định | Trạng thái | Chi tiết |
 |---|---|---|---|---|---|---|
-| 01 | Câu tương đối mất mức độ: “giảm một chút” và “giảm nhiều” đều ±10; nhánh LLM luôn về 30%; qua API “giảm thêm chút” từ 80% về 30% | **Chặn** | UC-04 | Bước ② | Đã phân tích, đã chốt cách sửa (ADR-0007) | [01-relative-magnitude.md](01-relative-magnitude.md) |
+| 01 | Câu tương đối mất mức độ: “giảm một chút” và “giảm nhiều” đều ±10; nhánh LLM luôn về 30%; qua API “giảm thêm chút” từ 80% về 30% | **Chặn** | TC-04 | Bước ② | Đã phân tích, đã chốt cách sửa (ADR-0007) | [01-relative-magnitude.md](01-relative-magnitude.md) |
 | 02 | Lệnh có mốc tương lai chạy ngay: “mười phút nữa tắt đèn” tắt luôn; “sau 10 phút” thành độ sáng 10% | **Cao** | Mọi câu có yếu tố thời gian | Bước ② (đợt 1: chặn thực thi ngay) | Đã phân tích, đã chốt cách sửa | [02-timed-commands.md](02-timed-commands.md) |
 | 03 | Agent không nhận thiết bị thêm qua giao diện: 13 file đọc danh sách cố định `DEVICE_SPECS` | **Chặn** | Yêu cầu 2: thiết bị giả lập tự khai báo qua MQTT | Bước ③ | Ghi nhận | — |
 | 04 | “Mình sắp đi ngủ rồi” hỏi “Phòng khách hay Phòng bếp” thay vì phòng ngủ | Thấp | — | Để sau | Ghi nhận | — |
@@ -29,6 +29,6 @@ Mọi lỗi phát hiện được đều ghi ở đây **ngay trong phiên tìm 
 | 08 | Câu hỏi ngày giờ, “ai đang ở nhà”, “bỏ qua”, “bắt đầu robot hút bụi”, “đặt táo vào danh sách” bị hiểu thành lệnh thiếu phòng | Thấp | — | Để sau | Ghi nhận | — |
 | 09 | “Nhiệt độ phòng khách bao nhiêu” trả nhiệt độ ngoài trời | Trung bình | — | Để sau | Ghi nhận | — |
 | 10 | Lệnh media và robot (“tạm dừng TV phòng khách”, “bài tiếp theo trên loa phòng khách”, “robot hút bụi về đế sạc”) bị hỏi lại phòng dù đã nêu thiết bị | Trung bình | Use case media nếu được chọn | Để sau | Ghi nhận | — |
-| 11 | **“Nóng quá” khi người nói ở phòng ngủ bố mẹ (`speaker_location`) lại chỉnh điều hoà phòng khách**; điều hoà phòng bố mẹ vẫn tắt | **Cao** | UC-02 | Bước ② | Ghi nhận (dò qua API, chế độ không LLM) | — |
-| 12 | Không phát hiện xung đột sở thích giữa thành viên cùng phòng: mẹ (thích 24°C) bật điều hoà phòng bố mẹ, bố thích 26°C, hệ thống không cảnh báo hay dung hoà | **Chặn** | UC-07 | Bước ⑤ (agent hoà giải, ADR-0006) | Ghi nhận | — |
-| 13 | Khi nhà đang chạy nhiều thiết bị (3 điều hoà, bình nóng lạnh, máy rửa bát), “bật robot hút bụi” trả “chưa có hành động cụ thể nào”, không giải thích; khi tải thấp thì chạy bình thường | Trung bình | UC-09 | Bước ② nếu giữ UC-09 | Ghi nhận, chưa rõ nguyên nhân (nghi energy optimizer) | — |
+| 11 | **“Nóng quá” khi người nói ở phòng ngủ bố mẹ (`speaker_location`) lại chỉnh điều hoà phòng khách**; điều hoà phòng bố mẹ vẫn tắt | **Cao** | TC-02 | Bước ② | Ghi nhận (dò qua API, chế độ không LLM) | — |
+| 12 | Không phát hiện xung đột sở thích giữa thành viên cùng phòng: mẹ (thích 24°C) bật điều hoà phòng bố mẹ, bố thích 26°C, hệ thống không cảnh báo hay dung hoà | **Chặn** | TC-07 | Bước ⑤ (agent hoà giải, ADR-0006) | Ghi nhận | — |
+| 13 | Khi nhà đang chạy nhiều thiết bị (3 điều hoà, bình nóng lạnh, máy rửa bát), “bật robot hút bụi” trả “chưa có hành động cụ thể nào”, không giải thích; khi tải thấp thì chạy bình thường | Trung bình | TC-09 | Bước ② nếu giữ TC-09 | Ghi nhận, chưa rõ nguyên nhân (nghi energy optimizer) | — |
